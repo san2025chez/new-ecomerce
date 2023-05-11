@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <CartContext2>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
        
             <NavBar></NavBar>{" "}
        
