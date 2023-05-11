@@ -16,10 +16,11 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import Carousel1 from "./components/carousel/Carousel1"
 
 function App() {
+  console.log(process.env.PUBLIC_URL);
   return (
     <div>
       <CartContext2>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
        
             <NavBar></NavBar>{" "}
        
