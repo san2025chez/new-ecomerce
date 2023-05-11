@@ -41,7 +41,7 @@
     "predeploy":"npm run build",
     "deploy":"gh-pages -d build",
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "react-scripts --openssl-legacy-provider build --base=/new-ecomerce",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
