@@ -20,9 +20,9 @@ function App() {
     <div>
       <CartContext2>
         <BrowserRouter>
-          <StyledEngineProvider injectFirst>
+       
             <NavBar></NavBar>{" "}
-          </StyledEngineProvider>
+       
           <Routes>
             <Route path="/" element={<Carousel1 />} />
 
