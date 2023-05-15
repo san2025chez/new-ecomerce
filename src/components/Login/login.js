@@ -260,7 +260,7 @@ initial
                     <br />
                     <ReCAPTCHA
                       ref={captcha}
-                      sitekey="6LfCt5keAAAAAOEAoTbu3JpTmAhDk1Wrblv8Y-EA"
+                      sitekey="6LfbvywfAAAAACW_yrnaJlDXk6ajACCQ3_DVSGIa"
                       onChange={onChange}
                     />
                     <br />
