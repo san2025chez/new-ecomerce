@@ -10,13 +10,12 @@ import WhatsApp from "./components/WhatsApp/WhatsApp";
 import Footer from "./components/Footer/Footer";
 import { CheckoutPage } from "./components/CartCounter/CheckoutPage";
 import Login from "./components/Login/login";
-import { ThemeProvider } from "@material-ui/core/styles";
 import "@fontsource/roboto";
 import { StyledEngineProvider } from "@mui/material/styles";
 import Carousel1 from "./components/carousel/Carousel1"
 
 function App() {
-  console.log(process.env.PUBLIC_URL);
+
   return (
     <div>
       <CartContext2>
@@ -25,7 +24,7 @@ function App() {
             <NavBar></NavBar>{" "}
        
           <Routes>
-            <Route path="/" element={<Carousel1 />} />
+            <Route path="/new-ecomerce" element={<Carousel1 />} />
 
             <Route exact path="/categoria/:Id" element={<Home />} />
 
@@ -43,11 +42,11 @@ function App() {
           </Routes>
 
           <WhatsApp/>
-          <ThemeProvider>
+       
        
             <Footer />
      
-          </ThemeProvider>
+       
         </BrowserRouter>
       </CartContext2>
     </div>

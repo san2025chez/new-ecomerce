@@ -43,7 +43,7 @@ return(
   <h6 className="cart__titulos__text">Precio</h6>
 </div>
 <div>
-  {cart.map((product, key) => (
+  {cart.map((product) => (
      <div  key={product.id} className="container cart">
      <div className="cart__detail container">
        <div className="cart__img cart__items">

@@ -16,8 +16,37 @@ import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.scss'
 
 
-const pages = ['Cajas', 'Botellines', 'Cosmeticos'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  {
+    id:1,
+    name: 'Cajas'
+  },
+  {
+    id:2,
+    name: 'Botellines'
+  },
+  {
+    id:3,
+    name: 'Cosmeticos'
+  },
+];
+const settings = [
+  {
+    id:1,
+    name:  'Profile'
+  },
+  {
+    id:2,
+    name: 'Account'
+  },
+  {
+    id:3,
+    name: 'Dashboard',
+  },
+  {
+    id:4,
+    name: 'Logout'
+  }];
 
 const NavBar= () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -81,9 +110,9 @@ const NavBar= () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => ( 
-               <Link to={`/categoria/${ page }`}><MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map((item) => ( 
+               <Link to={`/categoria/${ item.name }`}><MenuItem key={item.id} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{item.name}</Typography>
                   </MenuItem></Link>
               ))}
             </Menu>
@@ -97,13 +126,13 @@ const NavBar= () => {
             <Link to="/">MABEL</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((item) => (
               <Button
-                key={page}
+                key={item.id}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'blue', display: 'block' }}
               >
-               <Link to={`/categoria/${ page }` }>  {page} </Link>
+               <Link to={`/categoria/${ item.name }` }>  {item.name} </Link>
               </Button>
             ))}
           </Box>
@@ -139,9 +168,9 @@ const NavBar= () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {settings.map((item) => (
+                <MenuItem key={item.id} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{item.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -156,33 +185,3 @@ export default NavBar;
 
 
 
-
-/* import React from "react";
-import CartWidget from "../CartWidget/CartWidget";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import "@fontsource/roboto";
-import { Paper} from "@material-ui/core";
-import { green, orange } from "@material-ui/core/colors";
-import Header from './Header'
-import {Link} from 'react-router-dom' */
-
-
-/* export default function NavBar() {
-  return (
-
-    <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">MINIMERCADITO MABEL</Navbar.Brand>
-          <Nav className="me-auto">
-           <Nav.Link><Link to="/">INICIO</Link> </Nav.Link>
-           <Nav.Link><Link to="/categoria/frutas">FRUTAS</Link> </Nav.Link>
-           <Nav.Link><Link to="/categoria/verduras">VERDURAS</Link> </Nav.Link>
-          </Nav>
-          <CartWidget />
-        </Container>
-      </Navbar>
-    </>
-  );
-} */
