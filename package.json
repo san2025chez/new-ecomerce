@@ -2,7 +2,7 @@
   "name": "new-ecomerce",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://san2025chez.github.io/new-ecomerce",
+  "homepage": "https://san2025chez.github.io",
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
@@ -40,7 +40,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build --base=/new-ecomerce",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

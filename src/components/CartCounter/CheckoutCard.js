@@ -62,7 +62,10 @@ export const CheckoutCard = ({
             {Array(rating)
             .fill()
             .map((_, i) =>(
-                <p>&#11088;</p>
+                <div key={i}>
+  <p>&#11088;</p>
+                </div>
+              
             ))}
 
         </div>
