@@ -123,7 +123,7 @@ const NavBar= () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            <Link to="/">MABEL</Link>
+            <Link to="/new-ecomerce">LEO</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((item) => (
