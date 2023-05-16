@@ -158,10 +158,15 @@ export default function Login() {
           icon: "success",
           title: "su orden se creo con exito",
           text: `Su numero de oden es: ${res.id}`,
-        }).then((result)=>{console.log(result)
-      restartForm(INITIAL_FORM_STATE)
-        // window.location.reload();
+        }).then((result)=>{
+        if (result.isConfirmed) {
+          console.log("ingreso")
+          restartForm(INITIAL_FORM_STATE);
           clear();
+        }
+     // restartForm(INITIAL_FORM_STATE)
+        // window.location.reload();
+     
 
         })
       });
@@ -184,6 +189,7 @@ export default function Login() {
     });
 
     crearOrden();
+  
   };
 
 
@@ -204,7 +210,7 @@ const restartForm=(initial)=>{
   setUser(
 initial
   )
-  window.location.reload();
+ window.location.reload();
   console.log("user",user);
 }
 
