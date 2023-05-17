@@ -16,6 +16,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "../FormsUI/Button";
 import CardContent from '@mui/material/CardContent';
+import { useLocation } from 'react-router-dom';
+
 
 import Card from "@mui/material/Card";
 
@@ -95,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Login() {
+  const location = useLocation();
+
+  console.log(location.pathname); // Ruta actual
+  console.log(location.search); 
   const classes = useStyles();
   const [captchaValido, setcaptchaValido] = useState(null);
   let navigate = useNavigate();
