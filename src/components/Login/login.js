@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import "./login.scss";
 import "firebase/firestore";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
+import { createRoutesFromChildren, useNavigate } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import Textfield from "../FormsUI/Textfield";
 import { Formik, Form } from "formik";
@@ -17,7 +17,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "../FormsUI/Button";
 import CardContent from '@mui/material/CardContent';
 import { useLocation } from 'react-router-dom';
-
+import { Navigate } from 'react-router-dom';
 
 import Card from "@mui/material/Card";
 
@@ -118,11 +118,12 @@ export default function Login() {
     console.log("ingreso captcha", valor);
   };
 
-  const crearOrden = async () => {
+  const crearOrden = async (values,  cart, totalPrice,clear) => {
+   
     const db = getFirestore();
 
     const newOrder = {
-      buyer: user,
+      buyer: {...values},
       item: [{ ...cart }],
       total: totalPrice(),
     };
@@ -142,7 +143,7 @@ export default function Login() {
     );
 
     const outOfStock = [];
-
+    const shouldRedirect = true;
     const productos = await getDocs(q);
 
     productos.docs.forEach((doc) => {
@@ -166,10 +167,9 @@ export default function Login() {
           text: `Su numero de oden es: ${res.id}`,
         }).then((result)=>{
         if (result.isConfirmed) {
-          console.log("ingreso")
-          restartForm(INITIAL_FORM_STATE);
+
           clear();
-        }
+        }          
      // restartForm(INITIAL_FORM_STATE)
         // window.location.reload();
      
@@ -194,7 +194,6 @@ export default function Login() {
       [event]: event,
     });
 
-    crearOrden();
   
   };
 
@@ -212,15 +211,22 @@ export default function Login() {
   };
 
 const restartForm=(initial)=>{
+  const shouldRedirect = true;
   console.log("ingresgggo",initial);
   setUser(
 initial
   )
- window.location.reload();
+  return shouldRedirect ? <Navigate to="/login" /> : <Navigate to="/login" />;
+
   console.log("user",user);
 }
 
   return (
+<>
+{
+  cart.length === 0
+  ? <Navigate to="/new-ecomerce"/>
+  :
 
     <Grid container justifyContent="center"  alignItems="center" marginTop="50px">
       <Grid item xs={12} sm={6} md={8} lg={6}>
@@ -232,57 +238,65 @@ initial
               initialValues={{
                 ...(INITIAL_FORM_STATE || ""),
               }}
+              
               validationSchema={FORM_VALIDATION}
               onSubmit={(values ) =>{
-                capturoDatos(values);
-              /*   restartForm({
-                  ...(INITIAL_FORM_STATE || ""),
-                }); */
+                crearOrden(values,  cart, totalPrice,clear)
+                console.log("lo que submiteo",values);
               }
            
                 //(values) => capturoDatos(values)
               }
             >
-              <Form>
-                <Grid container spacing={1}>
-                  <Grid item xs={12}>
-                    <Textfield
-                      name="name"
-                      label="Nombre"
-                      placeholder="nombre"
-                    />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Textfield
-                      name="surname"
-                      label="Apellido"
-                      placeholder="Apellido"
-                    />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Textfield
-                      name="phone"
-                      label="Telefono"
-                      placeholder="Telefono"
-                    />
-                  </Grid>
-                  <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-                    <br />
-                    <ReCAPTCHA
-                      ref={captcha}
-                      sitekey="6LfbvywfAAAAACW_yrnaJlDXk6ajACCQ3_DVSGIa"
-                      onChange={onChange}
-                    />
-                    <br />
-                  </div>
-
-                  <Grid item xs={12} sm={6} md={8} lg={6}  style={{ marginLeft: "auto", marginRight: "auto" }} >
-                    <Button  size="medium" >Finalizar Compra</Button>
-                  </Grid>
-                </Grid>
-              </Form>
+              {(formik)=>(
+                           <Form onSubmit={formik.handleSubmit}>
+                           <Grid container spacing={1}>
+                             <Grid item xs={12}>
+                               <Textfield
+                                onChange={formik.handleChange}
+                                 name="name"
+                                 label="Nombre"
+                                 values={formik.values.name}
+                                 placeholder="nombre"
+                               />
+                             </Grid>
+           
+                             <Grid item xs={12}>
+                               <Textfield
+                                onChange={formik.handleChange}
+                                 name="surname"
+                                 label="Apellido"
+                                 values={formik.values.surname}
+                                 placeholder="Apellido"
+                               />
+                             </Grid>
+           
+                             <Grid item xs={12}>
+                               <Textfield
+                               onChange={formik.handleChange}
+                                 name="phone"
+                                 label="Telefono"
+                                 values={formik.values.phone}
+                                 placeholder="Telefono"
+                               />
+                             </Grid>
+                             <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+                               <br />
+                               <ReCAPTCHA
+                                 ref={captcha}
+                                 sitekey="6LfbvywfAAAAACW_yrnaJlDXk6ajACCQ3_DVSGIa"
+                                 onChange={onChange}
+                               />
+                               <br />
+                             </div>
+           
+                             <Grid item xs={12} sm={6} md={8} lg={6}  style={{ marginLeft: "auto", marginRight: "auto" }} >
+                               <Button size="medium" >Finalizar Compra</Button>
+                             </Grid>
+                           </Grid>
+                         </Form>
+              )}
+   
             </Formik>
           </div>
         </Container>
@@ -291,6 +305,8 @@ initial
       </Grid>
 
     </Grid>
+}
+</>
 
   )
 }
