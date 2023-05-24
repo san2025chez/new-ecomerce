@@ -69,14 +69,17 @@ function Carousel1() {
                 component="img"
                 lg={{ width: '100%',height: '100%', flexGrow: 1 }}
                 md={{ width: '100%',height: '100%', flexGrow: 1 }}
-                sx={{
+               sm={{ width: '45%',height: '100%', flexGrow: 1}} 
+              sx={{
+                  width: '100%',
+                  height: '100%',
+            
                  
                   display: 'block',
                  
          
                   overflow: 'hidden',
-                  width: '100%',
-                  height: '100%'
+             
                 }}
                 src={step.imagen}
                 alt={step.id}
