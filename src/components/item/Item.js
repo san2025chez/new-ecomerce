@@ -64,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      maxWidth: 280,
+      width: 200,
+      height:250
     },
     margin:'auto',
  
