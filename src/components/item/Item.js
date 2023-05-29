@@ -5,8 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-
-
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -41,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    height: 150,
+    width:150,
+
+
+
 
  
   },
@@ -64,10 +67,13 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      width: 200,
-      height:250
+      width: 230,
+      height:340
     },
     margin:'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
  
   },
 
@@ -81,6 +87,9 @@ const Item =({product:{id,productName,price,img}}) => {
       setExpanded(!expanded);
     };
     return(
+    
+        
+       
 
       <Card className={classes.card}  >
       <CardHeader
@@ -88,26 +97,29 @@ const Item =({product:{id,productName,price,img}}) => {
         action={
           <Typography
           className={classes.action}
-          variant='h5'
+          variant='h6'
           color='textSecondary'
           >
               {accounting.formatMoney(price)}
         
           </Typography>
         }
+     
         title={productName}
         subheader="in-Stock"
+    
       />
        <Link to={`/detalle/${ id }`}> <CardMedia
         className={classes.media}
        image={img}
+
         title="Paella dish"
       /></Link>
        <Link to={`/detalle/${ id }`}> <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+      {/*   <Typography variant="body2" color="textSecondary" component="p">
           This impressive paella is a perfect party dish and a fun meal to cook together with your
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
+        </Typography> */}
       </CardContent></Link>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
