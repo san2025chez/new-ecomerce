@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
+
  
   },
   expand: {
@@ -67,9 +68,22 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      width: 230,
-      height:340
+      width: 150,
+      height:280,
+  
+      
+
+
+ 
+    
+   
     },
+    [theme.breakpoints.down('xs')]: {
+      width: 120,
+      height:230,
+    
+    },
+ 
     margin:'auto',
     display: 'flex',
     flexDirection: 'column',
@@ -109,11 +123,14 @@ const Item =({product:{id,productName,price,img}}) => {
         subheader="in-Stock"
     
       />
-       <Link to={`/detalle/${ id }`}> <CardMedia
-        className={classes.media}
-       image={img}
-
-        title="Paella dish"
+       <Link to={`/detalle/${ id }`}> 
+       <CardMedia
+         className={classes.media}
+         image={img}
+      
+         title="Paella dish"
+      
+     
       /></Link>
        <Link to={`/detalle/${ id }`}> <CardContent>
       {/*   <Typography variant="body2" color="textSecondary" component="p">

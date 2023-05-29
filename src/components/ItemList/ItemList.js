@@ -15,6 +15,15 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
       color: theme.palette.text.secondary,
     },
+    gridItem: {
+      padding: theme.spacing(2), // Espaciado por defecto
+      [theme.breakpoints.down('sm')]: {
+        padding: theme.spacing(0.5),
+        paddingLeft: '0px',
+        paddingRight:0 ,
+        marginLeft: '0px'// Espaciado para dispositivos móviles
+      },
+    },
   }));
 
 export const ItemList = ({items}) => {
@@ -23,10 +32,10 @@ export const ItemList = ({items}) => {
 
     return(
       <div className={classes.root}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.cardContainer}>
           {
             items.map(product => (
-              <Grid item xs={12} sm={2} md={4} lg={3}>
+              <Grid item  key={product?.id} xs={6} sm={6} md={4} lg={3}  className={classes.gridItem}>
            <Item key={product?.id} product={product} />
       
               </Grid>
