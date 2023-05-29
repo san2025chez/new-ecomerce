@@ -4,8 +4,20 @@ import 'firebase/firestore'
 import Spinner from "../components/Spinner/Spinner";
 import "./Home.scss";
 import {useParams} from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
-
+const useStyles = makeStyles((theme) => ({
+  container: {
+    width: '90%', // Ancho completo
+ // Espaciado por defecto
+    [theme.breakpoints.down('sm')]: {
+      width: '80%',
+      margin:'0%',
+      padding:'0%',
+      padding: theme.spacing(1), // Espaciado para dispositivos móviles
+    },
+  },
+}));
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -47,7 +59,7 @@ const db = getFirestore();
   console.log("products en Home", items);
 
 
-  
+  const classes = useStyles();
 
   return (
     <>
@@ -56,7 +68,7 @@ const db = getFirestore();
           <Spinner />
         </div>
       ) : (
-        <div className="container">
+        <div  className={classes.container}>
           <>
             <ItemList items={items} />
           </>

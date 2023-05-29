@@ -38,7 +38,7 @@ function Carousel1() {
   };
 
   return (
-    <>
+    <div>
  
 
     <Grid
@@ -98,7 +98,7 @@ function Carousel1() {
 </Grid>
     <Home></Home>
     </Grid>
-    </>
+    </div>
   );
 }
 
