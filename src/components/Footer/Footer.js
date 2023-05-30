@@ -32,7 +32,7 @@ export default function Footer(props) {
     <div className="footer">
       <section className="footer__suscription">
         <p className="footer__suscription__heading">
-          Unite a Minimercadito Mabel y recibí nuestras mejores Ofertas
+          Unite a la Red de Leo y recibí nuestras mejores Ofertas
         </p>
         <p className="footer__suscription__text">
           Podes desuscribirte cuando quieras
@@ -91,7 +91,7 @@ export default function Footer(props) {
         </div>
         <div className="footer__copyrights">
           <p className="footer__bottom__developer">Created by Ana Sanchez</p>
-          <a href="https://github.com/fedetanco22" target="blank">
+          <a href="https://github.com/san2025chez" target="blank">
             <GitHubIcon disabled className="footer__bottom__icon" />
           </a>
         </div>
