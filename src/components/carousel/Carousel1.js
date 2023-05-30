@@ -29,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
   stylegrid: {
     marginBottom: '100px',
     [theme.breakpoints.down('sm')]: {
-      marginBottom: '0px',
+      margin: '0px',
     },
     [theme.breakpoints.down('xs')]: {
-      marginBottom: '0px',
+      margin: '00px',
     }
   }
 }))
@@ -62,7 +62,7 @@ function Carousel1() {
 
         style={{ backgroundColor: 'white' }}
       >
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} >
         <Box style={{
           alignItems: "center",
           justifyContent: "center"/* border: '2px solid  #dc004e' */, width: "100%", height: '20%'
