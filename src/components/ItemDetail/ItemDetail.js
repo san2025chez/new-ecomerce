@@ -104,10 +104,15 @@ export const ItemDetail=({product})=>{
                         <div className="mibotom">
                         <h4>Tenes {cartCount(quantity)} productos en el carrito</h4>
                         <Link to='/cart'><Button variant="contained" color="secondary">Terminar compra</Button></Link>
+                        <br/>
                         </div>
                       
                    </div>:
+                   <>
+                    <br/>
                    <Link to='/cart'><Button variant="contained" color="secondary">Terminar compra</Button></Link>
+                   </>
+                   
                   }
           </div> 
        </div> 
