@@ -85,7 +85,7 @@ export default function Footer(props) {
       </div>
       <div className="footer__bottom">
         <div className="footer__copyrights">
-          <p className="footer__copyrights__text">Minimercadito Mabel</p>
+          <p className="footer__copyrights__text">Tienda LEO</p>
           <i className="far fa-copyright footer__copyrights__icon"></i>
           <p className="footer__copyrights__text">2021</p>
         </div>

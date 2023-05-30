@@ -71,7 +71,7 @@ const Header = (props) => {
                 color="textSecondary"
                 className={classes.title}
               >
-                Minimercadito Mabel
+               Tienda LEO
               </Typography>
               {isMobile ? (
                 <>
