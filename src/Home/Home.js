@@ -8,10 +8,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: '90%', // Ancho completo
+    width: '100%', // Ancho completo
  // Espaciado por defecto
     [theme.breakpoints.down('sm')]: {
-      width: '80%',
+      width: '100%',
       margin:'0%',
       padding:'0%',
       padding: theme.spacing(1), // Espaciado para dispositivos móviles
