@@ -108,12 +108,13 @@ const Item =({product:{id,productName,price,img}}) => {
       <Card className={classes.card}  >
       <CardHeader
     
-       
-        title={productName}
+    disableTypography
+        title={ <Typography style={{ marginBottom: '0.1rem' }}>{productName}</Typography>}
         subheader={ <Typography
           className={classes.action}
           variant='h6'
           color='textSecondary'
+          style={{ marginTop: '0.1rem' }}
           sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
               {accounting.formatMoney(price)}
         
@@ -171,40 +172,3 @@ const Item =({product:{id,productName,price,img}}) => {
 
 export default Item
 
-  /* <div className={classes.root}>
-         <br></br>
-    <Paper className={classes.paper}>
-      <Grid container spacing={2}>
-        <Grid item>
-          <ButtonBase className={classes.image}>
-          <Link to={`/detalle/${ item.id }`}>
-            <img className={classes.img} alt="complex" src={item.img} />
-            </Link>
-          </ButtonBase>
-        </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
-              <Typography gutterBottom variant="subtitle1">
-              <Link to={`/detalle/${ item.id }`}>
-              <h2>{item.productName}</h2>
-              </Link>
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Full resolution 1920x1080 • JPEG
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                ID: 1030114
-              </Typography>
-            </Grid>
-            
-          </Grid>
-          <Grid item>
-            <Typography variant="subtitle1"> <h2>$ {item.price}</h2></Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Paper>
-    <br></br>
-    <br></br>
-  </div> */

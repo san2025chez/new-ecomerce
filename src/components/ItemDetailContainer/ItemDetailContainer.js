@@ -32,7 +32,7 @@ const ItemDetailContainer =()=>{
         
         <div> 
             
-            {loading ? (<div className="cargando"><Spinner/></div>) :<ItemDetail product={product}></ItemDetail> }
+            {loading ? (<div className="cargando"><Spinner/></div>) : <ItemDetail product={product}></ItemDetail> }
         </div>
       
     )
