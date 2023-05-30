@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
     backgroundColor: 'white', //[500],
-    marginTop:"10rem",
+
     
   },
   action:{
@@ -68,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      width: 150,
-      height:280,
+      width: 180,
+      height:260,
   
       
 
@@ -79,8 +79,8 @@ const useStyles = makeStyles((theme) => ({
    
     },
     [theme.breakpoints.down('xs')]: {
-      width: 120,
-      height:230,
+      width: 200,
+      height:260,
     
     },
  
