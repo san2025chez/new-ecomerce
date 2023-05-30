@@ -107,20 +107,19 @@ const Item =({product:{id,productName,price,img}}) => {
 
       <Card className={classes.card}  >
       <CardHeader
+    
        
-        action={
-          <Typography
+        title={productName}
+        subheader={ <Typography
           className={classes.action}
           variant='h6'
           color='textSecondary'
-          >
+          sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
               {accounting.formatMoney(price)}
         
-          </Typography>
-        }
-     
-        title={productName}
-        subheader="in-Stock"
+          </Typography>}
+
+
     
       />
        <Link to={`/detalle/${ id }`}> 
