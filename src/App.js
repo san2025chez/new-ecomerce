@@ -10,6 +10,7 @@ import WhatsApp from "./components/WhatsApp/WhatsApp";
 import Footer from "./components/Footer/Footer";
 import { CheckoutPage } from "./components/CartCounter/CheckoutPage";
 import Login from "./components/Login/login";
+import Product from './mercadopago/marcado-pago'
 import "@fontsource/roboto";
 import { StyledEngineProvider } from "@mui/material/styles";
 import Carousel1 from "./components/carousel/Carousel1"
@@ -36,6 +37,7 @@ function App() {
 
             <Route path="/cart" element={ <Cart />}/>
             <Route path="/login" element={   <Login />}/>
+            <Route path="/pay" element={   <Product />}/>
             
             <Route path="/checkout-page" element={   <CheckoutPage />}/>
           

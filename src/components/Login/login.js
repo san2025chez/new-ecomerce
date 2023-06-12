@@ -18,7 +18,7 @@ import Button from "../FormsUI/Button";
 import CardContent from '@mui/material/CardContent';
 import { useLocation } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-
+import Product from '../../mercadopago/marcado-pago'
 import Card from "@mui/material/Card";
 
 
@@ -111,6 +111,8 @@ export default function Login() {
     phone:''
 
   });
+
+  const [validation, setValidation] = useState(false)
   const captcha = React.createRef();
   const onChange = () => {
     let valor = captcha.current.getValue();
@@ -118,9 +120,13 @@ export default function Login() {
     console.log("ingreso captcha", valor);
   };
 
-  const crearOrden = async (values,  cart, totalPrice,clear) => {
+  const crearOrden = async (values,  cart, totalPrice) => {
    
-    const db = getFirestore();
+console.log("VALORES QUE LLEGAN", values.name);
+setUser({
+...values
+})
+
 
     const newOrder = {
       buyer: {...values},
@@ -167,8 +173,11 @@ export default function Login() {
           text: `Su numero de oden es: ${res.id}`,
         }).then((result)=>{
         if (result.isConfirmed) {
+         
+          setValidation(true)
+     
 
-          clear();
+        
         }          
      // restartForm(INITIAL_FORM_STATE)
         // window.location.reload();
@@ -210,7 +219,7 @@ export default function Login() {
     console.log("USER", user);
   };
 
-const restartForm=(initial)=>{
+/* const restartForm=(initial)=>{
   const shouldRedirect = true;
   console.log("ingresgggo",initial);
   setUser(
@@ -219,12 +228,12 @@ initial
   return shouldRedirect ? <Navigate to="/login" /> : <Navigate to="/login" />;
 
   console.log("user",user);
-}
+} */
 
   return (
 <>
 {
-  cart.length === 0
+  (cart.length === 0 && !validation)
   ? <Navigate to="/new-ecomerce"/>
   :
 
@@ -242,6 +251,7 @@ initial
               validationSchema={FORM_VALIDATION}
               onSubmit={(values ) =>{
                 crearOrden(values,  cart, totalPrice,clear)
+                setUser({...values})
                 console.log("lo que submiteo",values);
               }
            
@@ -292,7 +302,9 @@ initial
            
                              <Grid item xs={12} sm={6} md={8} lg={6}  style={{ marginLeft: "auto", marginRight: "auto" }} >
                                <Button size="medium" >Finalizar Compra</Button>
+                               { validation ?  navigate('/pay',{ state: { user } })   : null }
                              </Grid>
+
                            </Grid>
                          </Form>
               )}
