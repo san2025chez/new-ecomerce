@@ -41,11 +41,11 @@ export default function Product() {
   }, []);
   console.log("PREFERENCEID", preferenceId);
   const redirectToUrl = () => {
-    url ?
+  
 
       window.location.href = url
-      :
-      <Spinner></Spinner>
+  
+     
   }
 
   useEffect(() => {
@@ -63,30 +63,35 @@ export default function Product() {
 
   return (
     <>
+{
+  url 
+  ?
+  <Container maxWidth="sm" style={{ textAlign: 'center', marginTop: '50px' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Typography variant="h2" component="h1" gutterBottom>
+      Bienvenido a Mi Tienda
+    </Typography>
+    <Typography variant="subtitle1" gutterBottom>
+      Realiza tu pago de manera segura con Mercado Pago
+    </Typography>
+    <div >
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={redirectToUrl}
+        style={{ marginTop: '30px' }}
+      >
+        Pagar con Mercado Pago
+      </Button>
+    </div>
+  </div>
 
+</Container>
+ :
+ <Spinner></Spinner>
+}
 
-      <Container maxWidth="sm" style={{ textAlign: 'center', marginTop: '50px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            Bienvenido a Mi Tienda
-          </Typography>
-          <Typography variant="subtitle1" gutterBottom>
-            Realiza tu pago de manera segura con Mercado Pago
-          </Typography>
-          <div >
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              onClick={redirectToUrl}
-              style={{ marginTop: '30px' }}
-            >
-              Pagar con Mercado Pago
-            </Button>
-          </div>
-        </div>
-
-      </Container>
 
     </>
   );
