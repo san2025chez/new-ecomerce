@@ -5,7 +5,11 @@ import { useContext } from 'react'
 import { CartCntext2 } from '../context/CartCntext2'
 import { Typography, Container, Grid } from '@material-ui/core';
 import { Link } from '@material-ui/icons';
-import { Button } from '@material-ui/core';
+import { Button } from '@material-ui/core'
+
+import "./mercadopago.scss";
+
+
 
 
 import axios from 'axios'
@@ -89,7 +93,9 @@ export default function Product() {
 
 </Container>
  :
- <Spinner></Spinner>
+ <div className="home">
+ <Spinner />
+</div>
 }
 
 
