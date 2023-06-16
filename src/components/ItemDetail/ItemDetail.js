@@ -13,6 +13,8 @@ import { Grid } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Collapse } from '@material-ui/core';
 import { CardContent} from '@mui/material';
+import { Box } from '@material-ui/core';
+
 import './ItemDetail.scss'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,6 +68,7 @@ export const ItemDetail = ({ product }) => {
   const buttonStyle = {
     backgroundColor: "#6a1b9a",
     color: 'white',
+    margin: '8px' 
   };
   const handleCounter = () => {
     if (quantity >= 0) {
@@ -93,7 +96,7 @@ export const ItemDetail = ({ product }) => {
               className="item__img"
               src={product.img}
               alt={`img-${product.id}`}
-              style={{ maxWidth: '80%', height: '90%' }}
+              style={{ maxWidth: '100%', height: '90%' }}
             />
           </Grid>
 
@@ -119,8 +122,8 @@ export const ItemDetail = ({ product }) => {
 
                     <div className="mibotom">
                       <h4>Tenes {cartCount(quantity)} productos en el carrito</h4>
-                      <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminarrr compra</Button></Link>
-                      <br />
+                      {/* <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminarrr compra</Button></Link>
+                      <br /> */}
 
                       <Button onClick={handleExpand} style={buttonStyle}>
                         + Mostrar información
@@ -141,8 +144,10 @@ export const ItemDetail = ({ product }) => {
                   </div> :
                   <>
                     <br />
+                    <Box display="flex" justifyContent="space-around">
                     <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminar compra</Button></Link>
-                   
+                    <Link to='/new-ecomerce'><Button variant="contained" style={buttonStyle}>Seguir Comprando</Button></Link>
+                  </Box>
                   </>
 
                 }
