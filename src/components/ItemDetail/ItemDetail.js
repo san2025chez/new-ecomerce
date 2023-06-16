@@ -88,11 +88,12 @@ export const ItemDetail = ({ product }) => {
         <Card className={classes.mimargen} justifyContent="center" >
         <CardContent spacing={2}>
         <Grid container justifyContent="center" >
-          <Grid item xs={12} sm={6} md={6} lg={4}  >
+          <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
             <img
               className="item__img"
               src={product.img}
               alt={`img-${product.id}`}
+              style={{ maxWidth: '80%', height: '90%' }}
             />
           </Grid>
 
