@@ -7,11 +7,10 @@ import { Typography, Container, Grid } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CartCounter from '../components/CartCounter/CartCounter'
-import {Link} from 'react-router-dom'
 import swal from 'sweetalert';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-
+import { Link } from 'react-router-dom'
 
 import "./mercadopago.scss";
 
@@ -142,6 +141,17 @@ export default function Product() {
       >
         Pagar con Mercado Pago
       </Button>
+
+     <Link to='https://wa.me/5493884299868'> <Button
+        variant="contained"
+        color="primary"
+        size="large"
+       
+        style={{ marginTop: '30px' }}
+      >
+        Acordar pago con el Vendedor
+      </Button>
+      </Link>
     </div>
   </div>
 
