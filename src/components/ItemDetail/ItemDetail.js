@@ -125,17 +125,17 @@ export const ItemDetail = ({ product }) => {
                       {/* <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminarrr compra</Button></Link>
                       <br /> */}
 
-                      <Button onClick={handleExpand} style={buttonStyle}>
+                     {/*  <Button onClick={handleExpand} style={buttonStyle}>
                         + Mostrar información
                       </Button>
-                      <Collapse in={expanded}>
+                      <Collapse in={expanded}> */}
 
                         <Typography variant="h7" className="custom-font">
 
                           <p className="item__descrip">{product.description} </p>
 
                         </Typography>
-                      </Collapse>
+                    {/*   </Collapse> */}
 
 
 
