@@ -125,17 +125,7 @@ export const ItemDetail = ({ product }) => {
                       {/* <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminarrr compra</Button></Link>
                       <br /> */}
 
-                     {/*  <Button onClick={handleExpand} style={buttonStyle}>
-                        + Mostrar información
-                      </Button>
-                      <Collapse in={expanded}> */}
-
-                        <Typography variant="h7" className="custom-font">
-
-                          <p className="item__descrip">{product.description} </p>
-
-                        </Typography>
-                    {/*   </Collapse> */}
+                    
 
 
 
@@ -152,11 +142,27 @@ export const ItemDetail = ({ product }) => {
 
                 }
               </div>
-
+         
 
             </div>
+        
             </Grid>
+          
+         
           </Grid>
+     
+            <Button onClick={handleExpand} style={buttonStyle}>
+                        + Mostrar información
+                      </Button>
+                      <Collapse in={expanded}>
+
+                        <Typography variant="h7" className="custom-font">
+
+                          <p className="item__descrip">{product.description} </p>
+
+                        </Typography>
+                      </Collapse>
+          
           </CardContent>
           </Card>
 
