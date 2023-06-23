@@ -166,6 +166,7 @@ export default function Login() {
       buyer: { ...values },
       item: [{ ...cart }],
       total: totalPrice(),
+      envio: shipment,
     };
 
     ;
@@ -199,8 +200,8 @@ export default function Login() {
 
     if (outOfStock.length === 0) {
       addDoc(orderRef, newOrder).then((res) => {
-        console.log("ORDEN NUMERO", res.id);
         batch.commit();
+        console.log("OREDEN CREADA",res.id);
 
         Swal.fire({
           icon: "success",
