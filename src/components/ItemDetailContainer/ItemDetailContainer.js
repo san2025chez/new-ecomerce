@@ -3,7 +3,7 @@ import { useEffect,useState} from 'react'
 import {useParams} from 'react-router-dom'
 
 import {ItemDetail } from '../ItemDetail/ItemDetail'
-import Spinner from '../Spinner/Spinner'
+import Spinner from '../../components/Spinner/Spinner'
 import './ItemDetailContainer.scss'
 import { doc, getFirestore, getDoc } from "firebase/firestore";
 const ItemDetailContainer =()=>{
@@ -23,8 +23,9 @@ const ItemDetailContainer =()=>{
                 id: snapshot.id,
                 ...snapshot.data()
             }))
+            setLoading(false)
         })
-        setLoading(false)
+     
     }, [id])
     console.log("productos item detail conteiner",product);
 
