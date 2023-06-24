@@ -150,8 +150,10 @@ export const ItemDetail = ({ product }) => {
           
          
           </Grid>
-     
-            <Button onClick={handleExpand} style={buttonStyle}>
+     {
+      !isInCart(product.id) ?
+      <>
+         <Button onClick={handleExpand} style={buttonStyle}>
                         + Mostrar información
                       </Button>
                       <Collapse in={expanded}>
@@ -161,7 +163,11 @@ export const ItemDetail = ({ product }) => {
                           <p className="item__descrip">{product.description} </p>
 
                         </Typography>
-                      </Collapse>
+                      </Collapse></>
+                      :
+                      <></>
+     }
+         
           
           </CardContent>
           </Card>
