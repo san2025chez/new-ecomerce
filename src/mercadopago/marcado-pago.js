@@ -148,8 +148,7 @@ export default function Product() {
         size="large"
        
         style={{ marginTop: '30px' }}
-      >
-        Acordar pago con el Vendedor
+      >Pagar con transferencia
       </Button>
       </Link>
     </div>
