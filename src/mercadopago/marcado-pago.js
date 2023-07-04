@@ -27,6 +27,7 @@ export default function Product() {
 
 
   console.log(state.user);
+  console.log("orden para enviar back",state.nroorden);
 
   const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
@@ -37,7 +38,8 @@ export default function Product() {
 
   const data = {
     cart: cart,
-    user: state.user
+    user: state.user,
+    orden: state.nroorden
   }
 
   useEffect(() => {

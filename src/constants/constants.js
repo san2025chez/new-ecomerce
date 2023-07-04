@@ -1,5 +1,6 @@
-const SERVER_URL = 'https://mercadopagos.onrender.com'
-//const SERVER_URL = 'http://localhost:3000'
+const SERVER_URL = 'https://pagos-h22l.onrender.com'
+
+//const SERVER_URL = 'http://localhost:5000'
 
 export const APIs = {
 

@@ -122,6 +122,7 @@ export default function Login() {
   };
   const [captchaValido, setcaptchaValido] = useState(null);
   const [loading, setLoading] = React.useState(false);
+  const [nroorden, setNroorden] = useState('')
   let navigate = useNavigate();
   const { cart, clear, totalPrice } = useContext(CartCntext2);
   const [user, setUser] = useState({
@@ -200,16 +201,26 @@ export default function Login() {
 
     if (outOfStock.length === 0) {
       addDoc(orderRef, newOrder).then((res) => {
+       
         batch.commit();
+        setNroorden(res.id);
         console.log("OREDEN CREADA",res.id);
+    
+        console.log( nroorden);
 
         Swal.fire({
           icon: "success",
           title: "su orden se creo con exito",
           text: `Su numero de oden es: ${res.id}`,
         }).then((result) => {
+          console.log("el resultado es", nroorden);
           if (result.isConfirmed) {
-
+            console.log("compruebo orden",nroorden);
+            setUser({
+              ...values,
+              nroorden
+          
+            })
             setValidation(true)
 
 
@@ -232,15 +243,6 @@ export default function Login() {
   };
 
 
-  const capturoDatos = (event) => {
-    console.log(event);
-    setUser({
-      ...user,
-      [event]: event,
-    });
-
-
-  };
 
 
   const INITIAL_FORM_STATE = {
@@ -291,7 +293,7 @@ export default function Login() {
                         validationSchema={FORM_VALIDATION}
                         onSubmit={(values) => {
                           crearOrden(values, cart, totalPrice, clear)
-                          setUser({ ...values })
+                          //setUser({ ...values })
                           console.log("lo que submiteo", values);
                         }
 
@@ -417,7 +419,7 @@ export default function Login() {
                                   )}
                                 </div>
 
-                                {validation ? navigate('/pay', { state: { user } }) : null}
+                                {validation ? navigate('/pay', { state: {user,nroorden } }) : null}
                               </Grid>
 
                             </Grid>
