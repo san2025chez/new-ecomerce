@@ -106,6 +106,12 @@ const NavBar= () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
+              PaperProps={{
+                style: {
+                  backgroundColor: '#6a1b9a', // Cambia el color de fondo a rojo
+                  padding: '1rem',
+                },
+              }}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
@@ -146,7 +152,7 @@ const NavBar= () => {
             </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton color="primary"  style={{ color: 'rgb(255, 0, 0)' }}  onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="" />
               </IconButton>
               
@@ -155,6 +161,7 @@ const NavBar= () => {
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
+            
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
