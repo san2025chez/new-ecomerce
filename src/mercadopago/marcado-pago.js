@@ -54,9 +54,9 @@ export default function Product() {
   console.log("PREFERENCEID", preferenceId);
   const redirectToUrl = () => {
   
-
+    clear();
       window.location.href = url;
-      clear()
+     
   
      
   }
