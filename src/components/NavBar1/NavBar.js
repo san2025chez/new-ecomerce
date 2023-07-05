@@ -83,6 +83,7 @@ const NavBar= () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
+                 edge="start"
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -95,10 +96,10 @@ const NavBar= () => {
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
-              anchorOrigin={{
+            /*   anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
-              }}
+              }} */
               keepMounted
               transformOrigin={{
                 vertical: 'top',
@@ -106,10 +107,24 @@ const NavBar= () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+              }}
+           
               PaperProps={{
                 style: {
-                  backgroundColor: '#6a1b9a', // Cambia el color de fondo a rojo
+                  backgroundColor: 'rgba(106, 27, 154, 0.8)', // Cambia el color de fondo a rojo
                   padding: '1rem',
+               
+               
                 },
               }}
               sx={{
