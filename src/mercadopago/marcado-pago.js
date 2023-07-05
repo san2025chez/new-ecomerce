@@ -31,7 +31,7 @@ export default function Product() {
 
   const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
-  const { cart, totalCompra } = useContext(CartCntext2);
+  const { cart, totalCompra ,clear} = useContext(CartCntext2);
   const [url, setUrl] = useState('')
 
   console.log("USUARIO QUE LLEGAN", state.user);
@@ -55,7 +55,8 @@ export default function Product() {
   const redirectToUrl = () => {
   
 
-      window.location.href = url
+      window.location.href = url;
+      clear()
   
      
   }
