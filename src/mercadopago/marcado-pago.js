@@ -55,7 +55,7 @@ export default function Product() {
   const redirectToUrl = async() => {
   
 
-   window.location.href =    await url;
+   window.location.href = url;
    console.log("VEo valor de redirect",window.location.href);
      if ( window.location.href ===  url)
       {
@@ -153,7 +153,7 @@ export default function Product() {
         variant="contained"
         color="primary"
         size="large"
-        onClick={clear()}
+     
        
         style={{ marginTop: '30px' }}
       >Pagar con transferencia
