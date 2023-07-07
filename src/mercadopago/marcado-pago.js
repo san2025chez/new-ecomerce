@@ -52,13 +52,17 @@ export default function Product() {
     });
   }, []);
   console.log("PREFERENCEID", preferenceId);
-  const redirectToUrl = () => {
+  const redirectToUrl = async() => {
   
-    clear();
-      window.location.href = url;
-     
+
+   window.location.href =    await url;
+   console.log("VEo valor de redirect",window.location.href);
+     if ( window.location.href ===  url)
+      {
+      clear()
+     }
   
-     
+    
   }
 
   useEffect(() => {
@@ -149,6 +153,7 @@ export default function Product() {
         variant="contained"
         color="primary"
         size="large"
+        onClick={clear()}
        
         style={{ marginTop: '30px' }}
       >Pagar con transferencia
