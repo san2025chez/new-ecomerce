@@ -71,6 +71,7 @@ function Carousel1() {
 
 
           <AutoPlaySwipeableViews
+          style={{ backgroundColor: 'rgb(100, 50, 150)' }}
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
             index={activeStep}
             onChangeIndex={handleStepChange}
