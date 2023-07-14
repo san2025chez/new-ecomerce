@@ -144,6 +144,7 @@ export default function Login() {
   };
 
 
+
   const captcha = React.createRef();
   const onChange = () => {
     let valor = captcha.current.getValue();
@@ -183,6 +184,8 @@ export default function Login() {
         cart.map((el) => el.id)
       )
     );
+
+    
 
     const outOfStock = [];
     const shouldRedirect = true;
@@ -271,7 +274,11 @@ export default function Login() {
   
     console.log("user",user);
   } */
-
+  const buttonStyle = {
+      backgroundColor: "#6a1b9a",
+    color: 'white',
+  
+  };
   return (
     <>
       {
@@ -410,11 +417,8 @@ export default function Login() {
                                 <div>
                                   {!botonSeleccionado && (
                                     <Button
-
-                                      color="secondary"
-                                      variant="contained"
-                                    >
-                                      Finalizar Compra
+                                    variant="contained"  style={{color:"blue"}} >
+                                      Continuar con la compra
                                     </Button>
                                   )}
                                 </div>

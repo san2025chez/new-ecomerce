@@ -14,6 +14,11 @@ const useStyles = makeStyles((theme) => ({
 export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     // Desarrollar lógica
    
+    const buttonStyle = {
+      backgroundColor: "#6a1b9a",
+      color: 'white',
+    
+    };
 
     const increment = () => {
       console.log("verifico stock",stock,cantidad);
@@ -44,10 +49,10 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     <div className={classes.root}>
     <div className="container">
             
-            <Button variant="contained" color="secondary" disabled={ cantidad <= 0} onClick={decrement}>-</Button>
+            <Button variant="contained"  style={buttonStyle} disabled={ cantidad <= 0} onClick={decrement}>-</Button>
             <div>{cantidad}</div>
-            <Button variant="contained" color="secondary" onClick={increment}>+</Button>
-            <Button variant="contained" color="secondary"  disabled={cantidad === 0}  onClick={onAdd}>Agregar</Button>
+            <Button variant="contained"  style={buttonStyle} onClick={increment}>+</Button>
+            <Button variant="contained" style={buttonStyle}  disabled={cantidad === 0}  onClick={onAdd}>Agregar</Button>
           
     </div>
     </div>)

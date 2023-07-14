@@ -173,7 +173,7 @@ const NavBar= () => {
               
             </Tooltip>
      
-            <Menu
+           {/*  <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
             
@@ -195,7 +195,7 @@ const NavBar= () => {
                   <Typography textAlign="center">{item.name}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>
