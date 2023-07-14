@@ -91,7 +91,7 @@ export default function Footer(props) {
         </div>
         <div className="footer__copyrights">
           <p className="footer__bottom__developer">Created by Ana Sanchez</p>
-          <a href="https://github.com/san2025chez" target="blank">
+          <a href="https://www.facebook.com/ada.68291/" target="blank">
           <FacebookIcon />
           </a>
         </div>
