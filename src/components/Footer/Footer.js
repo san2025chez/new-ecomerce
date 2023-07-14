@@ -75,7 +75,7 @@ export default function Footer(props) {
               <InstagramIcon />
             </a>
             <a
-              href="https://www.facebook.com"
+              href="https://www.facebook.com/profile.php?id=100094323146666"
               target="blank"
               className="footer__link__icons">
               <FacebookIcon />
@@ -87,12 +87,12 @@ export default function Footer(props) {
         <div className="footer__copyrights">
           <p className="footer__copyrights__text">Tienda LEO</p>
           <i className="far fa-copyright footer__copyrights__icon"></i>
-          <p className="footer__copyrights__text">2021</p>
+          <p className="footer__copyrights__text">2023</p>
         </div>
         <div className="footer__copyrights">
           <p className="footer__bottom__developer">Created by Ana Sanchez</p>
           <a href="https://github.com/san2025chez" target="blank">
-            <GitHubIcon disabled className="footer__bottom__icon" />
+          <FacebookIcon />
           </a>
         </div>
       </div>

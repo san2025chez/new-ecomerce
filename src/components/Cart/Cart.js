@@ -19,9 +19,11 @@ export const Cart=()=>{
 
     const {cart,totalCompra,removeItem} = useContext(CartCntext2);
 
-   
-
-
+    const buttonStyle = {
+      backgroundColor: "#6a1b9a",
+      color: 'white',
+    
+    };
 
 
 console.log("CART en cart",cart);
@@ -75,7 +77,7 @@ return(
     Total{" "}
     <span className="cart__buyTotal__title--bold">${totalCompra()}</span>
   </h5>
-  <Link to='/login'><Button  variant="contained" color="secondary" /*  onClick={handleCheckout} */
+  <Link to='/login'><Button  variant="contained"  style={buttonStyle}  /*  onClick={handleCheckout} */
     /* className={"button__agregar"} */
     content={"Comprar"}>
       COMPRAR

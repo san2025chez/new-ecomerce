@@ -156,7 +156,7 @@ export default function Product() {
      
        
         style={{ marginTop: '30px' }}
-      >Pagar con transferencia
+      >pagar con efectivo
       </Button>
       </Link>
     </div>
