@@ -56,7 +56,7 @@ const db = getFirestore();
       })
     }
   }, [Id]);
-  console.log("products en Home", items);
+
 
 
   const classes = useStyles();
