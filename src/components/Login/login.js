@@ -283,7 +283,7 @@ export default function Login() {
     <>
       {
         (cart.length === 0 && !validation)
-          ? <Navigate to="/new-ecomerce" />
+          ? <Navigate to="/" />
           :
 
           <Grid container justifyContent="center" alignItems="center" marginTop="50px">
