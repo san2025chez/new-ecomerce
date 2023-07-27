@@ -138,7 +138,7 @@ const Item =({product:{id,productName,price,img}}) => {
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
         </Typography> */}
       </CardContent></Link>
-      <CardActions disableSpacing>
+     {/*  <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <AddShoppingCart fontSize='large'/>
         </IconButton>
@@ -156,12 +156,8 @@ const Item =({product:{id,productName,price,img}}) => {
         >
           <ExpandMoreIcon />
         </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>"Arvejas verdes"</Typography>
-        </CardContent>
-      </Collapse>
+      </CardActions> */}
+
     </Card>
 
 
