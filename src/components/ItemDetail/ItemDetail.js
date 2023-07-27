@@ -136,7 +136,7 @@ export const ItemDetail = ({ product }) => {
                     <br />
                     <Box display="flex" justifyContent="space-around">
                     <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminar compra</Button></Link>
-                    <Link to='/new-ecomerce'><Button variant="contained" style={buttonStyle}>Seguir Comprando</Button></Link>
+                    <Link to='/'><Button variant="contained" style={buttonStyle}>Seguir Comprando</Button></Link>
                   </Box>
                   </>
 

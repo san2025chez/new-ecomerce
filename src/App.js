@@ -25,7 +25,7 @@ function App() {
             <NavBar></NavBar>{" "}
        
           <Routes>
-            <Route path="/new-ecomerce" element={<Carousel1 />} />
+            <Route path="/" element={<Carousel1 />} />
 
             <Route exact path="/categoria/:Id" element={<Home />} />
 

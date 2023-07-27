@@ -45,7 +45,7 @@ export default function Footer(props) {
               placeholder="Tu Email"
               className="footer__input"
             />
-            <Button path="/new-ecomerce" content="Suscribite" className="button__footer" />
+            <Button path="/" content="Suscribite" className="button__footer" />
           
           </form>
         </div>
