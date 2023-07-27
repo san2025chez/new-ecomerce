@@ -1,19 +1,23 @@
 import {React} from 'react';
 import {useContext} from 'react'
 import {CartCntext2} from '../../context/CartCntext2'
-
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import "./CartList.scss";
 import CartCounter from '../CartCounter/CartCounter'
 import {Link} from 'react-router-dom'
-
-
 import swal from 'sweetalert';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import {  Grid } from "@material-ui/core";
-
+const useStyles = makeStyles((theme) => ({
+  centerDiv: {
+    display: 'flex',
+   // justifyContent: 'center', // Centrar horizontalmente
+    alignItems: 'center',     // Centrar verticalmente
+    height: '100vh',          // Opcional: establece una altura para que el div se centre en la pantalla
+  },
+}));
 export const Cart=()=>{
 
 
@@ -29,10 +33,11 @@ export const Cart=()=>{
 console.log("CART en cart",cart);
 
 
+const classes = useStyles();
 return(
 
 <>
-{cart? 
+{(cart==! 0) ? 
   <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px"}}>
   <Card sx={{ minWidth: 275 }} container justifyContent="center">
   <CardContent justifyContent="center">
@@ -90,7 +95,12 @@ return(
  </Grid>
 
 :
-<h3>no hay productos en su carrito</h3>}
+<div className={classes.centerDiv}>
+<h3>No hay productos en su carrito</h3>
+
+{/*  <Link to="/"><Button variant="contained"  style={buttonStyle}>Inicio</Button></Link> */}
+</div>
+}
 
 </>
 

@@ -62,11 +62,11 @@ const FORM_VALIDATION = Yup.object().shape({
   phone: Yup.number()
     .test(
       "len",
-      "Must be exactly 11 characters",
-      (val) => val && val.toString().length === 11
+      "Phone number example: 387233456, debe contener 10 digitos",
+      (val) => val && val.toString().length === 10
     )
     .required("Required")
-    .typeError("Please enter a valid dni number"),
+    .typeError("Please enter a valid phone number example: 387233456"),
 
   name: Yup.string()
     .required("Required")
@@ -336,7 +336,7 @@ export default function Login() {
                                   name="phone"
                                   label="Telefono"
                                   values={formik.values.phone}
-                                  placeholder="Telefono"
+                                  placeholder="3889999999"
                                 />
                               </Grid>
                               <Grid item xs={12} style={{ justifyContent: "center", alignItems: "center", alignContent: "center", marginLeft: '8px' }}>
