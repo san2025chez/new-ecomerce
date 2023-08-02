@@ -37,7 +37,7 @@ const classes = useStyles();
 return(
 
 <>
-{(cart==! 0) ? 
+
   <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px"}}>
   <Card sx={{ minWidth: 275 }} container justifyContent="center">
   <CardContent justifyContent="center">
@@ -94,13 +94,7 @@ return(
  </Card>
  </Grid>
 
-:
-<div className={classes.centerDiv}>
-<h3>No hay productos en su carrito</h3>
 
-{/*  <Link to="/"><Button variant="contained"  style={buttonStyle}>Inicio</Button></Link> */}
-</div>
-}
 
 </>
 
