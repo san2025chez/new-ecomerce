@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import Home from "./Home/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartContext2 } from "./context/CartCntext2";
 import { Cart } from "./components/Cart/Cart";
@@ -20,8 +20,7 @@ function App() {
   return (
     <div>
       <CartContext2>
-        <BrowserRouter>
-       
+      <HashRouter>
             <NavBar></NavBar>{" "}
        
           <Routes>
@@ -48,8 +47,7 @@ function App() {
        
             <Footer />
      
-       
-        </BrowserRouter>
+            </HashRouter>
       </CartContext2>
     </div>
   );
