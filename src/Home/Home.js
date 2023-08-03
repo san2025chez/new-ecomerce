@@ -6,6 +6,8 @@ import "./Home.scss";
 import {useParams} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { useNavigate } from 'react-router-dom'
+
 const useStyles = makeStyles((theme) => ({
   container: {
     width: '100%', // Ancho completo
@@ -24,8 +26,9 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   const {Id} = useParams();
+  const navigate = useNavigate()
 
-  console.log("CATEGORIA",Id);
+console.log("el di de categoria", Id);
 
   useEffect(() => {
 
@@ -46,6 +49,9 @@ const db = getFirestore();
           })))
           setLoading(false)
       })
+    /*   navigate({ pathname: `http://localhost:3000/categoria/${Id}`}) 
+
+      navigate({ pathname:`http://localhost:3000/categoria/${Id}`}, { replace: true }) */
   } else {
       getDocs(itemCollection).then((snapshot) => {
           setItems(snapshot.docs.map((doc) => ({
