@@ -90,7 +90,7 @@ export default function Footer(props) {
           <p className="footer__copyrights__text">2023</p>
         </div>
         <div className="footer__copyrights">
-          <p className="footer__bottom__developer">Created by Ana Sanchez</p>
+          <p className="footer__bottom__developer">Created by ADA Informatica</p>
           <a href="https://www.facebook.com/ada.68291/" target="blank">
           <FacebookIcon />
           </a>
