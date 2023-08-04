@@ -110,7 +110,7 @@ export const ItemDetail = ({ product }) => {
 
               <div>
                 {!isInCart(product.id) ?
-                  <div>
+                  <div  className="narrow-div">
                     <ItemCounter
 
                       /* 🔹Consumiendo el max desde itemCount. Los valores de cantidad también */
@@ -120,16 +120,7 @@ export const ItemDetail = ({ product }) => {
                       onAdd={handleCounter}
                       setQuantity={setQuantity} />
 
-                    <div className="mibotom">
-                      <h4>Tenes {cartCount(quantity)} productos en el carrito</h4>
-                      {/* <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminarrr compra</Button></Link>
-                      <br /> */}
-
-                    
-
-
-
-                    </div>
+                   
 
                   </div> :
                   <>

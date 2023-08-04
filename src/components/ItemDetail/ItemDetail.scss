@@ -62,3 +62,18 @@
   font-family: 'Arial'; /* Cambia esta línea con la fuente deseada */
 }
 
+.narrow-div {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  padding: 10px;
+
+  @media (max-width: 600px) {
+    max-width: 300px; /* Ajusta el ancho máximo para pantallas pequeñas */
+  }
+}
+
+
+
+
+
