@@ -21,7 +21,7 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
       color: 'white', */
       padding: '0',
    
-      fontSize: '9px',
+      fontSize: '12px',
       display: 'flex', // Habilita el diseño flexible para el botón
       justifyContent: 'center', // Centra horizontalmente el contenido del botón
       alignItems: 'center', 
@@ -53,7 +53,7 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
    
     };
     const centeredButtonStyle = {
-      fontSize: '9px',
+      fontSize: '10px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -63,7 +63,7 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     const tableStyles = {
       width: 'auto', // Ajusta el ancho de la tabla
       margin: '0', // Elimina los márgenes externos
-      fontSize: '9px', // Ajusta el tamaño de fuente para hacer la tabla más pequeña
+      fontSize: '11px', // Ajusta el tamaño de fuente para hacer la tabla más pequeña
       maxWidth: '100%', // Evita que la tabla se desborde del contenedor
   overflowX: 'auto',
     };
