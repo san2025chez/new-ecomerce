@@ -12,7 +12,7 @@ import Paper from '@mui/material/Paper';
 import { Grid } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Collapse } from '@material-ui/core';
-import { CardContent} from '@mui/material';
+import { CardContent } from '@mui/material';
 import { Box } from '@material-ui/core';
 
 import './ItemDetail.scss'
@@ -68,7 +68,7 @@ export const ItemDetail = ({ product }) => {
   const buttonStyle = {
     backgroundColor: "#6a1b9a",
     color: 'white',
-    margin: '8px' 
+    margin: '8px'
   };
   const handleCounter = () => {
     if (quantity >= 0) {
@@ -85,87 +85,96 @@ export const ItemDetail = ({ product }) => {
   }
 
   return (
-  
-      <Container>
-     
-        <Card className={classes.mimargen} justifyContent="center" >
+
+    <Container>
+
+      <Card className={classes.mimargen} justifyContent="center" >
         <CardContent spacing={2}>
-        <Grid container justifyContent="center" >
-          <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-            <img
-              className="item__img"
-              src={product.img}
-              alt={`img-${product.id}`}
-              style={{ maxWidth: '100%', height: '90%' }}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={6} lg={4} xl={6} >
-
-            <div className="item__detail">
-              <div className="item__txt">
-                <p className="item__titulo">{product.productName} </p>
-                <p className="item__precio">{product.price} </p>
-              </div>
-
-              <div>
-                {!isInCart(product.id) ?
-                  <div  className="narrow-div">
-                    <ItemCounter
-
-                      /* 🔹Consumiendo el max desde itemCount. Los valores de cantidad también */
-
-                      stock={product.stock}
-                      cantidad={quantity}
-                      onAdd={handleCounter}
-                      setQuantity={setQuantity} />
-
-                   
-
-                  </div> :
-                  <>
-                    <br />
-                    <Box display="flex" justifyContent="space-around">
-                    <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminar compra</Button></Link>
-                    <Link to='/'><Button variant="contained" style={buttonStyle}>Seguir Comprando</Button></Link>
-                  </Box>
-                  </>
-
-                }
-              </div>
-         
-
-            </div>
-        
+          <Grid container justifyContent="center" >
+            <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+              <img
+                className="item__img"
+                src={product.img}
+                alt={`img-${product.id}`}
+                style={{ maxWidth: '100%', height: '90%' }}
+              />
             </Grid>
-          
-         
+
+            <Grid item xs={12} sm={6} md={6} lg={4} xl={6} >
+
+              <div className="item__detail">
+                <div className="item__txt">
+                  <p className="item__titulo">{product.productName} </p>
+                  <p className="item__precio">{product.price} </p>
+                </div>
+
+                <div>
+                  {!isInCart(product.id) ?
+                    <div className="narrow-div">
+                      <ItemCounter
+
+                        /* 🔹Consumiendo el max desde itemCount. Los valores de cantidad también */
+
+                        stock={product.stock}
+                        cantidad={quantity}
+                        onAdd={handleCounter}
+                        setQuantity={setQuantity} />
+
+
+
+                    </div> :
+                    <>
+                      <br />
+                      <Box display="flex" justifyContent="space-around">
+                        <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminar compra</Button></Link>
+                        <Link to='/'><Button variant="contained" style={buttonStyle}>Seguir Comprando</Button></Link>
+                      </Box>
+                    </>
+
+                  }
+                </div>
+                <div className='item__element'>
+                  <Typography variant="h7" className="custom-font">
+
+                    <p className="item__descrip">{product.description} </p>
+
+                  </Typography>
+
+                </div>
+
+
+              </div>
+
+            </Grid>
+
+
           </Grid>
-     {
-      !isInCart(product.id) ?
-      <>
-         <Button onClick={handleExpand} style={buttonStyle}>
-                        + Mostrar información
-                      </Button>
-                      <Collapse in={expanded}>
+          {/*     {
+            !isInCart(product.id) ?
+              <>
+                <Button onClick={handleExpand} style={buttonStyle}>
+                  + Mostrar información
+                </Button>
+                <Collapse in={expanded}>
 
-                        <Typography variant="h7" className="custom-font">
+                  <Typography variant="h7" className="custom-font">
 
-                          <p className="item__descrip">{product.description} </p>
+                    <p className="item__descrip">{product.description} </p>
 
-                        </Typography>
-                      </Collapse></>
-                      :
-                      <></>
-     }
-         
-          
-          </CardContent>
-          </Card>
+                  </Typography>
+                </Collapse>
+              </>
+              :
+              <></>
+          } */}
 
-      
 
-      </Container>
+        </CardContent>
+      </Card>
+
+
+
+    </Container>
 
 
   )
