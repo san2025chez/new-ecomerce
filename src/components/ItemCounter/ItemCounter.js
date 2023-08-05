@@ -31,7 +31,7 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
       padding: '0px', // Elimina el relleno interno
       textAlign: 'center',
   
-  borderBottom: '1px solid #ddd',
+
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
@@ -66,9 +66,12 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
       fontSize: '11px', // Ajusta el tamaño de fuente para hacer la tabla más pequeña
       maxWidth: '100%', // Evita que la tabla se desborde del contenedor
   overflowX: 'auto',
+  border: 'none', // Quita los bordes de la tabla
     };
 
-
+    const rowStyles = {
+      border: '1px solid #ccc', // Estilo de borde
+    };
     const increment = () => {
       console.log("verifico stock",stock,cantidad);
      stock > cantidad
@@ -95,13 +98,13 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     } */
     const classes = useStyles();
     return (
-    <div >
+    <div style={{border:'none'}}>
          <Container maxWidth="lg">
       <TableContainer  style={tableStyles}>
-        <Table>
+        <Table >
      
           <TableBody>
-            <TableRow>
+            <TableRow  style={rowStyles}>
               <TableCell   style={cellStyles}> <Button size="small"  style={ buttonStyle}  disabled={ cantidad <= 0} onClick={decrement}>-</Button></TableCell>
               <TableCell  style={cellStyles}>     {cantidad}</TableCell>
               <TableCell  style={cellStyles}> <Button size="small" style={ buttonStyle} onClick={increment}>+</Button></TableCell>
