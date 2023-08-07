@@ -24,8 +24,16 @@ export const Cart=()=>{
     const {cart,totalCompra,removeItem} = useContext(CartCntext2);
 
     const buttonStyle = {
-      backgroundColor: "#6a1b9a",
-      color: 'white',
+       //  backgroundColor: "#6a1b9a",
+  borderColor: '#6a1b9a',
+  color: '#6a1b9a',
+  fontSize: '12px',
+  margin: '8px',
+  '&:hover': {
+    borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover
+   // backgroundColor: '#yourDesiredHoverBackgroundColor', // Cambia esto al color deseado para el fondo en hover
+    color: '#6a1b9a', // Cambia esto al color deseado para el texto en hover
+  },
     
     };
 
@@ -82,7 +90,7 @@ return(
     Total{" "}
     <span className="cart__buyTotal__title--bold">${totalCompra()}</span>
   </h5>
-  <Link to='/login'><Button  variant="contained"  style={buttonStyle}  /*  onClick={handleCheckout} */
+  <Link to='/login'><Button  variant="outlined"  style={buttonStyle}  /*  onClick={handleCheckout} */
     /* className={"button__agregar"} */
     content={"Comprar"}>
       COMPRAR

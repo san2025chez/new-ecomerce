@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import Button  from '@material-ui/core/Button'
 import { useFormikContext } from 'formik';
 
 const ButtonWrapper = ({
@@ -13,7 +13,7 @@ const ButtonWrapper = ({
   }
 
   const configButton = {
-    variant: 'contained',
+    variant: "outlined",
     color: '#6a1b9a',
     fullWidth: true,
     onClick: handleSubmit
