@@ -417,7 +417,7 @@ export default function Login() {
                                 <div>
                                   {!botonSeleccionado && (
                                     <Button
-                                    variant="contained"  style={{color:"blue"}} >
+                                    variant="outlined"  style={{color:"blue"}} >
                                       Continuar con la compra
                                     </Button>
                                   )}

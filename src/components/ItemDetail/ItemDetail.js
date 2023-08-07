@@ -66,9 +66,16 @@ export const ItemDetail = ({ product }) => {
   };
 
   const buttonStyle = {
-    backgroundColor: "#6a1b9a",
-    color: 'white',
-    margin: '8px'
+  //  backgroundColor: "#6a1b9a",
+  borderColor: '#6a1b9a',
+    color: '#6a1b9a',
+    fontSize: '12px',
+    margin: '8px',
+    '&:hover': {
+      borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover
+     // backgroundColor: '#yourDesiredHoverBackgroundColor', // Cambia esto al color deseado para el fondo en hover
+      color: '#6a1b9a', // Cambia esto al color deseado para el texto en hover
+    },
   };
   const handleCounter = () => {
     if (quantity >= 0) {
@@ -126,8 +133,8 @@ export const ItemDetail = ({ product }) => {
                     <>
                       <br />
                       <Box display="flex" justifyContent="space-around">
-                        <Link to='/cart'><Button variant="contained" style={buttonStyle}>Terminar compra</Button></Link>
-                        <Link to='/'><Button variant="contained" style={buttonStyle}>Seguir Comprando</Button></Link>
+                        <Link to='/cart'><Button variant="outlined" style={buttonStyle}>Terminar compra</Button></Link>
+                        <Link to='/'><Button variant="outlined" style={buttonStyle}>Seguir Comprando</Button></Link>
                       </Box>
                     </>
 
