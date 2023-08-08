@@ -77,6 +77,19 @@ export default function Product() {
       form.appendChild(script);
     }
   }, [preferenceId]);
+  const buttonStyle = {
+    //  backgroundColor: "#6a1b9a",
+borderColor: '#6a1b9a',
+color: '#6a1b9a',
+fontSize: '12px',
+margin: '8px',
+'&:hover': {
+ borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover
+// backgroundColor: '#yourDesiredHoverBackgroundColor', // Cambia esto al color deseado para el fondo en hover
+ color: '#6a1b9a', // Cambia esto al color deseado para el texto en hover
+},
+ 
+ };
 
   return (
     <>
@@ -140,22 +153,18 @@ export default function Product() {
 <h3>no hay productos en su carrito</h3>}
     <div >
       <Button
-        variant="contained"
-        color="primary"
-        size="large"
+        variant="outlined"  style={buttonStyle}
         onClick={redirectToUrl}
-        style={{ marginTop: '30px' }}
+     /*    style={{ boton }} */
       >
         Pagar con Mercado Pago
       </Button>
 
      <Link to='https://wa.me/5493883295503'> <Button
-        variant="contained"
-        color="primary"
-        size="large"
+      
+      variant="outlined" 
+        style={buttonStyle}
      
-       
-        style={{ marginTop: '30px' }}
       >pagar con efectivo
       </Button>
       </Link>
