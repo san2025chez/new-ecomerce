@@ -18,7 +18,7 @@
   // margin-top: 20px;
 
   &__cart {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 900;
     text-align: center;
   }
@@ -63,6 +63,9 @@
 
   &__item {
     grid-area: titulo;
+    &__h5 {
+      font-size: 9px; /* Ajusta este valor según tus necesidades */
+    }
   }
 
   &__cantidad {
