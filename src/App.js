@@ -20,7 +20,8 @@ function App() {
   return (
     <div>
       <CartContext2>
-      <HashRouter>
+      <HashRouter> 
+       
             <NavBar></NavBar>{" "}
        
           <Routes>
