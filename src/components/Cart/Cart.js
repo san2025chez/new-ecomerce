@@ -43,7 +43,7 @@ console.log("CART en cart",cart);
 
 const classes = useStyles();
 return(
- (cart.length ==!0) ? 
+
    <>
    
      <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px"}}>
@@ -69,7 +69,7 @@ return(
             />
           </div>
           <div className="cart__items">
-            <h5 className="cart__item"> {product.productName} </h5>
+            <h5 className="cart__item" style={{fontSize:'13px'}}> {product.productName} </h5>
           </div>
           <div className="cart__items">
             <CartCounter inicialValue={product.quantity} product={product} />
@@ -107,8 +107,7 @@ return(
    </>
   
 
-:
-<><h5>No hay productos</h5></>
+
 
 
 
