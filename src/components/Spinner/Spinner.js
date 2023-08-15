@@ -48,7 +48,10 @@ export default function CircularStatic() {
     };
   }, []);
 
-  return <Spinner value={progress} />;
+  return(<>
+  <h3>Estamos procesando....</h3>
+  <Spinner value={progress} />
+  </>) ;
 }
 
 

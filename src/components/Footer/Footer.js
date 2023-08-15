@@ -2,7 +2,7 @@ import {React} from 'react';
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GitHubIcon from "@material-ui/icons/GitHub";
 import "./Footer.scss";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -32,12 +32,12 @@ export default function Footer(props) {
     <div className="footer">
       <section className="footer__suscription">
         <p className="footer__suscription__heading">
-          Unite a la Red de Leo y recibí nuestras mejores Ofertas
+          Estamos ubicado en Ciudad de Perico Jujuy
         </p>
         <p className="footer__suscription__text">
           Podes desuscribirte cuando quieras
         </p>
-        <div className="input-areas">
+       <div className="input-areas">
           <form>
             <input
               type="email"
@@ -48,7 +48,7 @@ export default function Footer(props) {
             <Button path="/" content="Suscribite" className="button__footer" />
           
           </form>
-        </div>
+        </div> 
       </section>
       <div className="footer__link ">
         <div className="footer__link__wrapper">
@@ -78,7 +78,7 @@ export default function Footer(props) {
               href="https://www.facebook.com/profile.php?id=100094323146666"
               target="blank"
               className="footer__link__icons">
-              <FacebookIcon />
+            <FacebookRoundedIcon/>
             </a>
           </div>
         </div>
@@ -90,9 +90,9 @@ export default function Footer(props) {
           <p className="footer__copyrights__text">2023</p>
         </div>
         <div className="footer__copyrights">
-          <p className="footer__bottom__developer">Created by ADA Informatica</p>
-          <a href="https://www.facebook.com/ada.68291/" target="blank">
-          <FacebookIcon />
+          <p className="footer__bottom__developer">Creado por ADAInformatica</p>
+          <a href="https://www.facebook.com/profile.php?id=100094911514266" target="blank">
+       
           </a>
         </div>
       </div>
