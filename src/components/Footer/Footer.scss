@@ -116,3 +116,31 @@
     }
   }
 }
+.active-link {
+  background-color: hsl(115, 100%, 50%); /* Cambia este color al que desees */
+  color: green; /* Cambia este color al que desees */
+  transition: transform 0.3s;
+  /* Otros estilos si los deseas */
+}
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    color: red;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.nav-link {
+  transition: opacity 0.3s;
+}
+
+.blink-link:hover {
+  animation: blink 1s infinite;
+}
+
+
+
+
+

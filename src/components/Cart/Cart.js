@@ -78,7 +78,7 @@ return(
             <CartCounter inicialValue={product.quantity} product={product} />
           </div>
           <div className="cart__items">
-            <h6 className="cart__precio" style={{ fontSize: isMobile ? '10px' : '15px' }}> {product.price} </h6>
+            <h6 className="cart__precio" style={{ fontSize: isMobile ? '11px' : '15px' }}> {product.price} </h6>
           </div>
           <div className="cart__items">
             <i
