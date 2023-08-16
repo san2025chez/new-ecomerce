@@ -1,5 +1,5 @@
 import {React} from 'react';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
@@ -89,11 +89,12 @@ export default function Footer(props) {
           <i className="far fa-copyright footer__copyrights__icon"></i>
           <p className="footer__copyrights__text">2023</p>
         </div>
-        <div className="footer__copyrights">
-          <p className="footer__bottom__developer">Creado por ADAInformatica</p>
-          <a href="https://www.facebook.com/profile.php?id=100094911514266" target="blank">
+        <div className="footer__copyrights" style={{color:"white"}}>
+        Creado por 
+         &nbsp;
+         <NavLink to="https://www.facebook.com/profile.php?id=100094911514266" className="nav-link blink-link"><u>ADAInformatica</u> </NavLink> 
        
-          </a>
+         
         </div>
       </div>
     </div>
