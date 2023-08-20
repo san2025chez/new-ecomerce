@@ -70,13 +70,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: 180,
       height:260,
-  
-      
-
-
- 
-    
-   
     },
     [theme.breakpoints.down('xs')]: {
       width: 180,
@@ -88,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+
+    borderRadius: 0, // Configuramos el radio del borde a 0 para que sea cuadrado
+   // boxShadow: 'none', // Esto quitará la sombr
  
   },
 
@@ -110,7 +106,7 @@ const Item =({product:{id,productName,price,img}}) => {
     
     disableTypography
         title={ <Typography style={{ marginBottom: '0.1rem' }}>{productName}</Typography>}
-        subheader={ <Typography
+      /*   subheader={ <Typography
           className={classes.action}
           variant='h6'
           color='textSecondary'
@@ -118,7 +114,7 @@ const Item =({product:{id,productName,price,img}}) => {
           sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
               {accounting.formatMoney(price)}
         
-          </Typography>}
+          </Typography>} */
 
 
     
