@@ -10,6 +10,7 @@ import { Divider } from '@material-ui/core'
 import Home from '../../Home/Home';
 import omni from '../assets/omni.PNG'
 import omni1 from "../assets/omni.jpeg";
+import cocoz from "../assets/cocozhi.jpg"
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -24,7 +25,13 @@ const mock = [{
   "id": 3,
   "nombre": "Imagen 3",
   "imagen": omni1
-}]
+},
+/* {
+  "id": 4,
+  "nombre": "Imagen 4",
+  "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdU0MINiRChr2sLK2MXUli02-Iwxe2CeLk9A&usqp=CAU"
+} */
+]
 const useStyles = makeStyles((theme) => ({
   stylegrid: {
     marginBottom: '100px',
