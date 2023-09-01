@@ -49,7 +49,7 @@ export default function CircularStatic() {
   }, []);
 
   return(<>
-  <h3>Estamos procesando....</h3>
+  <h3>Loading....</h3>
   <Spinner value={progress} />
   </>) ;
 }
