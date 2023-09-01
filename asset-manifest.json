@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "https://san2025chez.github.io/new-ecomerce/static/css/main.634c4063.css",
-    "main.js": "https://san2025chez.github.io/new-ecomerce/static/js/main.b9d1bd09.js",
+    "main.css": "https://san2025chez.github.io/new-ecomerce/static/css/main.6458e16a.css",
+    "main.js": "https://san2025chez.github.io/new-ecomerce/static/js/main.52f23687.js",
     "static/js/787.78c9b97c.chunk.js": "https://san2025chez.github.io/new-ecomerce/static/js/787.78c9b97c.chunk.js",
     "static/media/omni.PNG": "https://san2025chez.github.io/new-ecomerce/static/media/omni.a3200cf81e02deb70d5d.PNG",
     "static/media/cocozhi.jpg": "https://san2025chez.github.io/new-ecomerce/static/media/cocozhi.2a76855a55a41a083cef.jpg",
@@ -14,12 +14,12 @@
     "static/media/roboto-vietnamese-400-normal.woff2": "https://san2025chez.github.io/new-ecomerce/static/media/roboto-vietnamese-400-normal.3230f9b040f3c630e0c3.woff2",
     "index.html": "https://san2025chez.github.io/new-ecomerce/index.html",
     "static/media/roboto-greek-ext-400-normal.woff2": "https://san2025chez.github.io/new-ecomerce/static/media/roboto-greek-ext-400-normal.169619821ea93019d1bb.woff2",
-    "main.634c4063.css.map": "https://san2025chez.github.io/new-ecomerce/static/css/main.634c4063.css.map",
-    "main.b9d1bd09.js.map": "https://san2025chez.github.io/new-ecomerce/static/js/main.b9d1bd09.js.map",
+    "main.6458e16a.css.map": "https://san2025chez.github.io/new-ecomerce/static/css/main.6458e16a.css.map",
+    "main.52f23687.js.map": "https://san2025chez.github.io/new-ecomerce/static/js/main.52f23687.js.map",
     "787.78c9b97c.chunk.js.map": "https://san2025chez.github.io/new-ecomerce/static/js/787.78c9b97c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.634c4063.css",
-    "static/js/main.b9d1bd09.js"
+    "static/css/main.6458e16a.css",
+    "static/js/main.52f23687.js"
   ]
 }
