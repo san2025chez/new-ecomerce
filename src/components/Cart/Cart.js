@@ -48,7 +48,7 @@ return(
 
    <>
    
-     <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px"}}>
+     <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px",   minHeight: "100vh"}}>
      <Card sx={{ minWidth: 275 }} container justifyContent="center">
      <CardContent justifyContent="center">
    
