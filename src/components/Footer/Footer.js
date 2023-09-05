@@ -1,4 +1,4 @@
-import {React} from 'react';
+import { React } from 'react';
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -29,13 +29,13 @@ export default function Footer(props) {
 
 
 
-  const whatssaplink="https://wa.me/5493883295503"
-  const ubicacion ="https://goo.gl/maps/gQMUqC6ugjxxWSd79"
+  const whatssaplink = "https://wa.me/5493883295503"
+  const ubicacion = "https://goo.gl/maps/gQMUqC6ugjxxWSd79"
 
 
 
   return (
-  
+
     <div className="footer">
 
       <div className="footer__link ">
@@ -43,28 +43,28 @@ export default function Footer(props) {
           <div className="footer__link__items">
             <h4 className="footer__link__titulo">Contactos</h4>
             <div className="footer__link__links">
-            <NavLink to="/" className="footer__link__links">
+              <NavLink to="/" className="footer__link__links">
 
-<MailIcon fontSize="small" style={{marginRight:"2px"}}/>
-Email
+                <MailIcon fontSize="small" style={{ marginRight: "2px" }} />
+                Email
 
-</NavLink>
+              </NavLink>
             </div>
             <div className="footer__link__links">
-            <NavLink to={ubicacion} className="footer__link__links">
+              <NavLink to={ubicacion} className="footer__link__links">
 
-<LocationOnIcon fontSize="small" />
-Perico,Jujuy
+                <LocationOnIcon fontSize="small" />
+                Perico,Jujuy
 
-</NavLink>
+              </NavLink>
             </div>
             <div className="footer__link__links">
-            <NavLink to={whatssaplink} className="footer__link__links">
+              <NavLink to={whatssaplink} className="footer__link__links">
 
-<WhatsAppIcon fontSize="small" style={{marginRight:"2px"}}/>
-Whatsapp
+                <WhatsAppIcon fontSize="small" style={{ marginRight: "2px" }} />
+                Whatsapp
 
-</NavLink>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ Whatsapp
               href="https://www.facebook.com/profile.php?id=100094323146666"
               target="blank"
               className="footer__link__icons">
-            <FacebookRoundedIcon/>
+              <FacebookRoundedIcon />
             </a>
           </div>
         </div>
@@ -92,14 +92,13 @@ Whatsapp
           <i className="far fa-copyright footer__copyrights__icon"></i>
           <p className="footer__copyrights__text">2023</p>
         </div>
-        <div className="footer__copyrights">
-          <p className="footer__bottom__developer">Creado por ADAInformatica</p>
-          <a href="https://www.facebook.com/ada.68291/" target="blank">
-          <FacebookRoundedIcon/>
-          </a>
+        <div className="footer__copyrights" style={{ color: "white" }}>
+          Creado por
+          &nbsp;
+          <NavLink to="https://www.facebook.com/profile.php?id=100094911514266" className="nav-link blink-link"><u>ADAInformatica</u> </NavLink>
         </div>
       </div>
     </div>
-   
+
   );
 }
