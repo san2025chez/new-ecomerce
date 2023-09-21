@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
 }));
-const Item =({product:{id,productName,price,img}}) => {
+const Item =({product}) => {
     
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -105,7 +105,7 @@ const Item =({product:{id,productName,price,img}}) => {
       <CardHeader
     
     disableTypography
-        title={ <Typography style={{ marginBottom: '0.1rem' }}>{productName}</Typography>}
+        title={ <Typography style={{ marginBottom: '0.1rem' }}>{product.name}</Typography>}
       /*   subheader={ <Typography
           className={classes.action}
           variant='h6'
@@ -119,16 +119,25 @@ const Item =({product:{id,productName,price,img}}) => {
 
     
       />
-       <Link to={`/detalle/${ id }`}> 
-       <CardMedia
-         className={classes.media}
-         image={img}
-      
-         title="Paella dish"
-      
-     
-      /></Link>
-       <Link to={`/detalle/${ id }`}> <CardContent>
+       <Link to={`/detalle/${ product.id }`}> 
+       {
+        product.images[0].url ?
+        <CardMedia
+        className={classes.media}
+        image={product.images[0].url}
+
+        title="Paella dish"
+      />
+      : 
+      <CardMedia
+      className={classes.media}
+      image={product.images[0]}
+
+      title="Paella dish"
+    />
+
+       }</Link>
+       <Link to={`/detalle/${ product.id }`}> <CardContent>
       {/*   <Typography variant="body2" color="textSecondary" component="p">
           This impressive paella is a perfect party dish and a fun meal to cook together with your
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
