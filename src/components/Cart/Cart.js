@@ -66,13 +66,13 @@ return(
         <div className="cart__detail container">
           <div className="cart__img cart__items">
             <img
-              src={product.img}
+            src={product.images[0].url}
               alt={`img-${product.id}`}
               className="cart__img-imagen"
             />
           </div>
           <div className="cart__items">
-            <h5 className="cart__item" style={{fontSize:'13px'}}> {product.productName} </h5>
+            <h5 className="cart__item" style={{fontSize:'13px'}}> {product.name} </h5>
           </div>
           <div className="cart__items">
             <CartCounter inicialValue={product.quantity} product={product} />
