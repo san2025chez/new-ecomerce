@@ -147,13 +147,13 @@ const NavBar= () => {
             <Link to="/">LEO</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((item) => (
+            {pages.map((item, index) => (
               <Button
                 key={item.id}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'blue', display: 'block' }}
               >
-               <Link to={`/categoria/${ item.name }` }>  {item.name} </Link>
+               <Link to={`/categoria/${ item.name }` }>  {index !== 0 && <span style={{ marginRight: '10px' }} />} {item.name} </Link>
               </Button>
             ))}
           </Box>

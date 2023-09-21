@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const ItemList = ({items}) => {
     const classes = useStyles();
-    console.log("items en itemslist",items);
+    console.log("ESTOY EN ITEMLIST",items);
 
     return(
       <div className={classes.root}>

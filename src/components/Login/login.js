@@ -32,6 +32,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import axios from 'axios';
+import { APIs } from '../../constants/constants'
 
 function RedBar() {
   return (
@@ -71,6 +73,19 @@ const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string()
     .required("Required")
     .matches(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/, "Only alphabets are allowed for this field "),
+
+  email: Yup.string()
+    .required("Required")
+    .email("Invalid email format"),
+  password: Yup.string()
+    .required("Required")
+    /*   .min(8, "Password must be at least 8 characters") */
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    ),
+
+
   surname: Yup.string()
     .required("Required")
     .matches(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/, "Only alphabets are allowed for this field "),
@@ -125,10 +140,13 @@ export default function Login() {
   const [nroorden, setNroorden] = useState('')
   let navigate = useNavigate();
   const { cart, clear, totalPrice } = useContext(CartCntext2);
+  const [orden, setOrden] = useState({})
   const [user, setUser] = useState({
     name: '',
     surname: '',
     phone: '',
+    password: '',
+    email: '',
     barrio: '',
     calle: '',
     localidad: '',
@@ -137,6 +155,7 @@ export default function Login() {
   });
 
   const [validation, setValidation] = useState(false)
+  const [purchaseId, setPurchaseId] = useState({})
   const [shipment, setShipment] = React.useState('local');
 
   const handleChange = (event) => {
@@ -156,95 +175,62 @@ export default function Login() {
     setLoading(true);
   }
 
+  console.log("veo lo QUE CONTIENE CART", cart);
+  var total = 0;
+  var cartIdProduct = [];
+  var cartQuantityProduct = []
+  for (let i = 0; i < cart.length; i++) {
+    cartIdProduct.push(cart[i].id)
+    cartQuantityProduct.push(cart[i].quantity)
+    total = total + (cart[i].quantity * cart[i].price)
+
+  }
+  console.log("veo lista de cart", cartIdProduct);
+  console.log("cart de quantity", cartQuantityProduct);
+  console.log("total", total);
+  console.log("datos a enviar de USER", user);
+
   const crearOrden = async (values, cart, totalPrice) => {
 
-    console.log("VALORES QUE LLEGAN", values.name);
+    let userpost = { ...values }
+
+    console.log("VALORES QUE LLEGAN", userpost);
     setUser({
       ...values
     })
+  
+    axios.post(APIs.USERS, userpost)
+      .then((users) => {
+        console.log("lo que se devuelve al crear USER del formulario", users);
 
+        setUser(users.data)
+        let datapurchase = {
+          product:  cartIdProduct,
+          quantity: cartQuantityProduct,
+          total: total,
+          user: users.data
+        }
 
-    const newOrder = {
-      buyer: { ...values },
-      item: [{ ...cart }],
-      total: totalPrice(),
-      envio: shipment,
-    };
-
-    ;
-    const batch = writeBatch(db);
-
-    const orderRef = collection(db, "orders");
-    const productosRef = collection(db, "productos");
-    const q = query(
-      productosRef,
-      where(
-        documentId(),
-        "in",
-        cart.map((el) => el.id)
-      )
-    );
-
-    
-
-    const outOfStock = [];
-    const shouldRedirect = true;
-    const productos = await getDocs(q);
-
-    productos.docs.forEach((doc) => {
-      const itemToUpdate = cart.find((prod) => prod.id === doc.id);
-      if (doc.data().stock >= itemToUpdate.quantity) {
-        batch.update(doc.ref, {
-          stock: doc.data().stock - itemToUpdate.quantity,
-        });
-      } else {
-        outOfStock.push(itemToUpdate);
-      }
-    });
-
-    if (outOfStock.length === 0) {
-      addDoc(orderRef, newOrder).then((res) => {
-       
-        batch.commit();
-        setNroorden(res.id);
-        console.log("OREDEN CREADA",res.id);
-    
-        console.log( nroorden);
-
-        Swal.fire({
-          icon: "success",
-          title: "su orden se creo con exito",
-          text: `Su numero de oden es: ${res.id}`,
-        }).then((result) => {
-          console.log("el resultado es", nroorden);
-          if (result.isConfirmed) {
-            console.log("compruebo orden",nroorden);
-            setUser({
-              ...values,
-              nroorden
-          
-            })
-            setValidation(true)
-
-
-
-          }
-          // restartForm(INITIAL_FORM_STATE)
-          // window.location.reload();
-
+        console.log("LO QUE  ENVIO PARA CREAR Purchase", datapurchase);
+        axios.post(APIs.PURCHASE, datapurchase).then((purchase) => {
+          console.log("DEVUELVE PURCHASE", purchase);
+          setPurchaseId(purchase.data)
+          setValidation(true)
 
         })
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "No hay stock de los siguientes productos:",
-        text: outOfStock.map((el) => el.name).join(","),
-      });
-    }
-    // restartForm();
-  };
+          .catch(error => {
+            console.error('Error:', error);
+          });;
 
+
+      });
+
+
+
+
+  };
+  console.log("CARGADO", orden);
+  console.log("PURCHASEID", purchaseId);
 
 
 
@@ -252,10 +238,12 @@ export default function Login() {
     name: "",
     surname: "",
     phone: "",
-    calle:"",
-    barrio:"",
-    numero:"",
-    localidad:""
+    password: '',
+    email: "",
+    calle: "",
+    barrio: "",
+    numero: "",
+    localidad: ""
 
   };
 
@@ -264,20 +252,11 @@ export default function Login() {
     console.log("USER", user);
   };
 
-  /* const restartForm=(initial)=>{
-    const shouldRedirect = true;
-    console.log("ingresgggo",initial);
-    setUser(
-  initial
-    )
-    return shouldRedirect ? <Navigate to="/login" /> : <Navigate to="/login" />;
-  
-    console.log("user",user);
-  } */
+
   const buttonStyle = {
-      backgroundColor: "#6a1b9a",
+    backgroundColor: "#6a1b9a",
     color: 'white',
-  
+
   };
   return (
     <>
@@ -309,7 +288,7 @@ export default function Login() {
                       >
                         {(formik) => (
                           <Form onSubmit={formik.handleSubmit}>
-                            <Grid container justify="center" alignItems="center"   spacing={2}>
+                            <Grid container justify="center" alignItems="center" spacing={2}>
                               <Grid item xs={12}>
                                 <Textfield
                                   onChange={formik.handleChange}
@@ -337,6 +316,25 @@ export default function Login() {
                                   label="Telefono"
                                   values={formik.values.phone}
                                   placeholder="3889999999"
+                                />
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Textfield
+                                  onChange={formik.handleChange}
+                                  name="email"
+                                  label="Email"
+                                  values={formik.values.email}
+                                  placeholder="3889999999"
+                                />
+                              </Grid>
+
+                              <Grid item xs={12}>
+                                <Textfield
+                                  onChange={formik.handleChange}
+                                  name="password"
+                                  label="Password"
+                                  values={formik.values.password}
+                                  placeholder="*********"
                                 />
                               </Grid>
                               <Grid item xs={12} style={{ justifyContent: "center", alignItems: "center", alignContent: "center", marginLeft: '8px' }}>
@@ -399,31 +397,31 @@ export default function Login() {
                                   :
                                   <></>
                               }
- 
+
                               <Grid item >
-                       
-                                  <ReCAPTCHA
-                                    ref={captcha}
-                                    sitekey="6LfbvywfAAAAACW_yrnaJlDXk6ajACCQ3_DVSGIa"
-                                    onChange={onChange}
-                                  />
-                                  
-                           
+
+                                <ReCAPTCHA
+                                  ref={captcha}
+                                  sitekey="6LfbvywfAAAAACW_yrnaJlDXk6ajACCQ3_DVSGIa"
+                                  onChange={onChange}
+                                />
+
+
                               </Grid>
-                            
+
 
                               <Grid item xs={12} sm={6} md={8} lg={6} style={{ marginLeft: "auto", marginRight: "auto" }} >
 
                                 <div>
                                   {!botonSeleccionado && (
                                     <Button
-                                    variant="outlined"  style={{color:"blue"}} >
+                                      variant="outlined" style={{ color: "blue" }} >
                                       Continuar con la compra
                                     </Button>
                                   )}
                                 </div>
 
-                                {validation ? navigate('/pay', { state: {user,nroorden } }) : null}
+                                {validation ? navigate('/pay', { state: { orden,purchaseId } }) : null}
                               </Grid>
 
                             </Grid>

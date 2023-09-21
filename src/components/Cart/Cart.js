@@ -39,7 +39,7 @@ export const Cart=()=>{
     };
 
 
-console.log("CART en cart",cart);
+console.log("CART en cart",cart[0]);
 
 
 const classes = useStyles();
@@ -48,25 +48,27 @@ return(
 
    <>
    
-     <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px",   minHeight: "50vh"}}>
+     <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px"}}>
      <Card sx={{ minWidth: 275 }} container justifyContent="center">
      <CardContent justifyContent="center">
    
    <div id="CartList" className="cart container">
-    {!isMobile && 
+    {
+      !isMobile &&
    <div className="cart__titulos container">
      <h6 className="cart__titulos__text">Producto</h6>
      <h6 className="cart__titulos__text">Descripción</h6>
      <h6 className="cart__titulos__text">Cantidad</h6>
      <h6 className="cart__titulos__text">Precio</h6>
-   </div>}
+   </div>
+    }
    <div>
      {cart.map((product) => (
         <div  key={product.id} className="container cart">
         <div className="cart__detail container">
           <div className="cart__img cart__items">
             <img
-              src={product.img}
+              src={product.images[0].url}
               alt={`img-${product.id}`}
               className="cart__img-imagen"
             />
@@ -78,7 +80,7 @@ return(
             <CartCounter inicialValue={product.quantity} product={product} />
           </div>
           <div className="cart__items">
-            <h6 className="cart__precio" style={{ fontSize: isMobile ? '11px' : '15px' }}> {product.price} </h6>
+            <h6 className="cart__precio"> {product.price} </h6>
           </div>
           <div className="cart__items">
             <i

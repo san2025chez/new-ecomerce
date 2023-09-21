@@ -22,6 +22,7 @@
 
   &__ item__detail{
 
+
   }
   &__detail {
     display: flex;
@@ -80,6 +81,11 @@
   @media (max-width: 600px) {
     max-width: 300px; /* Ajusta el ancho máximo para pantallas pequeñas */
   }
+}
+.item__detail-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 

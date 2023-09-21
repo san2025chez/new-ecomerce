@@ -7,6 +7,9 @@ import {useParams} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { APIs } from "../constants/constants.js";
+import Item from '../components/carousel/Item';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -31,40 +34,69 @@ const Home = () => {
 console.log("el di de categoria", Id);
 
   useEffect(() => {
+  /*   const rawResponse =  axios.get(APIs.PRODUCTS)
+    .then(response => {
+      console.log("data obtenida",response.data);
+      setItems(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    console.log(rawResponse); */
+//const db = getFirestore();
 
-const db = getFirestore();
 
 
-
-    const itemCollection = collection(db,"productos");
-
+    //const itemCollection = collection(db,"productos");
+ 
 
 
     if (Id) {
-      const itemQuery = query(itemCollection, where('categoria', '==', Id));
+      const rawResponse = axios.get(APIs.CATEGORY + '/' + Id)
+      .then(response =>{
+        console.log('rawResponse.data ONE ID', response.data[0].product);
+        setItems(response?.data[0]?.product);
+        setLoading(false)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+       
+   /*    const itemQuery = query(itemCollection, where('categoria', '==', Id));
       getDocs(itemQuery).then((snapshot) => {
           setItems(snapshot.docs.map((doc) => ({
               ...doc.data(),
               id: doc.id
           })))
           setLoading(false)
-      })
+      }) */
     /*   navigate({ pathname: `http://localhost:3000/categoria/${Id}`}) 
 
       navigate({ pathname:`http://localhost:3000/categoria/${Id}`}, { replace: true }) */
   } else {
-      getDocs(itemCollection).then((snapshot) => {
+     /*  getDocs(itemCollection).then((snapshot) => {
           setItems(snapshot.docs.map((doc) => ({
               ...doc.data(),
               id: doc.id
           })))
           setLoading(false)
-      })
+      }) */
+      console.log("ingreso aqui");
+      const rawResponse =  axios.get(APIs.PRODUCTS)
+      .then(response => {
+        setItems(response.data);
+        setLoading(false)
+      } )
+      .catch(error => {
+        console.error(error);
+      });
     }
   }, [Id]);
 
 
 
+
+console.log("ITEMSSS FILTRADO todos los productos ",items);
   const classes = useStyles();
 
   return (
