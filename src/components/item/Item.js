@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -20,27 +20,33 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { AddShoppingCart } from '@material-ui/icons'
-import accounting from 'accounting'
+import {AddShoppingCart} from '@material-ui/icons'
+import accounting from'accounting'
 import './item.scss'
 
 const useStyles = makeStyles((theme) => ({
-
+ 
   root: {
     maxWidth: 345,
     backgroundColor: 'white', //[500],
 
-
+    
   },
-  action: {
-    marginTop: "1rem",
+  action:{
+      marginTop:"1rem",
 
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
     height: 150,
-    width: 150,
+    width:150,
+
+
+
+
+
+ 
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -55,86 +61,105 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: 'white',
   },
-  mimargen: {
+  mimargen:{
     marginTop: "3rem",
-
-
+    
+ 
   },
   card: {
     [theme.breakpoints.down('sm')]: {
       width: 180,
-      height: 260,
+      height:260,
     },
     [theme.breakpoints.down('xs')]: {
       width: 180,
-      height: 260,
-
+      height:260,
+    
     },
-
-    margin: 'auto',
+ 
+    margin:'auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
 
+    borderRadius: 0, // Configuramos el radio del borde a 0 para que sea cuadrado
+   // boxShadow: 'none', // Esto quitará la sombr
+ 
   },
 
 }));
-const Item = ({ product }) => {
+const Item =({product:{id,productName,price,img}}) => {
+    
+    const classes = useStyles();
+    const [expanded, setExpanded] = React.useState(false);
 
+    const handleExpandClick = () => {
+      setExpanded(!expanded);
+    };
+    return(
+    
+        
+       
 
-/*   console.log("VEO en item", product.images); */
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-  return (
-
-
-
-
-    <Card className={classes.card}  >
+      <Card className={classes.card}  >
       <CardHeader
-
-        disableTypography
-        title={<Typography style={{ marginBottom: '0.1rem' }}>{product.name}</Typography>}
-        subheader={<Typography
+    
+    disableTypography
+        title={ <Typography style={{ marginBottom: '0.1rem' }}>{productName}</Typography>}
+      /*   subheader={ <Typography
           className={classes.action}
           variant='h6'
           color='textSecondary'
           style={{ marginTop: '0.1rem' }}
           sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
-          {accounting.formatMoney(product.price)}
+              {accounting.formatMoney(price)}
+        
+          </Typography>} */
 
-        </Typography>}
 
-
-
+    
       />
-      <Link to={`/detalle/${product.id}`}>
-       {
-        product.images[0].url ?
-        <CardMedia
-        className={classes.media}
-        image={product.images[0].url}
-
-        title="Paella dish"
-      />
-      : 
-      <CardMedia
-      className={classes.media}
-      image={product.images[0]}
-
-      title="Paella dish"
-    />
-
-       }
-     </Link>
-      <Link to={`/detalle/${product.id}`}> <CardContent>
+       <Link to={`/detalle/${ id }`}> 
+       <CardMedia
+         className={classes.media}
+         image={img}
+      
+         title="Paella dish"
+      
+     
+      /></Link>
+       <Link to={`/detalle/${ id }`}> <CardContent>
+      {/*   <Typography variant="body2" color="textSecondary" component="p">
+          This impressive paella is a perfect party dish and a fun meal to cook together with your
+          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        </Typography> */}
       </CardContent></Link>
+     {/*  <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <AddShoppingCart fontSize='large'/>
+        </IconButton>
+        
+        {Array(4)
+        .fill()
+        .map((_,i)=> (
+            <p>&#11088;</p>
+        ))}
+        <IconButton
+          className={clsx(classes.expand, { [classes.expandOpen]: expanded,   })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions> */}
+
     </Card>
-  )
+
+
+  
+ 
+    )
 }
 
 export default Item
