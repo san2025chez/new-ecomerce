@@ -11,12 +11,7 @@ import swal from 'sweetalert';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Link } from 'react-router-dom'
-
 import "./mercadopago.scss";
-
-
-
-
 import axios from 'axios'
 import Spinner from '../components/Spinner/Spinner';
 
@@ -26,27 +21,34 @@ export default function Product() {
   const { state } = useLocation();
 
 
-  console.log(state.user);
-  console.log("orden para enviar back",state.nroorden);
+  console.log(state.orden);
+  console.log("ID DE PURCHASE PAA GUARDAR EN BD",state.purchaseId);
+
+
 
   const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
   const { cart, totalCompra ,clear} = useContext(CartCntext2);
   const [url, setUrl] = useState('')
 
-  console.log("USUARIO QUE LLEGAN", state.user);
+  console.log("USUARIO QUE LLEGAN a FRONT", state.orden);
 
   const data = {
     cart: cart,
-    user: state.user,
-    orden: state.nroorden
+    user: state.orden,
+    orden: state.purchaseId
+
+
+
   }
+console.log("data a enviara mercado pago",data);
 
   useEffect(() => {
     // luego de montarse el componente, le pedimos al backend el preferenceId
-    console.log("ENVIO A BACK", cart);
-    axios.post(APIs.MERCADOPAGO, data).then((order) => {
-      console.log("ORDEN", order);
+   console.log("URL a mercado pago",APIs.MERCADOPAGO);
+   console.log("data enviada a la API",data);
+    axios.post(APIs.MERCADOPAGO,data).then((order) => {
+      console.log("ORDEN Que retorna la api", order);
       /*  setPreferenceId(order.data.id); */
       setUrl(order.data.init_point)
     });
@@ -117,7 +119,7 @@ margin: '8px',
      <div className="cart__detail container">
        <div className="cart__img cart__items">
          <img
-           src={product.img}
+           src={product.images[0].url}
            alt={`img-${product.id}`}
            className="cart__img-imagen"
          />

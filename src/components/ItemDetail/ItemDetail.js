@@ -14,7 +14,8 @@ import { Typography } from '@material-ui/core';
 import { Collapse } from '@material-ui/core';
 import { CardContent } from '@mui/material';
 import { Box } from '@material-ui/core';
-
+import { IconButton } from '@material-ui/core';
+import { ChevronLeft, ChevronRight } from '@material-ui/icons';
 import './ItemDetail.scss'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +26,19 @@ const useStyles = makeStyles((theme) => ({
   mimargen: {
     marginTop: "3rem",
     marginBottom: "3rem"
-
-
-
-  }
+  },
+  arrowButton: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    zIndex: 1,
+  },
+  leftArrow: {
+    left: theme.spacing(2),
+  },
+  rightArrow: {
+    right: theme.spacing(2),
+  },
 }));
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -66,14 +76,14 @@ export const ItemDetail = ({ product }) => {
   };
 
   const buttonStyle = {
-  //  backgroundColor: "#6a1b9a",
-  borderColor: '#6a1b9a',
+    //  backgroundColor: "#6a1b9a",
+    borderColor: '#6a1b9a',
     color: '#6a1b9a',
     fontSize: '12px',
     margin: '8px',
     '&:hover': {
       borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover
-     // backgroundColor: '#yourDesiredHoverBackgroundColor', // Cambia esto al color deseado para el fondo en hover
+      // backgroundColor: '#yourDesiredHoverBackgroundColor', // Cambia esto al color deseado para el fondo en hover
       color: '#6a1b9a', // Cambia esto al color deseado para el texto en hover
     },
   };
@@ -90,28 +100,58 @@ export const ItemDetail = ({ product }) => {
     }
 
   }
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handlePrevClick = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextClick = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
 
     <Container>
 
-      <Card className={classes.mimargen} justifyContent="center" >
-        <CardContent spacing={2}>
-          <Grid container justifyContent="center" >
-            <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+   
+          <Grid container justifyContent="center" spacing={3}>
+
+            <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignItems: 'flex-start' }} >
+            <Card className={classes.mimargen} justifyContent="center" >
+             
+              <IconButton
+                className={`${classes.arrowButton} ${classes.leftArrow}`}
+                onClick={handlePrevClick}
+                size="small"
+              >
+                <ChevronLeft />
+              </IconButton>
               <img
                 className="item__img"
-                src={product.img}
-                alt={`img-${product.id}`}
+                src={product?.images[currentImageIndex].url}
+                alt={`img-${currentImageIndex}`}
                 style={{ maxWidth: '100%', height: '90%' }}
               />
+              <IconButton
+                className={`${classes.arrowButton} ${classes.rightArrow}`}
+                onClick={handleNextClick}
+                size="small"
+              >
+                <ChevronRight />
+              </IconButton>
+              </Card>
             </Grid>
 
             <Grid item xs={12} sm={6} md={6} lg={4} xl={6} >
 
-              <div className="item__detail">
+              <div className="item__detail" style={{paddingTop:'40px'}}>
                 <div className="item__txt">
-                  <p className="item__titulo">{product.productName} </p>
+                  <p className="item__titulo">{product.name} </p>
                   <p className="item__precio">{product.price} </p>
                 </div>
 
@@ -120,7 +160,7 @@ export const ItemDetail = ({ product }) => {
                     <div className="narrow-div">
                       <ItemCounter
 
-                        /* 🔹Consumiendo el max desde itemCount. Los valores de cantidad también */
+                     
 
                         stock={product.stock}
                         cantidad={quantity}
@@ -143,7 +183,7 @@ export const ItemDetail = ({ product }) => {
                 <div className='item__element'>
                   <Typography variant="h7" className="custom-font">
 
-                    <p className="item__descrip">{product.description} </p>
+                    <p className="item__descrip">{product.descriptions} </p>
 
                   </Typography>
 
@@ -154,30 +194,12 @@ export const ItemDetail = ({ product }) => {
 
             </Grid>
 
-
           </Grid>
-          {/*     {
-            !isInCart(product.id) ?
-              <>
-                <Button onClick={handleExpand} style={buttonStyle}>
-                  + Mostrar información
-                </Button>
-                <Collapse in={expanded}>
-
-                  <Typography variant="h7" className="custom-font">
-
-                    <p className="item__descrip">{product.description} </p>
-
-                  </Typography>
-                </Collapse>
-              </>
-              :
-              <></>
-          } */}
 
 
-        </CardContent>
-      </Card>
+
+
+
 
 
 
