@@ -29,6 +29,10 @@ const pages = [
     id:3,
     name: 'Cosmeticos'
   },
+  {
+    id:4,
+    name: 'DXN'
+  },
 ];
 const settings = [
   {
