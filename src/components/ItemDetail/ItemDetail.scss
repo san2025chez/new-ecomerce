@@ -22,7 +22,9 @@
 
   &__ item__detail{
 
-
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
   }
   &__detail {
     display: flex;
@@ -60,13 +62,20 @@
     padding: 5px;
     font-size: 20px;
     font-weight: 600;
-    padding-left: 60px;
+    padding-left: 20px;
+    text-align: center; /* Centra el texto horizontalmente */
 
 
     &::before {
       content: "$";
     }
   }
+
+    @media (max-width: 768px) {
+      &__precio {
+        padding-left: 0; /* Elimina el padding-left en dispositivos móviles si es necesario */
+      }
+    }
 }
 .custom-font {
   font-family: 'Arial'; /* Cambia esta línea con la fuente deseada */
