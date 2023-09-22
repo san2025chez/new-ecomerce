@@ -124,32 +124,32 @@ export const ItemDetail = ({ product }) => {
             <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignItems: 'flex-start' }} >
             <Card className={classes.mimargen} justifyContent="center" >
              
-              <IconButton
+            {/*   <IconButton
                 className={`${classes.arrowButton} ${classes.leftArrow}`}
                 onClick={handlePrevClick}
                 size="small"
               >
                 <ChevronLeft />
-              </IconButton>
+              </IconButton> */}
               <img
                 className="item__img"
                 src={product?.images[currentImageIndex].url}
                 alt={`img-${currentImageIndex}`}
                 style={{ maxWidth: '100%', height: '90%' }}
               />
-              <IconButton
+            {/*   <IconButton
                 className={`${classes.arrowButton} ${classes.rightArrow}`}
                 onClick={handleNextClick}
                 size="small"
               >
                 <ChevronRight />
-              </IconButton>
+              </IconButton> */}
               </Card>
             </Grid>
 
             <Grid item xs={12} sm={6} md={6} lg={4} xl={6} >
 
-              <div className="item__detail" style={{paddingTop:'40px'}}>
+              <div className="item__detail" style={{paddingTop:'30px'}}>
                 <div className="item__txt">
                   <p className="item__titulo">{product.name} </p>
                   <p className="item__precio">{product.price} </p>
