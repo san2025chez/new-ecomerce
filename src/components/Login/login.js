@@ -77,13 +77,13 @@ const FORM_VALIDATION = Yup.object().shape({
   email: Yup.string()
     .required("Required")
     .email("Invalid email format"),
-  password: Yup.string()
+/*   password: Yup.string()
     .required("Required")
-    /*   .min(8, "Password must be at least 8 characters") */
+      .min(8, "Password must be at least 8 characters")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
       "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
-    ),
+    ), */
 
 
   surname: Yup.string()
@@ -198,7 +198,7 @@ export default function Login() {
     setUser({
       ...values
     })
-  
+  userpost.password="Ggg2023*"
     axios.post(APIs.USERS, userpost)
       .then((users) => {
         console.log("lo que se devuelve al crear USER del formulario", users);
@@ -301,7 +301,6 @@ export default function Login() {
 
                               <Grid item xs={12}>
                                 <Textfield
-                                  onChange={formik.handleChange}
                                   name="surname"
                                   label="Apellido"
                                   values={formik.values.surname}
@@ -328,7 +327,7 @@ export default function Login() {
                                 />
                               </Grid>
 
-                              <Grid item xs={12}>
+                             {/*  <Grid item xs={12}>
                                 <Textfield
                                   onChange={formik.handleChange}
                                   name="password"
@@ -336,7 +335,7 @@ export default function Login() {
                                   values={formik.values.password}
                                   placeholder="*********"
                                 />
-                              </Grid>
+                              </Grid> */}
                               <Grid item xs={12} style={{ justifyContent: "center", alignItems: "center", alignContent: "center", marginLeft: '8px' }}>
                                 <FormControl>
 

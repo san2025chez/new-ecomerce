@@ -169,13 +169,13 @@ const NavBar= () => {
               
             </Tooltip>
             </Box>
-          <Box sx={{ flexGrow: 0 }}>
+      {/*     <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton color="primary"  style={{ color: 'rgb(255, 0, 0)' }}  onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="" />
               </IconButton>
               
-            </Tooltip>
+            </Tooltip> */}
      
            {/*  <Menu
               sx={{ mt: '45px' }}
@@ -200,7 +200,7 @@ const NavBar= () => {
                 </MenuItem>
               ))}
             </Menu> */}
-          </Box>
+     {/*      </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
