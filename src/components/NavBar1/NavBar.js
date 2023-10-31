@@ -14,7 +14,12 @@ import MenuItem from '@mui/material/MenuItem';
 import {Link} from 'react-router-dom'
 import CartWidget from '../CartWidget/CartWidget'
 import './NavBar.scss'
-
+import { useState } from 'react';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import axios from 'axios';
+import { APIs } from '../../constants/constants';
+import { useNavigate } from 'react-router-dom';
 
 const pages = [
   {
@@ -55,7 +60,10 @@ const settings = [
 const NavBar= () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [searchValue, setSearchValue] = useState('');
+  const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -70,6 +78,16 @@ const NavBar= () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleKeyPress = async(e) => {
+    if (e.key === 'Enter') {
+    
+        navigate(`/search/${searchValue}`)
+    
+    }
+  };
+
+
 
   return (
  
@@ -100,10 +118,6 @@ const NavBar= () => {
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
-            /*   anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }} */
               keepMounted
               transformOrigin={{
                 vertical: 'top',
@@ -142,14 +156,14 @@ const NavBar= () => {
               ))}
             </Menu>
           </Box>
-          <Typography
+  {/*         <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
             <Link to="/">LEO</Link>
-          </Typography>
+          </Typography> */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((item, index) => (
               <Button
@@ -161,6 +175,23 @@ const NavBar= () => {
               </Button>
             ))}
           </Box>
+          <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+  <SearchIcon  style={{ color: 'white' }}  />
+  <InputBase
+    placeholder="Buscar..."
+    inputProps={{ 'aria-label': 'search' }}
+    value={searchValue}
+    onChange={(e) => setSearchValue(e.target.value)}
+    onKeyPress={handleKeyPress}
+    style={{
+      marginLeft: '8px',
+      backgroundColor: 'white',
+      borderRadius: '4px',
+      padding: '4px 8px',
+      color: 'black',
+    }}
+  />
+</div>
           <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             

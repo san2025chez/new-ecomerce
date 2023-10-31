@@ -1,0 +1,103 @@
+.detailContainer {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mibotom{
+  margin-left: 50px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+/*   padding-left: 0px; */
+
+  &__img {
+    width: 100%;
+    padding: 5px;
+    border-radius: 30px;
+  }
+
+  &__ item__detail{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    border-radius: 30px;
+    border-color: rgb(13, 14, 13);
+  }
+  &__descrip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   margin: 5px;
+   text-align: justify;
+    padding: 10px;
+    text-justify: auto;
+    border-radius: 30px;
+    border-color: rgb(13, 14, 13);
+  }
+
+  &__element{
+    //margin-bottom: 10px;
+    margin-top: 10px;
+    //margin-left: 10px;
+  }
+
+  &__titulo {
+    font-size: 30px;
+    font-weight: 900;
+    align-items: center;
+  }
+
+  &__precio {
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 20px;
+    text-align: center; /* Centra el texto horizontalmente */
+
+
+    &::before {
+      content: "$";
+    }
+  }
+
+    @media (max-width: 768px) {
+      &__precio {
+        padding-left: 0; /* Elimina el padding-left en dispositivos móviles si es necesario */
+      }
+    }
+}
+.custom-font {
+  font-family: 'Arial'; /* Cambia esta línea con la fuente deseada */
+}
+
+.narrow-div {
+  width: 100%;
+  max-width: 300px;
+
+  padding: 15px;
+
+  @media (max-width: 600px) {
+    max-width: 300px; /* Ajusta el ancho máximo para pantallas pequeñas */
+  }
+}
+.item__detail-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+
+
+
+
