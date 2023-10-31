@@ -94,7 +94,7 @@ return(
        <span className="cart__buyTotal__title--bold">${totalCompra()}</span>
      </h5>
      <Link to='/login'><Button  variant="outlined"  style={buttonStyle}  /*  onClick={handleCheckout} */
-       /* className={"button__agregar"} */
+
        content={"Comprar"}>
          COMPRAR
      </Button></Link>

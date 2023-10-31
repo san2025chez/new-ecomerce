@@ -14,10 +14,12 @@ import Item from '../../components/carousel/Item'
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: '100%', // Ancho completo
+    width: '100%',
+   // Ancho completo
  // Espaciado por defecto
     [theme.breakpoints.down('sm')]: {
       width: '100%',
+      height:'100%',
       margin:'0%',
       padding:'0%',
       padding: theme.spacing(1), // Espaciado para dispositivos móviles
@@ -60,9 +62,9 @@ console.log("ITEMSSS FILTRADO todos los productos ",product);
   return (
     <>
    
-      {loading ? (
+      {product.length ==0 ? (
         <div id="Home" className="home">
-          <Spinner />
+         <h1>No se encontro el producto</h1>
         </div>
       ) : (
         <div  className={classes.container}>
