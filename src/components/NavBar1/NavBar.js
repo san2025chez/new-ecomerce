@@ -83,8 +83,9 @@ const NavBar= () => {
     if (e.key === 'Enter') {
     
         navigate(`/search/${searchValue}`)
-    
+        setSearchValue('')
     }
+   
   };
 
 
@@ -176,7 +177,11 @@ const NavBar= () => {
             ))}
           </Box>
           <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-  <SearchIcon  style={{ color: 'white' }}  />
+  <SearchIcon  style={{ color: 'white' }}   onClick={() => {
+  
+      const enterKeyPressEvent = { key: 'Enter', keyCode: 13 };
+      handleKeyPress(enterKeyPressEvent);
+    }} />
   <InputBase
     placeholder="Buscar..."
     inputProps={{ 'aria-label': 'search' }}
