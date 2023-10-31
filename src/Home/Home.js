@@ -28,10 +28,11 @@ const Home = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const {Id} = useParams();
+  const {Id, name} = useParams();
   const navigate = useNavigate()
 
 console.log("el di de categoria", Id);
+console.log("NAME",name);
 
   useEffect(() => {
   /*   const rawResponse =  axios.get(APIs.PRODUCTS)
@@ -51,7 +52,7 @@ console.log("el di de categoria", Id);
  
 
 
-    if (Id) {
+    if (Id) { 
       const rawResponse = axios.get(APIs.CATEGORY + '/' + Id)
       .then(response =>{
         console.log('rawResponse.data ONE ID', response.data[0].product);
@@ -62,25 +63,9 @@ console.log("el di de categoria", Id);
         console.error(error);
       });
        
-   /*    const itemQuery = query(itemCollection, where('categoria', '==', Id));
-      getDocs(itemQuery).then((snapshot) => {
-          setItems(snapshot.docs.map((doc) => ({
-              ...doc.data(),
-              id: doc.id
-          })))
-          setLoading(false)
-      }) */
-    /*   navigate({ pathname: `http://localhost:3000/categoria/${Id}`}) 
-
-      navigate({ pathname:`http://localhost:3000/categoria/${Id}`}, { replace: true }) */
+  
   } else {
-     /*  getDocs(itemCollection).then((snapshot) => {
-          setItems(snapshot.docs.map((doc) => ({
-              ...doc.data(),
-              id: doc.id
-          })))
-          setLoading(false)
-      }) */
+
       console.log("ingreso aqui");
       const rawResponse =  axios.get(APIs.PRODUCTS)
       .then(response => {

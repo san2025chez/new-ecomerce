@@ -25,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   mimargen: {
     marginTop: "3rem",
-    marginBottom: "3rem"
+    marginBottom: "3rem",
+    border: 'none', // Quítale el borde
+    boxShadow: 'none',
   },
   arrowButton: {
     position: 'absolute',
@@ -124,26 +126,12 @@ export const ItemDetail = ({ product }) => {
             <Grid item xs={12} sm={6} md={6} lg={4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignItems: 'flex-start' }} >
             <Card className={classes.mimargen} justifyContent="center" >
              
-            {/*   <IconButton
-                className={`${classes.arrowButton} ${classes.leftArrow}`}
-                onClick={handlePrevClick}
-                size="small"
-              >
-                <ChevronLeft />
-              </IconButton> */}
               <img
                 className="item__img"
                 src={product?.images[currentImageIndex].url}
                 alt={`img-${currentImageIndex}`}
                 style={{ maxWidth: '100%', height: '90%' }}
               />
-            {/*   <IconButton
-                className={`${classes.arrowButton} ${classes.rightArrow}`}
-                onClick={handleNextClick}
-                size="small"
-              >
-                <ChevronRight />
-              </IconButton> */}
               </Card>
             </Grid>
 
@@ -159,16 +147,10 @@ export const ItemDetail = ({ product }) => {
                   {!isInCart(product.id) ?
                     <div className="narrow-div">
                       <ItemCounter
-
-                     
-
                         stock={product.stock}
                         cantidad={quantity}
                         onAdd={handleCounter}
                         setQuantity={setQuantity} />
-
-
-
                     </div> :
                     <>
                       <br />

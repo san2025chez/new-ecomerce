@@ -15,22 +15,9 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
 
-        /* const db = getFirestore();
-
-        const docRef = doc(db, "productos", id);
-
-        getDoc(docRef).then((snapshot) => {
-            setProduct(({
-                id: snapshot.id,
-                ...snapshot.data()
-            }))
-            setLoading(false)
-        }) */
-
-
         const rawResponse = async () => {
             try {
-             const response= await axios.get(APIs.PRODUCTS + '/' + id)
+             const response= await axios.get(APIs.PRODUCTS + '/prod/' + id)
                 console.log(' ONE IDPRODUCT X ID', response.data);
                 setProduct(response.data);
                 setLoading(false)

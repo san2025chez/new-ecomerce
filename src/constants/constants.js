@@ -1,6 +1,5 @@
-const SERVER_URL = 'https://productosnutricionales.online/api'
-
-//const SERVER_URL = 'http://localhost:4000/api'
+//const SERVER_URL = 'https://productosnutricionales.online/api'
+const SERVER_URL = 'http://localhost:4000/api'
 
 export const APIs = {
 
@@ -8,6 +7,7 @@ export const APIs = {
     USERS: SERVER_URL + '/users',
     PURCHASE: SERVER_URL + '/purchase/create',
     MERCADOPAGO: SERVER_URL + '/mercadopago',
-    CATEGORY: SERVER_URL + '/category'
+    CATEGORY: SERVER_URL + '/category',
+
 
 };
