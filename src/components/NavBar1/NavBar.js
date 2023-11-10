@@ -21,6 +21,7 @@ import axios from 'axios';
 import { APIs } from '../../constants/constants';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery, useTheme } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const pages = [
   {
@@ -105,6 +106,7 @@ const NavBar = () => {
             <Link to="/"><h2>LEO</h2></Link>
           </Typography>
           {isMobile ? (
+         
             <Box
             sx={{
               display: 'flex',
@@ -112,7 +114,28 @@ const NavBar = () => {
               justifyContent: 'space-between',
             }}
           >
-           <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+           <Tooltip title="Inicio">
+           <Link to="/">
+                  <IconButton
+                    edge="start"
+                    size="large"
+                    color="inherit"
+                    // Agrega aquí los eventos o funciones que desees asociar con el icono
+                  >
+                    {/* Cambia 'ruta-de-tu-imagen' por la ruta real de tu imagen */}
+                    <img
+                      src="/bolsa-ecologica.png"
+                      alt="Imagen"
+                      style={{
+                        borderRadius: '50%',
+                        width: '40px', // Ajusta el ancho según tus necesidades
+                        height: '40px', // Ajusta la altura según tus necesidades
+                      }}
+                    />
+                  </IconButton>
+                  </Link>
+                </Tooltip>
+           <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
    <div style={{ display: 'flex', alignItems: 'center',position: 'relative' }}>
             <InputBase
               placeholder="Buscar..."
@@ -144,7 +167,7 @@ const NavBar = () => {
               }}
             />
           </div>
-          <Box sx={{ display: 'flex', alignItems: 'left'}}>
+          <Box sx={{ display: 'flex', alignItems: 'left', textAlign:'left'}}>
 
               <IconButton
                 edge="start"
@@ -203,11 +226,12 @@ const NavBar = () => {
               ))}
             </Menu>
               <Tooltip title="Open settings">
-                <CartWidget fontSize="small"/>
+                <CartWidget fontSize="small" />
               </Tooltip>
               </Box>
           </Box>
           </Box>
+      
           ): (
 
 
