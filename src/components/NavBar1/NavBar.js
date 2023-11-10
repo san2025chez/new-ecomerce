@@ -104,42 +104,74 @@ const NavBar = () => {
           >
             <Link to="/"><h2>LEO</h2></Link>
           </Typography>
+          {isMobile ? (
+            <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+           <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+   <div style={{ display: 'flex', alignItems: 'center',position: 'relative' }}>
+            <InputBase
+              placeholder="Buscar..."
+              inputProps={{ 'aria-label': 'search' }}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onKeyPress={handleKeyPress}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '4px',
+                minWidth: '150px', // Ancho mínimo
+    maxWidth: '250px', // Ancho máximo
+                padding: '4px 8px 4px 32px',  // Agregamos espacio a la izquierda para acomodar el icono.
+                color: 'black',
+              }}
+            />
+            <SearchIcon
+              style={{
+                color: 'gray',
+                position: 'absolute',
+                left: '8px',  // Ajusta la posición izquierda según sea necesario.
+                top: '50%',   // Alinea verticalmente en el centro.
+                transform: 'translateY(-50%)',  // Alinea verticalmente en el centro.
+                cursor: 'pointer',
+              }}
+              onClick={() => {
+                const enterKeyPressEvent = { key: 'Enter', keyCode: 13 };
+                handleKeyPress(enterKeyPressEvent);
+              }}
+            />
+          </div>
+          <Box sx={{ display: 'flex', alignItems: 'left'}}>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: isMobile ? 'space-between' : 'flex-start',  alignItems: 'center'  }}>
-          
-              <div style={{ display: 'flex' }}>
-           
-  <IconButton
-  edge="start"
-  size="large"
-  aria-label="account of current user"
-  aria-controls="menu-appbar"
-  aria-haspopup="true"
-  onClick={handleOpenNavMenu}
-  color="inherit"
-  style={{ marginLeft: 'auto' }}
->
-  <MenuIcon />
+              <IconButton
+                edge="start"
+                size="small"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+             
+              >
+                <MenuIcon />
 
-</IconButton>
-
-</div>
-          
-       
-            
-            <Menu
+              </IconButton>
+              <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'center',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               anchorOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'center',
               }}
               style={{
                 position: 'fixed',
@@ -153,8 +185,11 @@ const NavBar = () => {
                 style: {
                   backgroundColor: 'rgba(106, 27, 154, 0.8)', // Cambia el color de fondo a rojo
                   padding: '1rem',
-
-
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%', // Ajusta la altura para ocupar toda la pantalla
                 },
               }}
               sx={{
@@ -167,22 +202,39 @@ const NavBar = () => {
                 </MenuItem></Link>
               ))}
             </Menu>
-
+              <Tooltip title="Open settings">
+                <CartWidget fontSize="small"/>
+              </Tooltip>
+              </Box>
           </Box>
-              
+          </Box>
+          ): (
 
-       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((item, index) => (
-              <Button
-                key={item.id}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'blue', display: 'block' }}
-              >
-                <Link to={`/categoria/${item.name}`}>  {index !== 0 && <span style={{ marginRight: '10px' }} />} {item.name} </Link>
-              </Button>
-            ))}
-          </Box> 
-          <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', position: 'relative' }}>
+
+
+
+         
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((item, index) => (
+                <Button
+                  key={item.id}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'blue', display: 'block' }}
+                >
+                  <Link to={`/categoria/${item.name}`}>  {index !== 0 && <span style={{ marginRight: '10px' }} />} {item.name} </Link>
+                </Button>
+              ))}
+            </Box>
+     )}
+
+
+        
+      
+         
+
+          {!isMobile && (
+
+            <>    <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', position: 'relative' }}>
             <InputBase
               placeholder="Buscar..."
               inputProps={{ 'aria-label': 'search' }}
@@ -211,21 +263,20 @@ const NavBar = () => {
               }}
             />
           </div>
-
-           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-
-              <CartWidget></CartWidget >
-
-
-            </Tooltip>
-          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <CartWidget />
+              </Tooltip>
+            </Box>
+            </>
+         
+          )}
 
 
         </Toolbar>
-        
+
       </Container>
-      
+
     </AppBar>
 
   );
