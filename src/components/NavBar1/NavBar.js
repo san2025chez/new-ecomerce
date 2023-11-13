@@ -97,14 +97,27 @@ const NavBar = () => {
     <AppBar position="static" style={{ backgroundColor: "#6a1b9a" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            <Link to="/"><h2>LEO</h2></Link>
-          </Typography>
+        {!isMobile && (
+           <Link to="/">
+                  <IconButton
+                    edge="start"
+                    size="large"
+                    color="inherit"
+                    // Agrega aquí los eventos o funciones que desees asociar con el icono
+                  >
+                    {/* Cambia 'ruta-de-tu-imagen' por la ruta real de tu imagen */}
+                    <img
+                      src="/producto-natural.png"
+                      alt="Imagen"
+                      style={{
+                        borderRadius: '50%',
+                        width: '50px', // Ajusta el ancho según tus necesidades
+                        height: '50px', // Ajusta la altura según tus necesidades
+                      }}
+                    />
+                  </IconButton>
+                  </Link>
+        )}
           {isMobile ? (
          
             <Box
@@ -124,7 +137,7 @@ const NavBar = () => {
                   >
                     {/* Cambia 'ruta-de-tu-imagen' por la ruta real de tu imagen */}
                     <img
-                      src="/bolsa-ecologica.png"
+                      src="/producto-natural.png"
                       alt="Imagen"
                       style={{
                         borderRadius: '50%',
@@ -177,6 +190,7 @@ const NavBar = () => {
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
+                
              
               >
                 <MenuIcon />
