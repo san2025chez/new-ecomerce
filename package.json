@@ -2,7 +2,7 @@
   "name": "new-ecomerce",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://san2025chez.github.io",
+  "homepage": "https://san2025chez.github.io/new-ecomerce",
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
