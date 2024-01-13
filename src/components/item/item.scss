@@ -16,6 +16,10 @@
 .makeStyles-media-10{
   padding-top: 100% !important;
 }
+ .MuiGrid-spacing-xs-2 {
+      width: calc(100% + 16px);
+      margin: -21px;
+    }
 
 /* .MuiPaper-root {
   background-color: #4a45ee !important;

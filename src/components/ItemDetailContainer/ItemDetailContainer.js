@@ -7,6 +7,7 @@ import './ItemDetailContainer.scss'
 import { doc, getFirestore, getDoc } from "firebase/firestore";
 import axios from 'axios';
 import { APIs } from '../../constants/constants'
+import { ItemDetail2 } from '../ItemDetail/ItemDetail2';
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(true);
@@ -35,7 +36,7 @@ const ItemDetailContainer = () => {
 
         <div>
 
-            {loading ? (<div className="cargando"><Spinner /></div>) : <ItemDetail product={product}></ItemDetail>}
+            {loading ? (<div className="cargando"><Spinner /></div>) : <ItemDetail2 product={product}></ItemDetail2>}
         </div>
 
     )
