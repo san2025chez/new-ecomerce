@@ -95,7 +95,7 @@ export default function Footer(props) {
         <div className="footer__copyrights" style={{ color: "white" }}>
           Creado por
           &nbsp;
-          <NavLink to="https://www.facebook.com/profile.php?id=100094911514266" className="nav-link blink-link"><u>ADAInformatica</u> </NavLink>
+          <NavLink to="https://adasoft.com.ar" className="nav-link blink-link"><u>ADASoftware</u> </NavLink>
         </div>
       </div>
     </div>
