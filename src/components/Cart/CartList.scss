@@ -47,7 +47,7 @@
     grid-area: img;
 
     &-imagen {
-      width: 30%;
+      width: 20%;
       object-fit: cover;
       display: block;
       border-radius: 10px;
@@ -112,5 +112,50 @@
         font-weight: 600;
       }
     }
+  }
+}
+
+.cart__buyTotalContainer {
+  text-align: right;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-top: 1px solid rgba(153, 153, 153, 0.295);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+
+  @media (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: flex-end;
+    border: none;
+
+    .cart__buyTotal {
+      margin-bottom: 10px; // Agregar espacio entre el total y el botón en dispositivos pequeños
+    }
+  }
+}
+
+.cart__buyTotal
+ {
+  // Estilos comunes para ambos contenedores
+  display: inline-block;
+
+  @media (max-width: 600px) {
+    width: 50%; // Ocupar el ancho completo en dispositivos pequeños
+    text-align: right; // Alinear a la derecha en dispositivos pequeños
+  }
+}
+
+.cart__buyButton {
+  // Estilos adicionales para el botón de compra
+  @media (max-width: 600px) {
+    margin-top: 10px; // Agregar espacio entre el total y el botón en dispositivos pequeños
+    display: 'flex';
+     justify-content: 'flex-start'
   }
 }

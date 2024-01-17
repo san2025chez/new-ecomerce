@@ -44,16 +44,17 @@ console.log("CART en cart",cart);
 
 const classes = useStyles();
 const isMobile = useMediaQuery('(max-width:600px)');
-return(
 
-   <>
-   
-     <Grid container justifyContent="center" style={{ marginTop: "20px",paddingBottom: "10px",   minHeight: "50vh"}}>
-     <Card sx={{ minWidth: 275 }} container justifyContent="center">
-     <CardContent justifyContent="center">
-   
-   <div id="CartList" className="cart container">
-    {!isMobile && 
+
+
+  return (
+    <>
+    <Grid container justifyContent="center" style={{ marginTop: "20px", paddingBottom: "10px", minHeight: "50vh" }}>
+      <Card sx={{ minWidth: 275 }} container justifyContent="center">
+        <CardContent justifyContent="center">
+
+          <div id="CartList" className="cart container">
+          {!isMobile && 
    <div className="cart__titulos container">
      <h6 className="cart__titulos__text">Producto</h6>
      <h6 className="cart__titulos__text">Descripción</h6>
@@ -88,32 +89,33 @@ return(
         </div>
       </div>  
      )) }  </div>
-   <div className="cart__buyTotal container">
-     <h5 className="cart__buyTotal__title ">
-       Total{" "}
-       <span className="cart__buyTotal__title--bold">${totalCompra()}</span>
-     </h5>
-     <Link to='/login'><Button  variant="outlined"  style={buttonStyle}  /*  onClick={handleCheckout} */
+            <div className="cart__buyTotalContainer">
+                <div className="cart__buyTotal">
+                  <h5 className="cart__buyTotal__title ">
+                    Total{" "}
+                    <span className="cart__buyTotal__title--bold">${totalCompra()}</span>
+                  </h5>
+                </div>
+                <div className="cart__buyButton">
+                  <Link to='/login'>
+                    <Button variant="outlined" style={buttonStyle}>
+                      COMPRAR
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+          </div>
 
-       content={"Comprar"}>
-         COMPRAR
-     </Button></Link>
-   
-   </div>
-   </div>
-   </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
     </Grid>
-   
-   
-   
-   </>
+  </>
+  );
   
 
 
 
 
 
-)
 
 }

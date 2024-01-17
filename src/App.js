@@ -16,12 +16,16 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import Carousel1 from "./components/carousel/Carousel1"
 import Search from "./components/Search/Search"
 
+import ThemeProvider from './components/ItemDetail/theme/ThemeProvider'
+
+
 function App() {
 
   return (
     <div>
       <CartContext2>
       <HashRouter> 
+      <ThemeProvider>
        
             <NavBar></NavBar>{" "}
        
@@ -50,7 +54,7 @@ function App() {
        
        
             <Footer />
-     
+            </ThemeProvider>
             </HashRouter>
       </CartContext2>
     </div>
