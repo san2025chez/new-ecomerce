@@ -448,9 +448,6 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       <FormControl
   fullWidth
   variant="outlined"
-  sx={{
-    height: { xs: '60px', sm: 'auto' },  // Ajusta la altura según tus necesidades
-  }}
 >
   <TextField
     type="number"
@@ -491,7 +488,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
 >
   <Box mb={{ xs: 2, md: 0 }} textAlign={{ xs: 'center', md: 'left' }}>
     <Typography component="div" variant="caption" gutterBottom>
-      {t('Price')}
+      {t('Precio')}
     </Typography>
     <Typography
       component="span"
@@ -512,18 +509,19 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
     )}
   </Box>
   <Box>
-    {!isInCart(product.id) && (
-      <Button
-        startIcon={<AddShoppingCartTwoToneIcon />}
-        variant="contained"
-        disabled={quantity === 0}
-        onClick={() => handleCounter()}
-        size="large"
-      >
-        {t('Agregar al carrito')}
-      </Button>
-    )}
-  </Box>
+  {!isInCart(product.id) && (
+    <Button
+      startIcon={<AddShoppingCartTwoToneIcon />}
+      variant="contained"
+     
+      disabled={quantity === 0}
+      onClick={() => handleCounter()}
+      size="large"
+    >
+      {t('Agregar al carrito')}
+    </Button>
+  )}
+</Box>
 </Box>
                 <Divider
                   sx={{
