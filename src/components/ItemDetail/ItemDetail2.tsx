@@ -65,38 +65,7 @@ interface ProductBodyProps {
   product: Product;
 }
 
-/* const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-  mimargen: {
-    marginTop: "3rem",
-    marginBottom: "3rem",
-    border: 'none', // Quítale el borde
-    boxShadow: 'none',
-  },
-  arrowButton: {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    zIndex: 1,
-  },
-  leftArrow: {
-    left: theme.spacing(2),
-  },
-  rightArrow: {
-    right: theme.spacing(2),
-  },
-}));
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
- */
+
 
 const SwipeIndicator = styled(IconButton)(
   ({ theme }) => `
@@ -196,7 +165,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
   const theme = useTheme();
   const { t }: { t: any } = useTranslation();
   const { cart, addItem, isInCart, handleQuantity } = useContext(CartCntext2);
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
   /* const [thumbsSwiper, setThumbsSwiper] = useState<typeof Swiper | null>(null); */
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
@@ -290,8 +259,8 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = Number(e.target.value) || 0;
-    setQuantity(Math.max(inputValue, 0)); // Asegura que la cantidad sea al menos 0
+    const inputValue = Number(e.target.value) || 1;
+    setQuantity(Math.max(inputValue, 1)); // Asegura que la cantidad sea al menos 0
   };
 
 
@@ -476,18 +445,24 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                         sm={5}
                         md={3}
                       >
-                        <FormControl fullWidth variant="outlined">
-                          <TextField
-                            type="number"
-                            size="small"
-                            value={quantity}
-                            onChange={handleInputChange}
-                            InputLabelProps={{
-                              shrink: true,
-
-                            }}
-                          />
-                        </FormControl>
+                      <FormControl
+  fullWidth
+  variant="outlined"
+  sx={{
+    height: { xs: '60px', sm: 'auto' },  // Ajusta la altura según tus necesidades
+  }}
+>
+  <TextField
+    type="number"
+    size="small"
+    value={quantity}
+    onChange={handleInputChange}
+    InputLabelProps={{
+      shrink: true,
+    }}
+   
+  />
+</FormControl>
                       </Grid>
                     </Grid>
                   </Box> :
@@ -536,7 +511,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
       </Typography>
     )}
   </Box>
-  <Box mt={{ xs: 2, md: 0 }}>
+  <Box>
     {!isInCart(product.id) && (
       <Button
         startIcon={<AddShoppingCartTwoToneIcon />}
