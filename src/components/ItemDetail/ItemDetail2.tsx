@@ -513,7 +513,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
     <Button
       startIcon={<AddShoppingCartTwoToneIcon />}
       variant="contained"
-     
+      style={{ backgroundColor: '#6a1b9a', padding:'15px',borderRadius:"10px", color:"white"}}
       disabled={quantity === 0}
       onClick={() => handleCounter()}
       size="large"

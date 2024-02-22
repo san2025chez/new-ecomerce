@@ -19,12 +19,16 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     const buttonStyle = {
    /*    backgroundColor: "#6a1b9a",
       color: 'white', */
-      padding: '0',
-   
+      padding: '2px',
+      fontSize: '1.5rem', // Ajusta el tamaño de la fuente
+      width: '100%', // Ajusta el ancho del botón
+      height: '50px', // Ajusta la altura del botón
+      borderRadius: '10px', 
       fontSize: '12px',
       display: 'flex', // Habilita el diseño flexible para el botón
       justifyContent: 'center', // Centra horizontalmente el contenido del botón
       alignItems: 'center', 
+      border: 'solid 3px red'
     
     };
     const cellStyles = {
@@ -35,14 +39,14 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
- // display: 'flex', // Habilita el diseño flexible para la celda
+  display: 'flex', // Habilita el diseño flexible para la celda
   justifyContent: 'center', // Centra horizontalmente el contenido de la celda
   alignItems: 'center', // Centra verticalmente el contenido de la celda
    
     };
 
     const cellStyles1 = {
-      padding: '3px',
+      padding: '4px',
    
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -57,7 +61,7 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '5px',
+      padding: '10px',
     };
 
     const tableStyles = {
@@ -105,9 +109,9 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
      
           <TableBody>
             <TableRow  style={rowStyles}>
-              <TableCell   style={cellStyles}> <Button size="small"  style={ buttonStyle}  disabled={ cantidad <= 0} onClick={decrement}>-</Button></TableCell>
-              <TableCell  style={cellStyles}>     {cantidad}</TableCell>
-              <TableCell  style={cellStyles}> <Button size="small" style={ buttonStyle} onClick={increment}>+</Button></TableCell>
+              <TableCell   style={{...cellStyles,width: '60%'}}> <Button size="medium"  style={ buttonStyle}  disabled={ cantidad <= 0} onClick={decrement}>-</Button></TableCell>
+              <TableCell  style={{...cellStyles,width:'60%'}}>     {cantidad}</TableCell>
+              <TableCell  style={{...cellStyles,width: '60%'}}> <Button size="medium" style={ buttonStyle} onClick={increment}>+</Button></TableCell>
             </TableRow>
             <TableRow >
 <TableCell style={{ overflowX: 'hidden', borderBottom: 'none' }}/>
@@ -118,45 +122,6 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
         </Table>
       </TableContainer>
     </Container>
-       {/*       <Container>
-      <Grid style={{ border: '1px solid #ddd'}} container spacing={0}>
-
-        <Grid item xs={6} sm={3} md={2}>
-          <div style={cellStyles}>
-        <Button  style={buttonStyle} disabled={ cantidad <= 0} onClick={decrement}>-</Button>
-        </div>
-        </Grid>
-        <Grid item xs={6} sm={3} md={2}>
-       <div style={cellStyles}>{cantidad}</div>
       
-      
-
-        </Grid>
-        <Grid item xs={6} sm={3} md={2}>
-        <div style={cellStyles}>
-       <Button  style={cellStyles} onClick={increment}>+</Button>
-       </div>
-        </Grid>
-
-    
-        <Grid item xs={12} sm={6} md={2}>
-     
-        </Grid>
-        <Grid item xs={6} sm={3} md={2}>
-        <Button  style={buttonStyle} disabled={cantidad === 0}  onClick={onAdd}>Añadir</Button>
-        </Grid>
-        <Grid item xs={6} sm={3} md={2}>
-
-        </Grid>
-      </Grid>
-    </Container>
- <div className="container">
-            
-            <Button variant="contained"  style={buttonStyle} disabled={ cantidad <= 0} onClick={decrement}>-</Button>
-            <div>{cantidad}</div>
-            <Button variant="contained"  style={buttonStyle} onClick={increment}>+</Button>
-            <Button variant="contained" style={buttonStyle}  disabled={cantidad === 0}  onClick={onAdd}>Agregar</Button>
-          
-    </div> */}
     </div>)
 }

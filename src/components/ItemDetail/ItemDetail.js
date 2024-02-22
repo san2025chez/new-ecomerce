@@ -150,7 +150,8 @@ export const ItemDetail = ({ product }) => {
                         stock={product.stock}
                         cantidad={quantity}
                         onAdd={handleCounter}
-                        setQuantity={setQuantity} />
+                        setQuantity={setQuantity} 
+                        style={{ height: isMobile ? '300px' : 'auto' }}/>
                     </div> :
                     <>
                       <br />

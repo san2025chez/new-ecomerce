@@ -323,7 +323,7 @@ export default function Login() {
                                   name="email"
                                   label="Email"
                                   values={formik.values.email}
-                                  placeholder="3889999999"
+                                  placeholder="xxxxxxx@dominio.com"
                                 />
                               </Grid>
 
