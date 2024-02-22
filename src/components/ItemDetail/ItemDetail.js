@@ -80,8 +80,15 @@ export const ItemDetail = ({ product }) => {
   const buttonStyle = {
     //  backgroundColor: "#6a1b9a",
     borderColor: '#6a1b9a',
-    color: '#6a1b9a',
+   
     fontSize: '12px',
+  
+
+  
+  backgroundColor:'#6a1b9a',
+  color: 'white',
+  borderRadius: '10px',
+  padding: '10px',
     margin: '8px',
     '&:hover': {
       borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover

@@ -197,8 +197,11 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
   const buttonStyle = {
     //  backgroundColor: "#6a1b9a",
     borderColor: '#6a1b9a',
-    color: '#6a1b9a',
-    fontSize: '14px',
+    fontSize: '12px',
+  backgroundColor:'#6a1b9a',
+  color: 'white',
+  borderRadius: '10px',
+  padding: '8px',
 
     '&:hover': {
       borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover
@@ -513,7 +516,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
     <Button
       startIcon={<AddShoppingCartTwoToneIcon />}
       variant="contained"
-      style={{ backgroundColor: '#6a1b9a', padding:'15px',borderRadius:"10px", color:"white"}}
+      style={{ backgroundColor: '#6a1b9a', padding:'12px',borderRadius:"10px", color:"white"}}
       disabled={quantity === 0}
       onClick={() => handleCounter()}
       size="large"
