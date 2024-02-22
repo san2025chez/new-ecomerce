@@ -198,10 +198,10 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
     //  backgroundColor: "#6a1b9a",
     borderColor: '#6a1b9a',
     fontSize: '12px',
-  backgroundColor:'#6a1b9a',
-  color: 'white',
-  borderRadius: '10px',
-  padding: '8px',
+    backgroundColor: '#6a1b9a',
+    color: 'white',
+    borderRadius: '10px',
+    padding: '8px',
 
     '&:hover': {
       borderColor: '#6a1b9a', // Cambia esto al color deseado para el hover
@@ -429,7 +429,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
 
                       <Grid item xs={12} sm={4} justifyContent="flex-end">
                         <Box
-                          pr={3}
+                          pr={1}
                           sx={{
                             pt: `${theme.spacing(1)}`,
                             pb: { xs: 1, md: 0 }
@@ -448,21 +448,21 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                         sm={5}
                         md={3}
                       >
-                      <FormControl
-  fullWidth
-  variant="outlined"
->
-  <TextField
-    type="number"
-    size="small"
-    value={quantity}
-    onChange={handleInputChange}
-    InputLabelProps={{
-      shrink: true,
-    }}
-   
-  />
-</FormControl>
+                        <FormControl
+                          fullWidth
+                          variant="outlined"
+                        >
+                          <TextField
+                            type="number"
+                            size="small"
+                            value={quantity}
+                            onChange={handleInputChange}
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+
+                          />
+                        </FormControl>
                       </Grid>
                     </Grid>
                   </Box> :
@@ -473,9 +473,9 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       }}
                     />
                     <br></br>
-                    <Box display="flex" justifyContent="space-around" mb={3}>
-                      <Link to='/cart'><Button variant="outlined" style={buttonStyle}>Terminar compra</Button></Link>
-                      <Link to='/'><Button variant="outlined" style={buttonStyle}>Seguir Comprando</Button></Link>
+                    <Box display="flex" justifyContent="center" mb={1}>
+                      <Link to='/cart'><Button variant="outlined" style={{ ...buttonStyle, marginRight: '50px' }}>Terminar compra</Button></Link>
+                      <Link to='/'><Button variant="outlined" style={{ ...buttonStyle }}>Seguir Comprando</Button></Link>
                     </Box>
                   </>}
                 <Divider
@@ -483,49 +483,49 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                     mb: 3
                   }}
                 />
-               <Box
-  display="flex"
-  alignItems="center"
-  justifyContent="space-between"
-  flexDirection={{ xs: 'column', md: 'row' }}
->
-  <Box mb={{ xs: 2, md: 0 }} textAlign={{ xs: 'center', md: 'left' }}>
-    <Typography component="div" variant="caption" gutterBottom>
-      {t('Precio')}
-    </Typography>
-    <Typography
-      component="span"
-      variant={product.price !== 0 ? 'h4' : 'h3'}
-      sx={{
-        pr: 2,
-        textDecorationLine: product.price !== 0 ? 'line-through' : '',
-      }}
-    >
-      ${numeral(product.price).format(`0,00.0`)}
-    </Typography>
-    {product.price !== 0 && (
-      <Typography component="span" variant="h3">
-        <Text color="error">
-          ${numeral(product.price).format(`0,0.00`)}
-        </Text>
-      </Typography>
-    )}
-  </Box>
-  <Box>
-  {!isInCart(product.id) && (
-    <Button
-      startIcon={<AddShoppingCartTwoToneIcon />}
-      variant="contained"
-      style={{ backgroundColor: '#6a1b9a', padding:'12px',borderRadius:"10px", color:"white"}}
-      disabled={quantity === 0}
-      onClick={() => handleCounter()}
-      size="large"
-    >
-      {t('Agregar al carrito')}
-    </Button>
-  )}
-</Box>
-</Box>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  flexDirection={{ xs: 'column', md: 'row' }}
+                >
+                  <Box mb={{ xs: 2, md: 0 }} textAlign={{ xs: 'center', md: 'left' }}>
+                    <Typography component="div" variant="caption" gutterBottom>
+                      {t('Precio')}
+                    </Typography>
+                    <Typography
+                      component="span"
+                      variant={product.price !== 0 ? 'h4' : 'h3'}
+                      sx={{
+                        pr: 2,
+                        textDecorationLine: product.price !== 0 ? 'line-through' : '',
+                      }}
+                    >
+                      ${numeral(product.price).format(`0,00.0`)}
+                    </Typography>
+                    {product.price !== 0 && (
+                      <Typography component="span" variant="h3">
+                        <Text color="error">
+                          ${numeral(product.price).format(`0,0.00`)}
+                        </Text>
+                      </Typography>
+                    )}
+                  </Box>
+                  <Box>
+                    {!isInCart(product.id) && (
+                      <Button
+                        startIcon={<AddShoppingCartTwoToneIcon />}
+                        variant="contained"
+                        style={{ backgroundColor: '#6a1b9a', padding: '12px', borderRadius: "10px", color: "white" }}
+                        disabled={quantity === 0}
+                        onClick={() => handleCounter()}
+                        size="large"
+                      >
+                        {t('Agregar al carrito')}
+                      </Button>
+                    )}
+                  </Box>
+                </Box>
                 <Divider
                   sx={{
                     my: 3

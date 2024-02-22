@@ -17,45 +17,24 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     // Desarrollar lógica
    
     const buttonStyle = {
-   /*    backgroundColor: "#6a1b9a",
-      color: 'white', */
-      padding: '2px',
-      fontSize: '1.5rem', // Ajusta el tamaño de la fuente
-      width: '100%', // Ajusta el ancho del botón
-      height: '50px', // Ajusta la altura del botón
-      borderRadius: '10px', 
-      fontSize: '12px',
-      display: 'flex', // Habilita el diseño flexible para el botón
-      justifyContent: 'center', // Centra horizontalmente el contenido del botón
-      alignItems: 'center', 
-      border: 'solid 3px red'
+      fontSize: '1.5rem',
+      width: '30%',
+      height: '50px',
+      borderRadius: '10px',
+    };
     
-    };
     const cellStyles = {
-      padding: '0px', // Elimina el relleno interno
+      padding: '0px',
       textAlign: 'center',
-  
-
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  display: 'flex', // Habilita el diseño flexible para la celda
-  justifyContent: 'center', // Centra horizontalmente el contenido de la celda
-  alignItems: 'center', // Centra verticalmente el contenido de la celda
-   
-    };
-
-    const cellStyles1 = {
-      padding: '4px',
-   
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-   
     };
+
+    
     const centeredButtonStyle = {
       fontSize: '10px',
       display: 'flex',
@@ -102,26 +81,29 @@ export function ItemCounter({ stock, cantidad,  onAdd ,setQuantity}) {
     } */
     const classes = useStyles();
     return (
-    <div style={{border:'none'}}>
-         <Container maxWidth="lg">
-      <TableContainer  style={tableStyles}>
-        <Table >
-     
-          <TableBody>
-            <TableRow  style={rowStyles}>
-              <TableCell   style={{...cellStyles,width: '60%'}}> <Button size="medium"  style={ buttonStyle}  disabled={ cantidad <= 0} onClick={decrement}>-</Button></TableCell>
-              <TableCell  style={{...cellStyles,width:'60%'}}>     {cantidad}</TableCell>
-              <TableCell  style={{...cellStyles,width: '60%'}}> <Button size="medium" style={ buttonStyle} onClick={increment}>+</Button></TableCell>
-            </TableRow>
-            <TableRow >
-<TableCell style={{ overflowX: 'hidden', borderBottom: 'none' }}/>
-              <TableCell  colSpan={3} style={{ ...cellStyles1, justifyContent: 'center',overflowX: 'hidden' }}> <Button  style={centeredButtonStyle} disabled={cantidad === 0}  onClick={onAdd}>Añadir</Button></TableCell>
-           
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
-      
-    </div>)
+      <div style={{ border: 'none' }}>
+        <Container maxWidth="lg">
+          <TableContainer style={tableStyles}>
+            <Table>
+              <TableBody>
+                <TableRow style={rowStyles}>
+                  <TableCell style={{ ...cellStyles, width: '30%' }}>
+                    <Button size="medium" style={buttonStyle} disabled={cantidad <= 0} onClick={decrement}>-</Button>
+                  </TableCell>
+                  <TableCell style={{ ...cellStyles, width: '30%' }}>{cantidad}</TableCell>
+                  <TableCell style={{ ...cellStyles, width: '30%' }}>
+                    <Button size="medium" style={buttonStyle} onClick={increment}>+</Button>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell style={{ borderBottom: 'none' }} colSpan={3}>
+                    <Button style={centeredButtonStyle} disabled={cantidad === 0} onClick={onAdd}>Añadir</Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Container>
+      </div>
+    );
 }
