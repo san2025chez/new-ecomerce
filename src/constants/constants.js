@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://productosnutricionales.online/api'
+const SERVER_URL = 'https://adasoft.ar/api'
 //const SERVER_URL = 'http://localhost:4000/api'
 
 export const APIs = {
