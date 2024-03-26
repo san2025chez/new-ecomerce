@@ -94,46 +94,50 @@ const NavBar = () => {
 
   return (
 
-    <AppBar position="static" style={{ backgroundColor: "#6a1b9a" }}>
+    <AppBar position="static" style={{ backgroundColor: "#6a1b9a", left: isMobile ? '0px' : '', paddingLeft: isMobile ? '0px' : '' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        {!isMobile && (
-           <Link to="/">
-                  <IconButton
-                    edge="start"
-                    size="large"
-                    color="inherit"
-                    // Agrega aquí los eventos o funciones que desees asociar con el icono
-                  >
-                    {/* Cambia 'ruta-de-tu-imagen' por la ruta real de tu imagen */}
-                    <img
-                      src="/producto-natural.png"
-                      alt="Imagen"
-                      style={{
-                        borderRadius: '50%',
-                        width: '50px', // Ajusta el ancho según tus necesidades
-                        height: '50px', // Ajusta la altura según tus necesidades
-                      }}
-                    />
-                  </IconButton>
-                  </Link>
-        )}
+          {!isMobile && (
+            <Link to="/">
+              <IconButton
+                edge="start"
+                size="large"
+                color="inherit"
+              // Agrega aquí los eventos o funciones que desees asociar con el icono
+              >
+                {/* Cambia 'ruta-de-tu-imagen' por la ruta real de tu imagen */}
+                <img
+                  src="/producto-natural.png"
+                  alt="Imagen"
+                  style={{
+                    borderRadius: '50%',
+                    width: '50px', // Ajusta el ancho según tus necesidades
+                    height: '50px', // Ajusta la altura según tus necesidades
+                  }}
+                />
+              </IconButton>
+            </Link>
+          )}
           {isMobile ? (
-         
+
             <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-           <Tooltip title="Inicio">
-           <Link to="/">
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginLeft: '0px',
+                paddingLeft: '0px',
+                top: '0px',
+                left:'0px'
+              }}
+            >
+              <Tooltip title="Inicio">
+                <Link to="/">
                   <IconButton
                     edge="start"
                     size="large"
                     color="inherit"
-                    // Agrega aquí los eventos o funciones que desees asociar con el icono
+                  // Agrega aquí los eventos o funciones que desees asociar con el icono
                   >
                     {/* Cambia 'ruta-de-tu-imagen' por la ruta real de tu imagen */}
                     <img
@@ -146,113 +150,116 @@ const NavBar = () => {
                       }}
                     />
                   </IconButton>
-                  </Link>
-                </Tooltip>
-           <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-   <div style={{ display: 'flex', alignItems: 'center',position: 'relative' }}>
-            <InputBase
-              placeholder="Buscar..."
-              inputProps={{ 'aria-label': 'search' }}
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              style={{
-                backgroundColor: 'white',
-                borderRadius: '4px',
-                minWidth: '150px', // Ancho mínimo
-    maxWidth: '250px', // Ancho máximo
-                padding: '4px 8px 4px 32px',  // Agregamos espacio a la izquierda para acomodar el icono.
-                color: 'black',
-              }}
-            />
-            <SearchIcon
-              style={{
-                color: 'gray',
-                position: 'absolute',
-                left: '8px',  // Ajusta la posición izquierda según sea necesario.
-                top: '50%',   // Alinea verticalmente en el centro.
-                transform: 'translateY(-50%)',  // Alinea verticalmente en el centro.
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                const enterKeyPressEvent = { key: 'Enter', keyCode: 13 };
-                handleKeyPress(enterKeyPressEvent);
-              }}
-            />
-          </div>
-          <Box sx={{ display: 'flex', alignItems: 'left', textAlign:'left'}}>
-
-              <IconButton
-                edge="start"
-                size="small"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-                
-             
-              >
-                <MenuIcon />
-
-              </IconButton>
-              <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-              }}
-
-              PaperProps={{
-                style: {
-                  backgroundColor: 'rgba(106, 27, 154, 0.8)', // Cambia el color de fondo a rojo
-                  padding: '1rem',
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%', // Ajusta la altura para ocupar toda la pantalla
-                },
-              }}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((item) => (
-                <Link to={`/categoria/${item.name}`}><MenuItem key={item.id} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{item.name}</Typography>
-                </MenuItem></Link>
-              ))}
-            </Menu>
-              <Tooltip title="Open settings">
-                <CartWidget fontSize="small" />
+                </Link>
               </Tooltip>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                  <InputBase
+                    placeholder="Buscar..."
+                    inputProps={{ 'aria-label': 'search' }}
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    style={{
+                      backgroundColor: 'white',
+                      borderRadius: '4px',
+                      minWidth: '150px', // Ancho mínimo
+                      maxWidth: '250px', // Ancho máximo
+                      padding: '4px 8px 4px 32px',  // Agregamos espacio a la izquierda para acomodar el icono.
+                      color: 'black',
+                    }}
+                  />
+                  <SearchIcon
+                    style={{
+                      color: 'gray',
+                      position: 'absolute',
+                      left: '8px',  // Ajusta la posición izquierda según sea necesario.
+                      top: '50%',   // Alinea verticalmente en el centro.
+                      transform: 'translateY(-50%)',  // Alinea verticalmente en el centro.
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      const enterKeyPressEvent = { key: 'Enter', keyCode: 13 };
+                      handleKeyPress(enterKeyPressEvent);
+                    }}
+                  />
+                </div>
+                <Box sx={{ display: 'flex', alignItems: 'left', textAlign: 'left' }}>
+
+                  <IconButton
+                    edge="start"
+                    size="small"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="inherit"
+
+
+                  >
+                    <MenuIcon />
+
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'center',
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'center',
+                    }}
+                    style={{
+                      position: 'fixed',
+                    
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo semi-transparente
+                    }}
+
+                    PaperProps={{
+                      style: {
+                        backgroundColor: 'rgba(106, 27, 154, 0.8)', // Cambia el color de fondo a rojo
+                        padding: '1rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center', // Ajusta la altura para ocupar toda la pantalla
+                        width: '100%', // Asegura que el menú ocupe todo el ancho
+                        height: '100%', // Asegura que el menú ocupe toda la altura
+                      },
+                    }}
+                    sx={{
+                      display: { xs: 'block', md: 'none' ,top:'0px'},
+                    }}
+                  >
+                    {pages.map((item) => (
+                      <Link to={`/categoria/${item.name}`}><MenuItem key={item.id} onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center" className="mobile-menu-item">{item.name}</Typography>
+                      </MenuItem></Link>
+                    ))}
+                  </Menu>
+                  <Tooltip title="Open settings">
+                    <CartWidget fontSize="small" />
+                  </Tooltip>
+                </Box>
               </Box>
-          </Box>
-          </Box>
-      
-          ): (
+            </Box>
+
+          ) : (
 
 
 
 
-         
-              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((item, index) => (
                 <Button
                   key={item.id}
@@ -263,51 +270,51 @@ const NavBar = () => {
                 </Button>
               ))}
             </Box>
-     )}
+          )}
 
 
-        
-      
-         
+
+
+
 
           {!isMobile && (
 
             <>    <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', position: 'relative' }}>
-            <InputBase
-              placeholder="Buscar..."
-              inputProps={{ 'aria-label': 'search' }}
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              style={{
-                backgroundColor: 'white',
-                borderRadius: '4px',
-                padding: '4px 8px 4px 32px',  // Agregamos espacio a la izquierda para acomodar el icono.
-                color: 'black',
-              }}
-            />
-            <SearchIcon
-              style={{
-                color: 'gray',
-                position: 'absolute',
-                left: '8px',  // Ajusta la posición izquierda según sea necesario.
-                top: '50%',   // Alinea verticalmente en el centro.
-                transform: 'translateY(-50%)',  // Alinea verticalmente en el centro.
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                const enterKeyPressEvent = { key: 'Enter', keyCode: 13 };
-                handleKeyPress(enterKeyPressEvent);
-              }}
-            />
-          </div>
-          <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <CartWidget />
-              </Tooltip>
-            </Box>
+              <InputBase
+                placeholder="Buscar..."
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: '4px',
+                  padding: '4px 8px 4px 32px',  // Agregamos espacio a la izquierda para acomodar el icono.
+                  color: 'black',
+                }}
+              />
+              <SearchIcon
+                style={{
+                  color: 'gray',
+                  position: 'absolute',
+                  left: '8px',  // Ajusta la posición izquierda según sea necesario.
+                  top: '50%',   // Alinea verticalmente en el centro.
+                  transform: 'translateY(-50%)',  // Alinea verticalmente en el centro.
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  const enterKeyPressEvent = { key: 'Enter', keyCode: 13 };
+                  handleKeyPress(enterKeyPressEvent);
+                }}
+              />
+            </div>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <CartWidget />
+                </Tooltip>
+              </Box>
             </>
-         
+
           )}
 
 

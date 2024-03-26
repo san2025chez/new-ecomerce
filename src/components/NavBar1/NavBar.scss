@@ -2,3 +2,16 @@ a {
   color: #e2e6eef5 !important;
   text-decoration: none !important;
 }
+.mobile-menu-item {
+  color: white !important;
+}
+
+div.MuiPaper-root:nth-child(3){
+  top: 0 !important;
+  left: 0 !important; right: 0 !important;
+}
+
+.css-1n58am6-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  min-width: unset !important;
+  max-width: unset !important;
+}

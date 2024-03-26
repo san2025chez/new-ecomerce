@@ -167,8 +167,8 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
   const { cart, addItem, isInCart, handleQuantity } = useContext(CartCntext2);
   const [quantity, setQuantity] = useState(1)
   /* const [thumbsSwiper, setThumbsSwiper] = useState<typeof Swiper | null>(null); */
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-
+/*   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+ */
 
   /* const [thumbsSwiper, setThumbsSwiper]: [Swiper: any | null, Dispatch<SetStateAction<null>>] = useState(null); */
 
@@ -317,7 +317,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       loop
                       autoHeight
                       spaceBetween={10}
-                      thumbs={{ swiper: thumbsSwiper }}
+                     /*  thumbs={{ swiper: thumbsSwiper }} */
                       modules={[FreeMode, Navigation, Thumbs]}
                       navigation={{
                         nextEl: '.MuiSwipe-right',
@@ -343,7 +343,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
 
                   </Box>
 
-                  <Swiper
+                 {/*  <Swiper
                     onSwiper={setThumbsSwiper}
                     loop
 
@@ -386,7 +386,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       );
                     })}
 
-                  </Swiper>
+                  </Swiper> */}
                 </SwiperWrapper>
               </Box>
             </Grid>
