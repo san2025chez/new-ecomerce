@@ -1,9 +1,9 @@
-import { useEffect, useState ,React} from "react";
+import React, { useEffect, useState } from "react";
 import { ItemList } from "../components/ItemList/ItemList.js";
 import 'firebase/firestore'
 import Spinner from "../components/Spinner/Spinner";
 import "./Home.scss";
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +14,6 @@ import Item from '../components/carousel/Item';
 const useStyles = makeStyles((theme) => ({
   container: {
     width: '100%', // Ancho completo
- // Espaciado por defecto
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       margin:'0%',
@@ -27,61 +26,42 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [dataLoaded, setDataLoaded] = useState(false); // Nuevo estado para controlar si los datos ya se han cargado
 
-  const {Id, name} = useParams();
+  const { Id, name } = useParams();
   const navigate = useNavigate()
 
-console.log("el di de categoria", Id);
-console.log("NAME",name);
+  console.log("el di de categoria", Id);
+  console.log("NAME", name);
 
   useEffect(() => {
-  /*   const rawResponse =  axios.get(APIs.PRODUCTS)
-    .then(response => {
-      console.log("data obtenida",response.data);
-      setItems(response.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    console.log(rawResponse); */
-//const db = getFirestore();
-
-
-
-    //const itemCollection = collection(db,"productos");
- 
-
-
-    if (Id) { 
-      const rawResponse = axios.get(APIs.CATEGORY + '/' + Id)
-      .then(response =>{
-        console.log('rawResponse.data ONE ID', response.data[0].product);
-        setItems(response?.data[0]?.product);
-        setLoading(false)
-      })
-      .catch(error => {
-        console.error(error);
-      });
-       
-  
-  } else {
-
-      console.log("ingreso aqui");
-      const rawResponse =  axios.get(APIs.PRODUCTS)
-      .then(response => {
-        setItems(response.data);
-        setLoading(false)
-      } )
-      .catch(error => {
-        console.error(error);
-      });
+    if (!dataLoaded) { // Verificar si los datos ya se han cargado antes de hacer otra llamada
+      if (Id) {
+        axios.get(APIs.CATEGORY + '/' + Id)
+          .then(response => {
+            console.log('rawResponse.data ONE ID', response.data[0].product);
+            setItems(response?.data[0]?.product);
+            setLoading(false);
+            setDataLoaded(true); // Marcar los datos como cargados
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      } else {
+        axios.get(APIs.PRODUCTS)
+          .then(response => {
+            setItems(response.data);
+            setLoading(false);
+            setDataLoaded(true); // Marcar los datos como cargados
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
     }
-  }, [Id]);
+  }, [Id, dataLoaded]);
 
-
-
-
-console.log("ITEMSSS FILTRADO todos los productos ",items);
+  console.log("ITEMSSS FILTRADO todos los productos ", items);
   const classes = useStyles();
 
   return (
@@ -91,7 +71,7 @@ console.log("ITEMSSS FILTRADO todos los productos ",items);
           <Spinner />
         </div>
       ) : (
-        <div  className={classes.container}>
+        <div className={classes.container}>
           <>
             <ItemList items={items} />
           </>
