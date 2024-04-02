@@ -31,15 +31,13 @@ const Home = () => {
   const { Id, name } = useParams();
   const navigate = useNavigate()
 
-  console.log("el di de categoria", Id);
-  console.log("NAME", name);
+
 
   useEffect(() => {
     if (!dataLoaded) { // Verificar si los datos ya se han cargado antes de hacer otra llamada
       if (Id) {
         axios.get(APIs.CATEGORY + '/' + Id)
           .then(response => {
-            console.log('rawResponse.data ONE ID', response.data[0].product);
             setItems(response?.data[0]?.product);
             setLoading(false);
             setDataLoaded(true); // Marcar los datos como cargados
