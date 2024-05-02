@@ -38,7 +38,7 @@ export const Cart = () => {
     let productosParaWsp = cart.map(producto => `- $${producto.name}, $${producto.price}`);
     let productosConFormatoAmigable = productosParaWsp.join('\n');
     productosConFormatoAmigable += '\nTOTAL $' + totalCompra(); // Agrega el total al final del mensaje
-    const whatsappMessage = encodeURIComponent(`Hola, me gustaría adquirir los siguientes productos y realizar el pago correspondiente :\n${productosConFormatoAmigable}`);
+    const whatsappMessage = encodeURIComponent(`Hola, me gustaría adquirir los siguientes productos y quiero realizar el pago correspondiente :\n${productosConFormatoAmigable}`);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=+543885970486&text=${whatsappMessage}`;
     
     window.location.href = whatsappUrl;
