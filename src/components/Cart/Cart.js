@@ -37,8 +37,11 @@ export const Cart = () => {
   function finalizarCompra() {
     let productosParaWsp = cart.map(producto => `- $${producto.name}, $${producto.price}`);
     let productosConFormatoAmigable = productosParaWsp.join('\n');
-    productosConFormatoAmigable += ' ' + 'TOTAL' + ' ' + totalCompra();
-    window.location.href = 'https://api.whatsapp.com/send?phone=3884299868&text=Me%20interesan%20los%20siguientes%20productos' + ' ' + JSON.stringify(productosConFormatoAmigable);
+    productosConFormatoAmigable += '\nTOTAL ' + totalCompra(); // Agrega el total al final del mensaje
+    const whatsappMessage = encodeURIComponent(`Me interesan los siguientes productos:\n${productosConFormatoAmigable}`);
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=3885970486&text=${whatsappMessage}`;
+    
+    window.location.href = whatsappUrl;
   }
 
   // Calcular el total de los precios de los productos
