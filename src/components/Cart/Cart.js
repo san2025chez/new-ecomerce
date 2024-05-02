@@ -39,7 +39,7 @@ export const Cart = () => {
     let productosConFormatoAmigable = productosParaWsp.join('\n');
     productosConFormatoAmigable += '\nTOTAL ' + totalCompra(); // Agrega el total al final del mensaje
     const whatsappMessage = encodeURIComponent(`Me interesan los siguientes productos:\n${productosConFormatoAmigable}`);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=3885970486&text=${whatsappMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+543885970486&text=${whatsappMessage}`;
     
     window.location.href = whatsappUrl;
   }
