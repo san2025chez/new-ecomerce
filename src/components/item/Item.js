@@ -9,6 +9,7 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
+import numeral from 'numeral';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -102,23 +103,7 @@ const Item =({product}) => {
        
 
       <Card className={classes.card}  >
-      <CardHeader
-    
-    disableTypography
-        title={ <Typography style={{ marginBottom: '0.1rem' }}>{product.name}</Typography>}
-      /*   subheader={ <Typography
-          className={classes.action}
-          variant='h6'
-          color='textSecondary'
-          style={{ marginTop: '0.1rem' }}
-          sx={{ fontSize: { xs: '1rem', md: '1.5rem' } }}>
-              {accounting.formatMoney(price)}
-        
-          </Typography>} */
-
-
-    
-      />
+ 
        <Link to={`/detalle/${ product.id }`}> 
        {
         product.images[0].url ?
@@ -137,31 +122,22 @@ const Item =({product}) => {
     />
 
        }</Link>
-       <Link to={`/detalle/${ product.id }`}> <CardContent>
-      {/*   <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography> */}
-      </CardContent></Link>
-     {/*  <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <AddShoppingCart fontSize='large'/>
-        </IconButton>
-        
-        {Array(4)
-        .fill()
-        .map((_,i)=> (
-            <p>&#11088;</p>
-        ))}
-        <IconButton
-          className={clsx(classes.expand, { [classes.expandOpen]: expanded,   })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions> */}
+       <Link to={`/detalle/${ product.id }`}> </Link>
+      <CardHeader
+    
+    disableTypography
+    
+    title={<Typography variant="body2" color="black">{product.name}</Typography>}
+    subheader={
+      <>
+        <div style={{ marginBottom: '0.5rem' }}></div> {/* Espacio entre el título y el subencabezado */}
+        <Typography style={{ marginBottom: '0.1rem' }}>
+          ${numeral(product.price).format(`0.0,0`)}
+        </Typography>
+      </>
+    }       
+
+      />
 
     </Card>
 
