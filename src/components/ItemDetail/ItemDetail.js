@@ -170,7 +170,7 @@ export const ItemDetail = ({ product }) => {
 
                   }
                 </div>
-                <div className='item__element'>
+                <div className='item__element' style={{ textAlign: 'justify' }}>
                   <Typography variant="h7" className="custom-font">
 
                     <p className="item__descrip">{product.descriptions} </p>

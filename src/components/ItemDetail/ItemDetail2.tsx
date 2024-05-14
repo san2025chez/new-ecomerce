@@ -7,6 +7,7 @@ import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactNode } from 'react';
 import { SelectChangeEvent } from '@mui/material/Select';
+import './ItemDetail.scss'
 
 import Paper from '@mui/material/Paper';
 import './ItemDetail.scss'
@@ -327,7 +328,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       {product.images.map(({ id, url }) => {
                         return (
                           <SwiperSlide key={id}>
-                            <img src={url} alt="..." style={{ width: '100%', height: 'auto', maxWidth: '70%', maxHeight: '400px' }} />
+                            <img src={url} alt="..." style={{ width: '100%', height: 'auto', maxWidth: '50%', maxHeight: '350px' }} />
                           </SwiperSlide>
                         );
                       })}
@@ -407,7 +408,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                 >
                   {product.name}
                 </Typography>
-                <Typography variant="subtitle2" mb={3}>
+                <Typography variant="subtitle2" mb={3} className="justified-text">
                   <div
                     dangerouslySetInnerHTML={{ __html: product.descriptions }}
                   />
@@ -495,16 +496,17 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                     </Typography>
                     <Typography
                       component="span"
-                      variant={product.price !== 0 ? 'h4' : 'h3'}
+                      variant={product.price !== 0 ? 'h6' : 'h4'}
                       sx={{
                         pr: 2,
                         textDecorationLine: product.price !== 0 ? 'line-through' : '',
+                        fontSize: '0.2em', 
                       }}
                     >
                       ${numeral(product.price).format(`0,00.0`)}
                     </Typography>
                     {product.price !== 0 && (
-                      <Typography component="span" variant="h3">
+                      <Typography component="span" variant="h4">
                         <Text color="error">
                           ${numeral(product.price).format(`0,0.00`)}
                         </Text>
