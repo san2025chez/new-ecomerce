@@ -267,7 +267,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
     setQuantity(Math.max(inputValue, 1)); // Asegura que la cantidad sea al menos 0
   };
 
-
+  const isMobile = window.innerWidth <= 768;
 
   return (
 
@@ -328,7 +328,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       {product.images.map(({ id, url }) => {
                         return (
                           <SwiperSlide key={id}>
-                            <img src={url} alt="..." style={{ width: '100%', height: 'auto', maxWidth: '50%', maxHeight: '350px' }} />
+                            <img src={url} alt="..." style={{ width: '100%', height: 'auto', maxWidth: isMobile ? '60%' : '50%', maxHeight: isMobile ? '360px' : '350px',}} />
                           </SwiperSlide>
                         );
                       })}
@@ -500,7 +500,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       sx={{
                         pr: 2,
                         textDecorationLine: product.price !== 0 ? 'line-through' : '',
-                        fontSize: '0.2em', 
+                        fontSize: '0.9em', 
                       }}
                     >
                       ${numeral(product.price).format(`0,00.0`)}
