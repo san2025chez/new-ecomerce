@@ -34,12 +34,13 @@ const mock = [{
 ]
 const useStyles = makeStyles((theme) => ({
   stylegrid: {
-    marginBottom: '100px',
+    marginBottom: '70px',
     [theme.breakpoints.down('sm')]: {
       margin: '0px',
+      paddinTop: 0
     },
     [theme.breakpoints.down('xs')]: {
-      margin: '00px',
+      margin: '0px',
     }
   }
 }))

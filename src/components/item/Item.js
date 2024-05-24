@@ -58,17 +58,19 @@ const useStyles = makeStyles((theme) => ({
   card: {
     [theme.breakpoints.down('sm')]: {
       width: 200, // Reducimos el ancho para dispositivos pequeños
-      height: 250, // Aumentamos la altura para dispositivos pequeños
+      height: 260, // Aumentamos la altura para dispositivos pequeños
+      paddingTop: 15
     },
     [theme.breakpoints.down('xs')]: {
       width: 180,
-      height: 250,
+      height: 260,
+      paddingTop: 15
     },
     margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 8,
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
   },
 }));
@@ -84,11 +86,11 @@ const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
     return(
     
         
-       
+      <Link to={`/detalle/${ product.id }`}> 
 
       <Card className={classes.card}  >
  
-       <Link to={`/detalle/${ product.id }`}> 
+      
        {
         product.images[0].url ?
         <CardMedia
@@ -105,8 +107,8 @@ const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
       title="Paella dish"
     />
 
-       }</Link>
-       <Link to={`/detalle/${ product.id }`}> </Link>
+       }
+    
       <CardHeader
     
     disableTypography
@@ -124,6 +126,7 @@ const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
       />
 
     </Card>
+    </Link>
 
 
   
