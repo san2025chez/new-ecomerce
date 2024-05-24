@@ -173,7 +173,8 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
 
   /* const [thumbsSwiper, setThumbsSwiper]: [Swiper: any | null, Dispatch<SetStateAction<null>>] = useState(null); */
 
-
+   // Formatear el precio con puntos como separadores de miles
+   const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
 
   const cartCount = (quantity: Number) => {
     if (quantity) {
@@ -503,12 +504,12 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                         fontSize: '0.9em', 
                       }}
                     >
-                      ${numeral(product.price).format(`0,00.0`)}
+                    {formattedPrice}
                     </Typography>
                     {product.price !== 0 && (
                       <Typography component="span" variant="h4">
                         <Text color="error">
-                          ${numeral(product.price).format(`0,0.00`)}
+                        {formattedPrice}
                         </Text>
                       </Typography>
                     )}

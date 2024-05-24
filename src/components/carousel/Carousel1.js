@@ -10,7 +10,7 @@ import { Divider } from '@material-ui/core'
 import Home from '../../Home/Home';
 import omni from '../assets/omni.PNG'
 import omni1 from "../assets/omni.jpeg";
-import cocoz from "../assets/cocozhi.jpg"
+
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -45,8 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 function Carousel1() {
 
-  console.log("imagennnn", mock[0].imagen)
-  const classes = useStyles();
+   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 

@@ -26,28 +26,18 @@ import accounting from'accounting'
 import './item.scss'
 
 const useStyles = makeStyles((theme) => ({
- 
   root: {
     maxWidth: 345,
-    backgroundColor: 'white', //[500],
-
-    
+    backgroundColor: 'white',
   },
-  action:{
-      marginTop:"1rem",
-
+  action: {
+    marginTop: "1rem",
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
     height: 150,
-    width:150,
-
-
-
-
-
- 
+    width: 150,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -62,38 +52,32 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: 'white',
   },
-  mimargen:{
+  mimargen: {
     marginTop: "3rem",
-    
- 
   },
   card: {
     [theme.breakpoints.down('sm')]: {
-      width: 180,
-      height:260,
+      width: 200, // Reducimos el ancho para dispositivos pequeños
+      height: 250, // Aumentamos la altura para dispositivos pequeños
     },
     [theme.breakpoints.down('xs')]: {
       width: 180,
-      height:260,
-    
+      height: 250,
     },
- 
-    margin:'auto',
+    margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-
-    borderRadius: 0, // Configuramos el radio del borde a 0 para que sea cuadrado
-   // boxShadow: 'none', // Esto quitará la sombr
- 
+    borderRadius: 10,
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
   },
-
 }));
 const Item =({product}) => {
     
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-
+   // Formatear el precio con puntos como separadores de miles
+const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
@@ -132,7 +116,7 @@ const Item =({product}) => {
       <>
         <div style={{ marginBottom: '0.5rem' }}></div> {/* Espacio entre el título y el subencabezado */}
         <Typography style={{ marginBottom: '0.1rem' }}>
-          ${numeral(product.price).format(`0.0,0`)}
+          {formattedPrice}
         </Typography>
       </>
     }       
