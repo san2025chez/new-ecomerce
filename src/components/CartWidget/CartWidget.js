@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "none",
     },
     button: {
-      marginLeft: theme.spacing(2),
+     /*  marginLeft: theme.spacing(2), */
+     marginRight:0,
+     paddingRight:0 
       
     },
     

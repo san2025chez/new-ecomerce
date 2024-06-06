@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { ItemList } from "../components/ItemList/ItemList.js";
-import 'firebase/firestore'
 import Spinner from "../components/Spinner/Spinner";
 import "./Home.scss";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios';
 import { APIs } from "../constants/constants.js";
-import Item from '../components/carousel/Item';
+import { Category } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: '100%', // Ancho completo
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
-      margin:'0%',
-      padding:'0%',
-      padding: theme.spacing(1), // Espaciado para dispositivos móviles
+      margin: '0%',
+      padding: '0%',
+      padding: theme.spacing(1),
     },
   },
 }));
@@ -26,41 +23,51 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [dataLoaded, setDataLoaded] = useState(false); // Nuevo estado para controlar si los datos ya se han cargado
+  const [dataLoaded, setDataLoaded] = useState(false);
 
-  const { Id, name } = useParams();
-  const navigate = useNavigate()
-
-
-
-  useEffect(() => {
-    if (!dataLoaded) { // Verificar si los datos ya se han cargado antes de hacer otra llamada
-      if (Id) {
-        axios.get(APIs.CATEGORY + '/' + Id)
-          .then(response => {
-            setItems(response?.data[0]?.product);
-            setLoading(false);
-            setDataLoaded(true); // Marcar los datos como cargados
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      } else {
-        axios.get(APIs.PRODUCTS)
-          .then(response => {
-            setItems(response.data);
-            setLoading(false);
-            setDataLoaded(true); // Marcar los datos como cargados
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }
-    }
-  }, [Id, dataLoaded]);
-
-  console.log("ITEMSSS FILTRADO todos los productos ", items);
+  const { categoryName, subcategoryName } = useParams();
   const classes = useStyles();
+console.log("name cat",categoryName);
+console.log("name sub",subcategoryName);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        let response;
+        if (categoryName && subcategoryName) {
+          console.log("ingreso al primer");
+          const categoryResponse = await axios.get(`${APIs.CATEGORY}`);
+          console.log("trae",categoryResponse.data);
+          const categoryId = categoryResponse.data.id;
+          console.log("veo ruta", `${APIs.SUBCATEGORY}/${subcategoryName}`);
+          response = await axios.get(`${APIs.SUBCATEGORY}/${subcategoryName}`);
+          console.log("subcategory",response.data);
+          setItems(response.data.product)
+        
+        } else if (categoryName) {
+          console.log("ingreso al segundo");
+
+          response = await axios.get(`${APIs.CATEGORY}/${categoryName}`);
+        } else {
+          console.log("ingreso a todos");
+          response = await axios.get(APIs.PRODUCTS);
+          console.log("datos traido de back en home ",response.data);
+          setItems(response.data);
+        }
+
+     
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      } finally {
+        setLoading(false);
+        setDataLoaded(true);
+      }
+    };
+
+    if (!dataLoaded) {
+      fetchData();
+    }
+  }, [categoryName, subcategoryName, dataLoaded]);
 
   return (
     <>
@@ -70,12 +77,11 @@ const Home = () => {
         </div>
       ) : (
         <div className={classes.container}>
-          <>
-            <ItemList items={items} />
-          </>
+          <ItemList items={items} />
         </div>
       )}
     </>
   );
 };
+
 export default Home;

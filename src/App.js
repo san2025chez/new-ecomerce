@@ -32,7 +32,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Carousel1 />} />
 
-            <Route exact path="/categoria/:Id" element={<Home />} />
+            {/* <Route exact path="/categoria/:Id" element={<Home />} /> */}
+            <Route exact path="/categoria/:categoryName/:subcategoryName" element={<Home />} />
+
 
             <Route exact path="/search/:name" element={<Search />} />
             <Route
