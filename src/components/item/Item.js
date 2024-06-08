@@ -26,36 +26,16 @@ import accounting from'accounting'
 import './item.scss'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-    backgroundColor: 'white',
-  },
-  action: {
-    marginTop: "1rem",
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-    height: 150,
-    width: 150,
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: 'white',
-  },
-  mimargen: {
-    marginTop: "3rem",
-  },
   card: {
+    width: 300,
+    height: 300, // Altura fija para todas las cards
+    margin: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    borderRadius: 8,
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+    overflow: 'hidden', // Asegura que el contenido no se desborde
     [theme.breakpoints.down('sm')]: {
       width: 200, // Reducimos el ancho para dispositivos pequeños
       height: 260, // Aumentamos la altura para dispositivos pequeños
@@ -66,12 +46,18 @@ const useStyles = makeStyles((theme) => ({
       height: 260,
       paddingTop: 15
     },
-    margin: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    borderRadius: 8,
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+  },
+  media: {
+    width: '60%',
+    height: '60%', // Porcentaje del tamaño de la card
+    objectFit: 'cover', // Ajusta la imagen para cubrir el contenedor sin distorsionarse
+  },
+  header: {
+    textAlign: 'center',
+    padding: '8px 16px',
+  },
+  price: {
+    marginBottom: '0.5rem',
   },
 }));
 const Item =({product}) => {

@@ -48,88 +48,91 @@ export const Cart = () => {
   const totalPrecios = cart.reduce((total, product) => total + parseFloat(product.price), 0);
 
   return (
-    <>
-      <Grid container justifyContent="center" style={{ marginTop: "20px", paddingBottom: "10px", minHeight: "50vh" }}>
-        <Card sx={{ minWidth: 275 }} container justifyContent="center">
-          <CardContent justifyContent="center">
+<>
+  <Grid container justifyContent="center" style={{ marginTop: "20px", paddingBottom: "10px", minHeight: "50vh" }}>
+    <Card sx={{ minWidth: 275 }} container justifyContent="center">
+      <CardContent justifyContent="center">
 
-            <div id="CartList" className="cart container">
-              {!isMobile &&
-                <div className="cart__titulos container">
-                  <h6 className="cart__titulos__text">Producto</h6>
-                  <h6 className="cart__titulos__text">Descripción</h6>
-                  <h6 className="cart__titulos__text">Cantidad</h6>
-                  <h6 className="cart__titulos__text">Precio</h6>
-                </div>}
-              <div>
-                {cart.map((product) => (
-                  <div key={product.id} className="container cart">
-                    <div className="cart__detail container">
-                      <div className="cart__img cart__items">
-                        <img
-                          src={product.images[0].url}
-                          alt={`img-${product.id}`}
-                          className="cart__img-imagen"
-                        />
-                      </div>
-                      <div className="cart__items">
-                        <h5 className="cart__item" style={{ fontSize: '13px' }}> {product.name} </h5>
-                      </div>
-                      <div className="cart__items">
-                        <CartCounter inicialValue={product.quantity} product={product} />
-                      </div>
-                      <div className="cart__items">
-                        <h6 className="cart__precio" style={{ fontSize: isMobile ? '11px' : '15px' }}> {product.price} </h6>
-                      </div>
-                      <div className="cart__items">
-                        <i
-                          className="far fa-trash-alt cart__eliminar"
-                          onClick={() => removeItem(product.id)}></i>
-                      </div>
-                    </div>
+        <div id="CartList" className="cart container">
+          {!isMobile &&
+            <div className="cart__titulos container">
+              <h6 className="cart__titulos__text">Producto</h6>
+              <h6 className="cart__titulos__text">Descripción</h6>
+              <h6 className="cart__titulos__text">Cantidad</h6>
+              <h6 className="cart__titulos__text">Precio</h6>
+            </div>}
+          <div>
+            {cart.map((product) => (
+              <div key={product.id} className="container cart">
+                <div className="cart__detail container">
+                  <div className="cart__img cart__items">
+                    <img
+                      src={product.images[0].url}
+                      alt={`img-${product.id}`}
+                      className="cart__img-imagen"
+                    />
                   </div>
-                ))}
+                  <div className="cart__items">
+                    <h5 className="cart__item" style={{ fontSize: '13px' }}> {product.name} </h5>
+                  </div>
+                  <div className="cart__items">
+                    <CartCounter inicialValue={product.quantity} product={product} />
+                  </div>
+                  <div className="cart__items">
+                    <h6 className="cart__precio" style={{ fontSize: isMobile ? '11px' : '15px' }}> {product.price} </h6>
+                  </div>
+                  <div className="cart__items">
+                    <i
+                      className="far fa-trash-alt cart__eliminar"
+                      onClick={() => removeItem(product.id)}></i>
+                  </div>
+                </div>
               </div>
-              <div className="container cart">
-                    <div className="cart__detail container">
-                      <div className="cart__img cart__items">
-              
-                      </div>
-                      <div className="cart__items">
-                        <h5 className="cart__item" style={{ fontSize: '13px' }}></h5>
-                      </div>
-                      <div className="cart__items">
-                  <h5>TOTAL</h5>
-                      </div>
-                      <div className="cart__items">
-                        <h6 className="cart__precio" style={{ fontWeight:'bold',fontSize: isMobile ? '14px' : '18px' }}> {totalCompra()} </h6>
-                      </div>
-                      <div className="cart__items">
-                      
-                      </div>
-                    </div>
-                  </div>
-            
+            ))}
+          </div>
+          <div className="container cart">
+            <div className="cart__detail container">
+              <div className="cart__img cart__items">
+
+              </div>
+              <div className="cart__items">
+                <h5 className="cart__item" style={{ fontSize: '13px' }}></h5>
+              </div>
+              <div className="cart__items">
+                <h5>TOTAL</h5>
+              </div>
+              <div className="cart__items">
+                <h6 className="cart__precio" style={{ fontWeight: 'bold', fontSize: isMobile ? '14px' : '18px' }}> {totalCompra()} </h6>
+              </div>
+              <div className="cart__items">
+
+              </div>
             </div>
+          </div>
 
-          </CardContent>
-     
-          <div className="cart__buyButton">
-                <Link to='/login'>
-                  <Button variant="outlined" style={buttonStyle}>
-                    PAGAR CON MERCADO PAGO 
-                  </Button>
-                </Link>
-              </div>
-              <div className="cart__buyButton">
-                <Button onClick={() => finalizarCompra()} variant="outlined" style={buttonStyle}>
-                  REALIZAR PEDIDO POR WHATSSAP
-                </Button>
-              </div>
-          
-         
-        </Card>
-      </Grid>
-    </>
+        </div>
+
+      </CardContent>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
+        <div className="cart__buyButton" style={{ width: '50%', marginBottom: '10px' }}>
+          <Link to='/login' style={{ textDecoration: 'none', width: '100%' }}>
+            <Button variant="outlined" style={{ ...buttonStyle, width: '100%' }}>
+              PAGAR CON MERCADO PAGO
+            </Button>
+          </Link>
+        </div>
+        <div className="cart__buyButton" style={{ width: '50%' }}>
+          <Button onClick={() => finalizarCompra()} variant="outlined" style={{ ...buttonStyle, width: '100%' }}>
+            PEDIR POR WHATSSAP
+          </Button>
+        </div>
+      </div>
+
+    </Card>
+  </Grid>
+</>
+
+
+
   );
 }

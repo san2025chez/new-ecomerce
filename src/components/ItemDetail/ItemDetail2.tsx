@@ -60,7 +60,8 @@ import { useSnackbar, enqueueSnackbar } from 'notistack';
 import { Product } from './prouct-interface'
 import { Dispatch, SetStateAction } from 'react';
 import numeral from 'numeral';
-
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 interface ProductBodyProps {
   product: Product;
@@ -168,17 +169,16 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
   const { cart, addItem, isInCart, handleQuantity } = useContext(CartCntext2);
   const [quantity, setQuantity] = useState(1)
   /* const [thumbsSwiper, setThumbsSwiper] = useState<typeof Swiper | null>(null); */
-/*   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
- */
+  /*   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+   */
 
   /* const [thumbsSwiper, setThumbsSwiper]: [Swiper: any | null, Dispatch<SetStateAction<null>>] = useState(null); */
 
-   // Formatear el precio con puntos como separadores de miles
-   const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
+  // Formatear el precio con puntos como separadores de miles
+  const formattedPrice = numeral(product.price).format('$0,0').replace(/,/g, '.');
 
   const cartCount = (quantity: Number) => {
     if (quantity) {
-      console.log("verifico cart en detail", cart[0]);
       let indexItem = cart.findIndex((cartItem: any) => (cartItem.id === product.id));
       if (indexItem !== -1) {
         quantity = quantity;
@@ -263,11 +263,21 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = Number(e.target.value) || 1;
-    setQuantity(Math.max(inputValue, 1)); // Asegura que la cantidad sea al menos 0
+  const handleInputChange = (newValue: number) => {
+    // Aquí puedes realizar operaciones adicionales con el nuevo valor de la cantidad
+    setQuantity(Math.max(newValue, 1)); // Actualiza la cantidad
   };
 
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
   const isMobile = window.innerWidth <= 768;
 
   return (
@@ -280,7 +290,10 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
       spacing={3}
     >
       <Grid item xs={12}>
-        <Card>
+        <Card variant="outlined" elevation={0}>
+        <Grid container spacing={0}>
+      
+        </Grid>
           <Grid container spacing={0}>
             <Grid
               xs={12}
@@ -319,7 +332,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       loop
                       autoHeight
                       spaceBetween={10}
-                     /*  thumbs={{ swiper: thumbsSwiper }} */
+                      /*  thumbs={{ swiper: thumbsSwiper }} */
                       modules={[FreeMode, Navigation, Thumbs]}
                       navigation={{
                         nextEl: '.MuiSwipe-right',
@@ -329,7 +342,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       {product.images.map(({ id, url }) => {
                         return (
                           <SwiperSlide key={id}>
-                            <img src={url} alt="..." style={{ width: '100%', height: 'auto', maxWidth: isMobile ? '60%' : '50%', maxHeight: isMobile ? '360px' : '350px',}} />
+                            <img src={url} alt="..." style={{ width: '100%', height: 'auto', maxWidth: isMobile ? '60%' : '50%', maxHeight: isMobile ? '360px' : '350px', }} />
                           </SwiperSlide>
                         );
                       })}
@@ -345,7 +358,7 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
 
                   </Box>
 
-                 {/*  <Swiper
+                  {/*  <Swiper
                     onSwiper={setThumbsSwiper}
                     loop
 
@@ -393,98 +406,23 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
               </Box>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box p={4} flex={1}>
-                <Rating
+              <Box p={4} flex={1} textAlign={{ xs: 'center', md: 'left' }}>
+              {/*   <Rating
                   readOnly
                   defaultValue={product.price}
                   precision={0.5}
-                />
+                /> */}
                 <Typography
-                  variant="h3"
+                  variant="h4"
                   sx={{
                     pb: 2,
-                    pt: 1
+                    pt: 1,
+                    fontSize: ['2rem', '3rem', '3rem'] 
                   }}
                   component="h3"
                 >
                   {product.name}
                 </Typography>
-                <Typography variant="subtitle2" mb={3} className="justified-text">
-                  <div
-                    dangerouslySetInnerHTML={{ __html: product.descriptions }}
-                  />
-                </Typography>
-                <Divider
-                  sx={{
-                    mt: 3
-                  }}
-                />
-                {!isInCart(product.id) ?
-                  <Box
-                    pt={3}
-                    pb={1}
-                    sx={{
-                      px: { xs: 0, md: 3 }
-                    }}
-                  >
-                    <Grid container spacing={0}>
-
-                      <Grid item xs={12} sm={4} justifyContent="flex-end">
-                        <Box
-                          pr={1}
-                          sx={{
-                            pt: `${theme.spacing(1)}`,
-                            pb: { xs: 1, md: 0 }
-                          }}
-                          alignSelf="center"
-                        >
-                          <b>{t('Cantidad')}:</b>
-                        </Box>
-                      </Grid>
-                      <Grid
-                        sx={{
-                          mb: `${theme.spacing(2)}`
-                        }}
-                        item
-                        xs={12}
-                        sm={5}
-                        md={3}
-                      >
-                        <FormControl
-                          fullWidth
-                          variant="outlined"
-                        >
-                          <TextField
-                            type="number"
-                            size="small"
-                            value={quantity}
-                            onChange={handleInputChange}
-                            InputLabelProps={{
-                              shrink: true,
-                            }}
-
-                          />
-                        </FormControl>
-                      </Grid>
-                    </Grid>
-                  </Box> :
-                  <>
-                    <Divider
-                      sx={{
-                        mb: { xs: 3 }
-                      }}
-                    />
-                    <br></br>
-                    <Box display="flex" justifyContent="center" mb={1}>
-                      <Link to='/cart'><Button variant="outlined" style={{ ...buttonStyle, marginRight: '50px' }}>Terminar compra</Button></Link>
-                      <Link to='/'><Button variant="outlined" style={{ ...buttonStyle }}>Seguir Comprando</Button></Link>
-                    </Box>
-                  </>}
-                <Divider
-                  sx={{
-                    mb: 3
-                  }}
-                />
                 <Box
                   display="flex"
                   alignItems="center"
@@ -501,34 +439,127 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
                       sx={{
                         pr: 2,
                         textDecorationLine: product.price !== 0 ? 'line-through' : '',
-                        fontSize: '0.9em', 
+                        fontSize: '0.9em',
                       }}
                     >
-                    {formattedPrice}
+                      {formattedPrice}
                     </Typography>
                     {product.price !== 0 && (
-                      <Typography component="span" variant="h4">
-                        <Text color="error">
-                        {formattedPrice}
+                      <Typography component="span" variant="h4" sx={{
+                        fontSize: ['1.5rem', '2rem', '2rem'] 
+                      }}>
+                        <Text color="success">
+                          {formattedPrice}
                         </Text>
                       </Typography>
                     )}
                   </Box>
-                  <Box>
-                    {!isInCart(product.id) && (
-                      <Button
-                        startIcon={<AddShoppingCartTwoToneIcon />}
-                        variant="contained"
-                        style={{ backgroundColor: '#6a1b9a', padding: '12px', borderRadius: "10px", color: "white" }}
-                        disabled={quantity === 0}
-                        onClick={() => handleCounter()}
-                        size="large"
-                      >
-                        {t('Agregar al carrito')}
-                      </Button>
-                    )}
-                  </Box>
+
                 </Box>
+                <Divider
+                  sx={{
+                    mt: 2
+                  }}
+                />
+                {!isInCart(product.id) ?
+     <Box p={2} display="flex" alignItems="stretch" justifyContent="center">
+     <Grid container spacing={2} alignItems="stretch">
+       <Grid item xs={12} sm={6}>
+         <Box display="flex" alignItems="stretch" justifyContent="center" height="100%" >
+           <Box p={2} 
+           border={1} display="flex" 
+           height="80%" 
+           width="100%"
+          alignItems="center" justifyContent="center"
+           >
+             <Button
+               variant="outlined"
+               size="small"
+               onClick={handleDecrease}
+               disabled={quantity === 0}
+               style={{ minWidth: 0, height: '100%', width: '100%',
+               border:'none'}} // Ajustamos el ancho y el máximo ancho
+             >
+               <RemoveIcon />
+             </Button>
+             <Box mx={2} display="flex" alignItems="center" justifyContent="center">
+               <Typography variant="body1">{quantity}</Typography>
+             </Box>
+             <Button
+               variant="outlined"
+               size="small"
+               onClick={handleIncrease}
+               style={{ minWidth: 0, height: '100%', width: '100%', border:'none' }} // Ajustamos el ancho y el máximo ancho
+             >
+               <AddIcon />
+             </Button>
+           </Box>
+         </Box>
+       </Grid>
+       <Grid item xs={12} sm={6}>
+         <Box display="flex" alignItems="stretch" justifyContent="center" height="80%">
+           <Button
+             startIcon={<AddShoppingCartTwoToneIcon />}
+             variant="contained"
+             fullWidth
+             style={{ minHeight: '50px', 
+             backgroundColor: '#6a1b9a', color: 'white' }} // Ajustamos la altura mínima
+             disabled={quantity === 0}
+             onClick={() => handleCounter()}
+             size="small"
+           >
+             Agregar al carrito
+           </Button>
+         </Box>
+       </Grid>
+     </Grid>
+   </Box>
+               :
+                  <>
+                    <Divider
+                      sx={{
+                        mb: { xs: 3 }
+                      }}
+                    />
+                    <br></br>
+                    <Box display="flex" justifyContent="center" alignItems="center" mb={1} sx={{ textAlign: 'center' }}>
+  <Typography
+    component="span"
+    variant="body1"
+    sx={{
+      fontSize: ['0.8rem', '1rem', '1.2rem'] ,// Tamaños de fuente para dispositivos móviles, tabletas y escritorio respectivamente
+      marginRight: '10px'
+    }}
+  
+  >
+    Ya agregaste este producto{' '}
+  </Typography>
+  <Typography
+    component="span"
+    variant="body1"
+    sx={{
+      fontSize: ['0.8rem', '1rem', '1.2rem'], // Tamaños de fuente para dispositivos móviles, tabletas y escritorio respectivamente
+      display: 'inline-block', // Para evitar subrayado completo
+      marginLeft: '10px' // Añade margen izquierdo entre los elementos
+    }}
+  >
+    <Link to='/cart' 
+      style={{
+        color: '#fff', // Color del texto
+        textDecoration: 'none', // Elimina el subrayado
+        backgroundColor: '#57CA22', // Color de fondo del enlace
+        fontWeight: 'bold', // Hace que el texto sea más visible
+        padding: '6px 12px', // Añade relleno al enlace
+        borderRadius: '4px', // Añade bordes redondeados al enlace
+        fontSize: '0.8rem' // Tamaño de fuente para el enlace
+      }}
+    >
+      Ver carrito
+    </Link>
+  </Typography>
+</Box>                  </>}
+           
+             
                 <Divider
                   sx={{
                     my: 3
@@ -560,6 +591,11 @@ export const ItemDetail2: FC<ProductBodyProps> = ({ product }) => {
               >
                 Twitter
               </Button> */}
+                <Typography variant="subtitle2" mb={3} className="justified-text">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: product.descriptions }}
+                  />
+                </Typography>
               </Box>
             </Grid>
           </Grid>
