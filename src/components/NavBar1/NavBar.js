@@ -216,7 +216,8 @@ const NavBar = () => {
                     }}
                     style={{
                       position: 'fixed',
-                    
+                    maxWidth:'100%',
+                    maxHeight:'100%',
                       width: '100%',
                       height: '100%',
                       display: 'flex',
@@ -234,6 +235,8 @@ const NavBar = () => {
                         alignItems: 'center', // Ajusta la altura para ocupar toda la pantalla
                         width: '100%', // Asegura que el menú ocupe todo el ancho
                         height: '100%', // Asegura que el menú ocupe toda la altura
+                        maxWidth:'100%',
+                        maxHeight:'100%',
                       },
                     }}
                     sx={{
