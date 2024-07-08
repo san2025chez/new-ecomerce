@@ -13,7 +13,7 @@ import Login from "./components/Login/login";
 import Product from './mercadopago/marcado-pago'
 import "@fontsource/roboto";
 import { StyledEngineProvider } from "@mui/material/styles";
-import Carousel1 from "./components/carousel/Carousel1"
+import HomePage from "./components/carousel/Carousel1"
 import Search from "./components/Search/Search"
 
 import ThemeProvider from './components/ItemDetail/theme/ThemeProvider'
@@ -30,7 +30,7 @@ function App() {
             <NavBar></NavBar>{" "}
        
           <Routes>
-            <Route path="/" element={<Carousel1 />} />
+            <Route path="/" element={<HomePage />} />
 
             <Route exact path="/categoria/:Id" element={<Home />} />
 
