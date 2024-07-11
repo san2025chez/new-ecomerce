@@ -8,27 +8,40 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Divider } from '@material-ui/core';
 
 import Home from '../../Home/Home';
-import omni from '../assets/omni.PNG';
-import omni1 from '../assets/omni.jpeg';
+import dxn from '../assets/DistributorsDXN.jpg';
+import dxn1 from '../assets/dxn1-mejor1.jpg';
+import fig1 from '../assets/Slider_mm_col.webp';
+import fig2 from '../assets/Slider_nightrace.webp';
+import fig3 from '../assets/Slider_Nutre_Deporte_claimer.png';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const mock = [
   {
-    id: 1,
-    nombre: 'Imagen 1',
-    imagen: omni,
-  },
-  {
-    id: 3,
-    nombre: 'Imagen 3',
-    imagen: omni1,
-  },
-  /* {
     id: 4,
     nombre: 'Imagen 4',
-    imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdU0MINiRChr2sLK2MXUli02-Iwxe2CeLk9A&usqp=CAU'
-  } */
+    imagen: fig1,
+  },
+  {
+    id: 5,
+    nombre: 'Imagen 5',
+    imagen: fig2,
+  },
+  {
+    id: 6,
+    nombre: 'Imagen 6',
+    imagen: fig3,
+  },
+  {
+    id: 1,
+    nombre: 'Imagen 1',
+    imagen: dxn1,
+  },
+ /*  {
+    id: 8,
+    nombre: 'Imagen 8',
+    imagen: dxn,
+  }, */
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +55,26 @@ const useStyles = makeStyles((theme) => ({
       margin: '0px',
     },
   },
+  fullWidthImage: {
+    width: '100%', // Ocupar todo el ancho en dispositivos de escritorio
+    height: 'auto', // Altura completa del contenedor
+    objectFit: 'cover', // Ajustar imagen manteniendo la relación de aspecto y recortando según sea necesario
+  },
+  carouselContainer: {
+    width: '100%',
+    height: '550px', // Altura fija para dispositivos de escritorio
+    [theme.breakpoints.down('sm')]: {
+      height: '350px', // Altura fija para dispositivos móviles (tablet)
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '180px', // Altura fija para dispositivos móviles pequeños
+    },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden', // Para asegurar que la imagen no desborde el contenedor
+    position: 'relative', // Añadido para asegurar el tamaño correcto de la imagen
+  },
 }));
 
 function Carousel1() {
@@ -54,7 +87,11 @@ function Carousel1() {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ width: '100%', maxWidth: '100%', px: 0 }}>
+    <Container
+      maxWidth={false} // Establecer maxWidth a false para desactivar el maxWidth predeterminado
+      disableGutters // Desactivar el padding predeterminado de MUI
+      sx={{ width: '100%', px: 0 }} // Establecer padding a 0 para el Container
+    >
       <Grid
         container
         spacing={0}
@@ -63,17 +100,8 @@ function Carousel1() {
         justifyContent="center"
         style={{ backgroundColor: 'white' }}
       >
-        <Grid item xs={12} sm={6} md={4}>
-          <Box
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              height: '20%',
-            }}
-            sx={{ width: 400, maxHeight: 400, flexGrow: 1 }}
-            md={{ width: 900, height: 900, flexGrow: 1 }}
-          >
+        <Grid item xs={12} sm={6} md={8}>
+          <Box className={classes.carouselContainer}>
             <AutoPlaySwipeableViews
               style={{ backgroundColor: 'rgb(100, 50, 150)' }}
               axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -86,20 +114,9 @@ function Carousel1() {
                   {Math.abs(activeStep - index) <= 2 ? (
                     <Box
                       component="img"
-                      lg={{ width: '100%', height: '100%', flexGrow: 1 }}
-                      md={{ width: '100%', height: '100%', flexGrow: 1 }}
-                      sm={{ width: '45%', height: '100%', flexGrow: 1 }}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'block',
-                        overflow: 'hidden',
-                      }}
+                      className={classes.fullWidthImage}
                       src={step.imagen}
                       alt={step.id}
-                      maxHeight="100%"
-                      justifyContent="center"
-                      alignItems="center"
                     />
                   ) : null}
                 </div>
@@ -115,14 +132,11 @@ function Carousel1() {
   );
 }
 
-
-
-// Renderiza el componente Home fuera del Carousel1
 function HomePage() {
   return (
-    <>    <Carousel1 />
+    <>
+      <Carousel1 />
       <Home />
-  
     </>
   );
 }
